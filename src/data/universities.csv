@@ -1,0 +1,13 @@
+id,nameAr,nameEn,cityAr,cityEn,website,type
+UNI001,جامعة الملك سعود,King Saud University,الرياض,Riyadh,https://ksu.edu.sa,government
+UNI002,جامعة الملك عبدالعزيز,King Abdulaziz University,جدة,Jeddah,https://kau.edu.sa,government
+UNI003,جامعة الملك فهد للبترول والمعادن,King Fahd University of Petroleum and Minerals,الظهران,Dhahran,https://kfupm.edu.sa,government
+UNI004,جامعة الأميرة نورة بنت عبدالرحمن,Princess Nourah bint Abdulrahman University,الرياض,Riyadh,https://pnu.edu.sa,government
+UNI005,جامعة الإمام عبدالرحمن بن فيصل,Imam Abdulrahman Bin Faisal University,الدمام,Dammam,https://iau.edu.sa,government
+UNI006,جامعة الملك خالد,King Khalid University,أبها,Abha,https://kku.edu.sa,government
+UNI007,جامعة أم القرى,Umm Al-Qura University,مكة المكرمة,Mecca,https://uqu.edu.sa,government
+UNI008,الجامعة الإسلامية بالمدينة المنورة,Islamic University of Madinah,المدينة المنورة,Medina,https://iu.edu.sa,government
+UNI009,جامعة طيبة,Taibah University,المدينة المنورة,Medina,https://taibahu.edu.sa,government
+UNI010,جامعة الملك عبدالله للعلوم والتقنية,King Abdullah University of Science and Technology,ثول,Thuwal,https://kaust.edu.sa,government
+UNI011,جامعة الأمير سلطان,Prince Sultan University,الرياض,Riyadh,https://psu.edu.sa,private
+UNI012,جامعة عفت,Effat University,جدة,Jeddah,https://effatuniversity.edu.sa,private

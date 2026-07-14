@@ -1,0 +1,31 @@
+id,textAr,textEn,category,type,riasecDimension,weight,isAdaptive,followUpQuestionId,displayOrder,isReverseScored
+Q001,أستمتع بالعمل باستخدام الأدوات والآلات,I enjoy working with tools and machines,interests,likert,Realistic,1.0,false,,1,false
+Q002,أي من الأنشطة التالية تفضل القيام بها في وقت فراغك؟,Which of the following activities would you prefer in your free time?,activities,multiple_choice,Realistic,1.2,true,Q005,2,false
+Q003,أجيد استخدام يدي في تنفيذ مهام عملية وملموسة,"I am skilled at using my hands to perform practical, tangible tasks",strengths,likert,Realistic,1.2,true,Q004,3,false
+Q004,أفضل العمل بالأفكار النظرية على العمل بالمهام العملية اليدوية,I prefer working with theoretical ideas over hands-on practical tasks,personality,likert,Realistic,1.0,false,,4,true
+Q005,أي بيئة عمل تفضلها أكثر؟,Which work environment do you prefer most?,work_environment,multiple_choice,Realistic,1.3,false,,5,false
+Q006,أستمتع بتحليل المشكلات المعقدة وفهم أسبابها,I enjoy analyzing complex problems and understanding their causes,interests,likert,Investigative,1.0,false,,6,false
+Q007,أي من الأنشطة التالية تجدها أكثر تشويقاً؟,Which of the following activities do you find most exciting?,activities,multiple_choice,Investigative,1.2,true,Q010,7,false
+Q008,أجيد جمع المعلومات وتحليلها بشكل منهجي,I am skilled at systematically gathering and analyzing information,strengths,likert,Investigative,1.2,true,Q009,8,false
+Q009,أفضل استخدام الأشياء مباشرة دون الحاجة لفهم كيفية عملها بالتفصيل,I prefer using things directly without needing to understand how they work in detail,personality,likert,Investigative,1.0,false,,9,true
+Q010,أي بيئة عمل تفضلها أكثر؟,Which work environment do you prefer most?,work_environment,multiple_choice,Investigative,1.3,false,,10,false
+Q011,أستمتع بالتعبير عن أفكاري بطرق إبداعية كالرسم أو الكتابة,"I enjoy expressing my ideas creatively, such as through drawing or writing",interests,likert,Artistic,1.0,false,,11,false
+Q012,أي من الأنشطة التالية تفضل ممارستها؟,Which of the following activities would you prefer to do?,activities,multiple_choice,Artistic,1.2,true,Q015,12,false
+Q013,أجيد ابتكار أفكار وحلول غير تقليدية,"I am skilled at coming up with original, unconventional ideas",strengths,likert,Artistic,1.2,true,Q014,13,false
+Q014,أفضل الالتزام بقواعد وأساليب محددة بدلاً من التعبير الحر عن أفكاري,I prefer following fixed rules and methods rather than freely expressing my ideas,personality,likert,Artistic,1.0,false,,14,true
+Q015,أي بيئة عمل تفضلها أكثر؟,Which work environment do you prefer most?,work_environment,multiple_choice,Artistic,1.3,false,,15,false
+Q016,أشعر بالرضا عندما أساعد شخصاً يواجه مشكلة,I feel fulfilled when I help someone solve a problem,interests,likert,Social,1.0,false,,16,false
+Q017,أي من الأنشطة التالية تفضل القيام بها؟,Which of the following activities would you prefer to do?,activities,multiple_choice,Social,1.2,true,Q020,17,false
+Q018,أجيد الاستماع لمشاعر واحتياجات الآخرين,I am skilled at listening to others' feelings and needs,strengths,likert,Social,1.2,true,Q019,18,false
+Q019,أفضل العمل بمفردي بعيداً عن التفاعل المستمر مع الآخرين,"I prefer working alone, away from constant interaction with others",personality,likert,Social,1.0,false,,19,true
+Q020,أي بيئة عمل تفضلها أكثر؟,Which work environment do you prefer most?,work_environment,multiple_choice,Social,1.3,false,,20,false
+Q021,أستمتع بقيادة مجموعة نحو تحقيق هدف مشترك,I enjoy leading a group toward achieving a shared goal,interests,likert,Enterprising,1.0,false,,21,false
+Q022,أي من الأنشطة التالية تفضل القيام بها؟,Which of the following activities would you prefer to do?,activities,multiple_choice,Enterprising,1.2,true,Q025,22,false
+Q023,أجيد التأثير على الآخرين وإقناعهم بوجهة نظري,I am skilled at influencing others and persuading them of my point of view,strengths,likert,Enterprising,1.2,true,Q024,23,false
+Q024,أفضل الالتزام بروتين ثابت وتجنب المخاطرة قدر الإمكان,I prefer sticking to a fixed routine and avoiding risk as much as possible,personality,likert,Enterprising,1.0,false,,24,true
+Q025,أي بيئة عمل تفضلها أكثر؟,Which work environment do you prefer most?,work_environment,multiple_choice,Enterprising,1.3,false,,25,false
+Q026,أفضل اتباع خطوات وتعليمات واضحة عند إنجاز مهمة,I prefer following clear steps and instructions when completing a task,interests,likert,Conventional,1.0,false,,26,false
+Q027,أي من الأنشطة التالية تفضل القيام بها؟,Which of the following activities would you prefer to do?,activities,multiple_choice,Conventional,1.2,true,Q030,27,false
+Q028,أجيد تنظيم المعلومات والحفاظ على الدقة في التفاصيل,I am skilled at organizing information and maintaining accuracy in details,strengths,likert,Conventional,1.2,true,Q029,28,false
+Q029,أفضل المهام التي تتغير باستمرار وتفتح المجال للغموض والمرونة,I prefer tasks that constantly change and allow room for ambiguity and flexibility,personality,likert,Conventional,1.0,false,,29,true
+Q030,أي بيئة عمل تفضلها أكثر؟,Which work environment do you prefer most?,work_environment,multiple_choice,Conventional,1.3,false,,30,false

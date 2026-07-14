@@ -1,0 +1,19 @@
+id,nameAr,nameEn,category
+SKL001,البرمجة,Programming,Technical
+SKL002,حل المشكلات,Problem Solving,Analytical
+SKL003,التحليل الرياضي,Mathematical Analysis,Analytical
+SKL004,التواصل,Communication,Interpersonal
+SKL005,التفكير النقدي,Critical Thinking,Analytical
+SKL006,العمل الجماعي,Teamwork,Interpersonal
+SKL007,القيادة,Leadership,Interpersonal
+SKL008,الإبداع,Creativity,Creative
+SKL009,الدقة والانتباه للتفاصيل,Attention to Detail,Analytical
+SKL010,مهارات البحث,Research Skills,Analytical
+SKL011,الكتابة التقنية,Technical Writing,Technical
+SKL012,رعاية المرضى,Patient Care,Interpersonal
+SKL013,التحليل المالي,Financial Analysis,Analytical
+SKL014,التفاوض,Negotiation,Interpersonal
+SKL015,التفكير التصميمي,Design Thinking,Creative
+SKL016,التحدث أمام الجمهور,Public Speaking,Interpersonal
+SKL017,تحليل البيانات,Data Analysis,Technical
+SKL018,إدارة المشاريع,Project Management,Technical

@@ -1,0 +1,29 @@
+id,nameAr,nameEn,descriptionAr,descriptionEn,salaryRange,careerPath
+CAR001,مطور برمجيات,Software Developer,"يصمم ويبني ويختبر التطبيقات والأنظمة البرمجية","Designs, builds, and tests software applications and systems",8000-18000 SAR/month,Junior Developer -> Senior Developer -> Tech Lead -> Engineering Manager
+CAR002,محلل أنظمة,Systems Analyst,"يحلل احتياجات الأعمال ويصمم حلول تقنية مناسبة","Analyzes business needs and designs suitable technical solutions",8000-15000 SAR/month,Analyst -> Senior Analyst -> Systems Architect
+CAR003,مهندس شبكات,Network Engineer,"يصمم ويدير وينفذ الصيانة على شبكات الحاسب","Designs, manages, and maintains computer networks",7500-14000 SAR/month,Network Technician -> Network Engineer -> Network Architect
+CAR004,أخصائي دعم تقني,IT Support Specialist,"يقدم الدعم الفني ويحل المشكلات التقنية للمستخدمين","Provides technical support and resolves user IT issues",6000-11000 SAR/month,Support Specialist -> IT Administrator -> IT Manager
+CAR005,مهندس كهرباء,Electrical Engineer,"يصمم وينفذ الأنظمة الكهربائية ويشرف على تنفيذها","Designs and oversees implementation of electrical systems",9000-16000 SAR/month,Engineer -> Senior Engineer -> Project Manager
+CAR006,مهندس ميكانيكي,Mechanical Engineer,"يصمم ويطور الأنظمة والآلات الميكانيكية","Designs and develops mechanical systems and machinery",8500-15000 SAR/month,Engineer -> Senior Engineer -> Engineering Manager
+CAR007,مهندس مدني,Civil Engineer,"يشرف على تصميم وتنفيذ مشاريع البنية التحتية","Oversees design and execution of infrastructure projects",8000-14000 SAR/month,Site Engineer -> Project Engineer -> Project Manager
+CAR008,مهندس كيميائي,Chemical Engineer,"يشرف على العمليات الصناعية الكيميائية وتحسينها","Oversees and optimizes chemical industrial processes",9000-16000 SAR/month,Process Engineer -> Senior Engineer -> Plant Manager
+CAR009,مهندس صناعي,Industrial Engineer,"يحسن العمليات الإنتاجية ويدير سلاسل الإمداد","Improves production processes and manages supply chains",8000-14000 SAR/month,Industrial Engineer -> Operations Manager -> Plant Director
+CAR010,طبيب,Physician,"يشخص ويعالج الأمراض ويقدم الرعاية الطبية للمرضى","Diagnoses and treats illnesses and provides patient care",18000-35000 SAR/month,Resident -> Specialist -> Consultant
+CAR011,طبيب أسنان,Dentist,"يشخص ويعالج مشاكل الفم والأسنان","Diagnoses and treats oral and dental conditions",14000-26000 SAR/month,General Dentist -> Specialist -> Practice Owner
+CAR012,صيدلي,Pharmacist,"يصرف الأدوية ويقدم الاستشارات الدوائية للمرضى","Dispenses medication and provides pharmaceutical guidance",10000-18000 SAR/month,Pharmacist -> Senior Pharmacist -> Pharmacy Manager
+CAR013,ممرض,Registered Nurse,"يقدم الرعاية الصحية المباشرة ويدعم فرق العلاج","Provides direct patient care and supports treatment teams",7000-13000 SAR/month,Staff Nurse -> Charge Nurse -> Nursing Director
+CAR014,مدير أعمال,Business Manager,"يشرف على العمليات اليومية ويقود فرق العمل","Oversees daily operations and leads teams",8000-16000 SAR/month,Coordinator -> Manager -> Director
+CAR015,محاسب,Accountant,"يعد ويراجع السجلات والتقارير المالية","Prepares and reviews financial records and reports",7500-14000 SAR/month,Accountant -> Senior Accountant -> Finance Manager
+CAR016,محلل مالي,Financial Analyst,"يحلل البيانات المالية ويقدم توصيات استثمارية","Analyzes financial data and provides investment recommendations",8500-16000 SAR/month,Analyst -> Senior Analyst -> Finance Director
+CAR017,أخصائي تسويق,Marketing Specialist,"يخطط وينفذ حملات تسويقية لزيادة الوعي بالمنتج","Plans and executes marketing campaigns to boost product awareness",7000-13000 SAR/month,Coordinator -> Specialist -> Marketing Manager
+CAR018,محامي,Lawyer,"يقدم الاستشارات القانونية ويمثل الموكلين في القضايا","Provides legal counsel and represents clients in legal matters",9000-18000 SAR/month,Associate -> Senior Associate -> Partner
+CAR019,أخصائي نفسي,Psychologist,"يقيّم ويدعم الصحة النفسية للأفراد","Assesses and supports individuals' mental well-being",7000-13000 SAR/month,Counselor -> Licensed Psychologist -> Clinical Director
+CAR020,معلم,Teacher,"يخطط للدروس ويعلم الطلاب المواد الدراسية","Plans lessons and teaches students academic subjects",6000-11000 SAR/month,Teacher -> Senior Teacher -> Academic Supervisor
+CAR021,مهندس معماري,Architect,"يصمم المباني ويشرف على تنفيذ المخططات المعمارية","Designs buildings and oversees execution of architectural plans",8500-16000 SAR/month,Junior Architect -> Architect -> Principal Architect
+CAR022,مصمم جرافيك,Graphic Designer,"يصمم المواد البصرية والهوية البصرية للعلامات التجارية","Designs visual materials and brand identities",6000-12000 SAR/month,Junior Designer -> Designer -> Art Director
+CAR023,صحفي,Journalist,"يجمع ويحرر الأخبار والمحتوى الإعلامي","Gathers and writes news and media content",6000-11000 SAR/month,Reporter -> Senior Reporter -> Editor
+CAR024,كيميائي,Chemist,"يجري تجارب وتحاليل كيميائية في المختبرات","Conducts chemical experiments and lab analysis",7000-13000 SAR/month,Lab Chemist -> Senior Chemist -> Lab Manager
+CAR025,أخصائي أحياء,Biologist,"يدرس الكائنات الحية ويجري أبحاثاً بيولوجية","Studies living organisms and conducts biological research",6500-12000 SAR/month,Research Assistant -> Biologist -> Research Lead
+CAR026,مدير مشروع,Project Manager,"يخطط وينسق وينفذ المشاريع ضمن الوقت والميزانية المحددة","Plans, coordinates, and delivers projects on time and budget",9000-17000 SAR/month,Coordinator -> Project Manager -> Program Director
+CAR027,محلل بيانات,Data Analyst,"يجمع ويحلل البيانات لدعم اتخاذ القرار","Collects and analyzes data to support decision-making",8000-15000 SAR/month,Analyst -> Senior Analyst -> Data Science Manager
+CAR028,مهندس أنظمة تقنية المعلومات,IT Systems Engineer,"يدير وينفذ حلول البنية التحتية التقنية للمؤسسات","Manages and implements IT infrastructure solutions",8000-15000 SAR/month,Systems Engineer -> Senior Engineer -> IT Infrastructure Manager

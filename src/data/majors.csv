@@ -1,0 +1,25 @@
+id,nameAr,nameEn,descriptionAr,descriptionEn,studyDuration,futureDemand,salaryRange,category
+MAJ001,علوم الحاسب,Computer Science,"يركز على البرمجة والخوارزميات وهياكل البيانات وأساسيات علوم الحوسبة","Focuses on programming, algorithms, data structures, and core computing theory",4 years,High,8000-16000 SAR/month,Computer Science
+MAJ002,هندسة البرمجيات,Software Engineering,"يركز على تصميم وبناء وصيانة أنظمة برمجية موثوقة وقابلة للتوسع","Focuses on designing, building, and maintaining reliable, scalable software systems",4 years,High,9000-17000 SAR/month,Computer Science
+MAJ003,تقنية المعلومات,Information Technology,"يركز على إدارة الأنظمة والشبكات والبنية التحتية التقنية للمؤسسات","Focuses on managing systems, networks, and IT infrastructure for organizations",4 years,High,7000-14000 SAR/month,Computer Science
+MAJ004,الهندسة الكهربائية,Electrical Engineering,"يغطي تصميم وتحليل الأنظمة الكهربائية والإلكترونية وأنظمة الطاقة","Covers design and analysis of electrical, electronic, and power systems",5 years,High,9000-16000 SAR/month,Engineering
+MAJ005,الهندسة الميكانيكية,Mechanical Engineering,"يغطي تصميم وتحليل الأنظمة الميكانيكية والحرارية والآلات","Covers design and analysis of mechanical, thermal systems, and machinery",5 years,Medium,8500-15000 SAR/month,Engineering
+MAJ006,الهندسة المدنية,Civil Engineering,"يركز على تصميم وإنشاء البنية التحتية كالمباني والطرق والجسور","Focuses on designing and building infrastructure such as buildings, roads, and bridges",5 years,Medium,8000-14000 SAR/month,Engineering
+MAJ007,الهندسة الكيميائية,Chemical Engineering,"يركز على العمليات الكيميائية وتحويل المواد الخام إلى منتجات مفيدة","Focuses on chemical processes and converting raw materials into useful products",5 years,Medium,9000-16000 SAR/month,Engineering
+MAJ008,الهندسة الصناعية,Industrial Engineering,"يركز على تحسين العمليات والإنتاجية وإدارة الأنظمة المعقدة","Focuses on optimizing processes, productivity, and managing complex systems",5 years,Medium,8000-14000 SAR/month,Engineering
+MAJ009,الطب,Medicine,"برنامج شامل لإعداد الأطباء لتشخيص وعلاج الأمراض ورعاية المرضى","Comprehensive program preparing physicians to diagnose, treat, and care for patients",6 years,High,15000-30000 SAR/month,Health
+MAJ010,طب الأسنان,Dentistry,"يركز على تشخيص وعلاج أمراض الفم والأسنان واللثة","Focuses on diagnosing and treating oral, dental, and gum conditions",5 years,High,13000-25000 SAR/month,Health
+MAJ011,الصيدلة,Pharmacy,"يركز على الأدوية وتأثيراتها وطرق صرفها الآمن للمرضى","Focuses on medications, their effects, and safe dispensing to patients",5 years,High,10000-18000 SAR/month,Health
+MAJ012,التمريض,Nursing,"يعد الطلاب لتقديم الرعاية الصحية المباشرة ودعم المرضى","Prepares students to provide direct healthcare and patient support",4 years,High,7000-13000 SAR/month,Health
+MAJ013,إدارة الأعمال,Business Administration,"يغطي أساسيات الإدارة والتسويق والعمليات في المؤسسات","Covers fundamentals of management, marketing, and operations in organizations",4 years,Medium,7000-13000 SAR/month,Business
+MAJ014,المحاسبة,Accounting,"يركز على تسجيل وتحليل وإعداد التقارير المالية للمؤسسات","Focuses on recording, analyzing, and reporting financial information",4 years,Medium,7500-14000 SAR/month,Business
+MAJ015,التمويل,Finance,"يركز على إدارة الأموال والاستثمار وتحليل الأسواق المالية","Focuses on money management, investment, and financial market analysis",4 years,Medium,8000-15000 SAR/month,Business
+MAJ016,التسويق,Marketing,"يركز على فهم سلوك المستهلك واستراتيجيات الترويج للمنتجات","Focuses on consumer behavior and product promotion strategies",4 years,Medium,7000-13000 SAR/month,Business
+MAJ017,القانون,Law,"يغطي الأنظمة القانونية والتشريعات وأساليب التقاضي","Covers legal systems, legislation, and litigation practices",4 years,Medium,8000-15000 SAR/month,Law
+MAJ018,علم النفس,Psychology,"يركز على دراسة السلوك الإنساني والعمليات العقلية","Focuses on studying human behavior and mental processes",4 years,Medium,6500-12000 SAR/month,Humanities
+MAJ019,التربية,Education,"يعد الطلاب لمهنة التدريس وتصميم المناهج التعليمية","Prepares students for teaching careers and curriculum design",4 years,Medium,6000-11000 SAR/month,Education
+MAJ020,العمارة,Architecture,"يركز على تصميم المباني والمساحات مع مراعاة الجانب الوظيفي والجمالي","Focuses on designing buildings and spaces balancing function and aesthetics",5 years,Medium,8000-15000 SAR/month,Design
+MAJ021,التصميم الجرافيكي,Graphic Design,"يركز على التواصل البصري وتصميم الهوية البصرية والمحتوى الرقمي","Focuses on visual communication, branding, and digital content design",4 years,Medium,6000-12000 SAR/month,Design
+MAJ022,الإعلام,Mass Communication,"يغطي الصحافة والإعلام الرقمي وإنتاج المحتوى الإعلامي","Covers journalism, digital media, and media content production",4 years,Medium,6000-11000 SAR/month,Humanities
+MAJ023,الكيمياء,Chemistry,"يركز على دراسة المواد وتفاعلاتها وخصائصها","Focuses on studying matter, its reactions, and properties",4 years,Medium,7000-13000 SAR/month,Science
+MAJ024,الأحياء,Biology,"يركز على دراسة الكائنات الحية والأنظمة البيولوجية","Focuses on studying living organisms and biological systems",4 years,Medium,6500-12000 SAR/month,Science

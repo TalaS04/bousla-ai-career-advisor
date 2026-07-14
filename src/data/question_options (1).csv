@@ -1,0 +1,133 @@
+id,questionId,labelAr,labelEn,value
+Q001-OPT1,Q001,لا أوافق بشدة,Strongly Disagree,1.0
+Q001-OPT2,Q001,لا أوافق,Disagree,2.0
+Q001-OPT3,Q001,محايد,Neutral,3.0
+Q001-OPT4,Q001,أوافق,Agree,4.0
+Q001-OPT5,Q001,أوافق بشدة,Strongly Agree,5.0
+Q002-OPT1,Q002,إصلاح أو بناء الأشياء,Fixing or building things,3.0
+Q002-OPT2,Q002,العمل في الحديقة أو الأنشطة الخارجية,Gardening or outdoor activities,2.0
+Q002-OPT3,Q002,تجميع الأجهزة الإلكترونية,Assembling electronics,3.0
+Q002-OPT4,Q002,غير متأكد,Not Sure,0.0
+Q003-OPT1,Q003,لا أوافق بشدة,Strongly Disagree,1.0
+Q003-OPT2,Q003,لا أوافق,Disagree,2.0
+Q003-OPT3,Q003,محايد,Neutral,3.0
+Q003-OPT4,Q003,أوافق,Agree,4.0
+Q003-OPT5,Q003,أوافق بشدة,Strongly Agree,5.0
+Q004-OPT1,Q004,لا أوافق بشدة,Strongly Disagree,1.0
+Q004-OPT2,Q004,لا أوافق,Disagree,2.0
+Q004-OPT3,Q004,محايد,Neutral,3.0
+Q004-OPT4,Q004,أوافق,Agree,4.0
+Q004-OPT5,Q004,أوافق بشدة,Strongly Agree,5.0
+Q005-OPT1,Q005,العمل الميداني أو الورشة,Fieldwork or a workshop,3.0
+Q005-OPT2,Q005,مكتب هادئ,A quiet office,1.0
+Q005-OPT3,Q005,غير متأكد,Not Sure,0.0
+Q006-OPT1,Q006,لا أوافق بشدة,Strongly Disagree,1.0
+Q006-OPT2,Q006,لا أوافق,Disagree,2.0
+Q006-OPT3,Q006,محايد,Neutral,3.0
+Q006-OPT4,Q006,أوافق,Agree,4.0
+Q006-OPT5,Q006,أوافق بشدة,Strongly Agree,5.0
+Q007-OPT1,Q007,إجراء تجربة علمية,Conducting a science experiment,3.0
+Q007-OPT2,Q007,حل الألغاز المنطقية,Solving logical puzzles,3.0
+Q007-OPT3,Q007,قراءة مقال بحثي,Reading a research article,2.0
+Q007-OPT4,Q007,غير متأكد,Not Sure,0.0
+Q008-OPT1,Q008,لا أوافق بشدة,Strongly Disagree,1.0
+Q008-OPT2,Q008,لا أوافق,Disagree,2.0
+Q008-OPT3,Q008,محايد,Neutral,3.0
+Q008-OPT4,Q008,أوافق,Agree,4.0
+Q008-OPT5,Q008,أوافق بشدة,Strongly Agree,5.0
+Q009-OPT1,Q009,لا أوافق بشدة,Strongly Disagree,1.0
+Q009-OPT2,Q009,لا أوافق,Disagree,2.0
+Q009-OPT3,Q009,محايد,Neutral,3.0
+Q009-OPT4,Q009,أوافق,Agree,4.0
+Q009-OPT5,Q009,أوافق بشدة,Strongly Agree,5.0
+Q010-OPT1,Q010,مختبر أو مركز أبحاث,A lab or research center,3.0
+Q010-OPT2,Q010,بيئة عمل تعتمد على الإجراءات الروتينية,An environment based on routine procedures,1.0
+Q010-OPT3,Q010,غير متأكد,Not Sure,0.0
+Q011-OPT1,Q011,لا أوافق بشدة,Strongly Disagree,1.0
+Q011-OPT2,Q011,لا أوافق,Disagree,2.0
+Q011-OPT3,Q011,محايد,Neutral,3.0
+Q011-OPT4,Q011,أوافق,Agree,4.0
+Q011-OPT5,Q011,أوافق بشدة,Strongly Agree,5.0
+Q012-OPT1,Q012,تصميم شيء جديد,Designing something new,3.0
+Q012-OPT2,Q012,تأليف قصة أو كتابة إبداعية,Writing a story or creative piece,3.0
+Q012-OPT3,Q012,المشاركة في عرض فني أو مسرحي,Participating in an art or theater performance,2.0
+Q012-OPT4,Q012,غير متأكد,Not Sure,0.0
+Q013-OPT1,Q013,لا أوافق بشدة,Strongly Disagree,1.0
+Q013-OPT2,Q013,لا أوافق,Disagree,2.0
+Q013-OPT3,Q013,محايد,Neutral,3.0
+Q013-OPT4,Q013,أوافق,Agree,4.0
+Q013-OPT5,Q013,أوافق بشدة,Strongly Agree,5.0
+Q014-OPT1,Q014,لا أوافق بشدة,Strongly Disagree,1.0
+Q014-OPT2,Q014,لا أوافق,Disagree,2.0
+Q014-OPT3,Q014,محايد,Neutral,3.0
+Q014-OPT4,Q014,أوافق,Agree,4.0
+Q014-OPT5,Q014,أوافق بشدة,Strongly Agree,5.0
+Q015-OPT1,Q015,استوديو تصميم أو بيئة إبداعية مرنة,A design studio or flexible creative environment,3.0
+Q015-OPT2,Q015,بيئة عمل ذات قواعد صارمة وثابتة,"A strict, fixed-rule environment",1.0
+Q015-OPT3,Q015,غير متأكد,Not Sure,0.0
+Q016-OPT1,Q016,لا أوافق بشدة,Strongly Disagree,1.0
+Q016-OPT2,Q016,لا أوافق,Disagree,2.0
+Q016-OPT3,Q016,محايد,Neutral,3.0
+Q016-OPT4,Q016,أوافق,Agree,4.0
+Q016-OPT5,Q016,أوافق بشدة,Strongly Agree,5.0
+Q017-OPT1,Q017,التطوع في خدمة المجتمع,Volunteering in community service,3.0
+Q017-OPT2,Q017,تعليم شخص مهارة جديدة,Teaching someone a new skill,3.0
+Q017-OPT3,Q017,تنظيم فعالية جماعية,Organizing a group event,2.0
+Q017-OPT4,Q017,غير متأكد,Not Sure,0.0
+Q018-OPT1,Q018,لا أوافق بشدة,Strongly Disagree,1.0
+Q018-OPT2,Q018,لا أوافق,Disagree,2.0
+Q018-OPT3,Q018,محايد,Neutral,3.0
+Q018-OPT4,Q018,أوافق,Agree,4.0
+Q018-OPT5,Q018,أوافق بشدة,Strongly Agree,5.0
+Q019-OPT1,Q019,لا أوافق بشدة,Strongly Disagree,1.0
+Q019-OPT2,Q019,لا أوافق,Disagree,2.0
+Q019-OPT3,Q019,محايد,Neutral,3.0
+Q019-OPT4,Q019,أوافق,Agree,4.0
+Q019-OPT5,Q019,أوافق بشدة,Strongly Agree,5.0
+Q020-OPT1,Q020,بيئة تعتمد على التواصل المباشر مع الناس,An environment based on direct interaction with people,3.0
+Q020-OPT2,Q020,بيئة عمل منعزلة بعيدة عن التواصل المباشر,An isolated environment with little direct interaction,1.0
+Q020-OPT3,Q020,غير متأكد,Not Sure,0.0
+Q021-OPT1,Q021,لا أوافق بشدة,Strongly Disagree,1.0
+Q021-OPT2,Q021,لا أوافق,Disagree,2.0
+Q021-OPT3,Q021,محايد,Neutral,3.0
+Q021-OPT4,Q021,أوافق,Agree,4.0
+Q021-OPT5,Q021,أوافق بشدة,Strongly Agree,5.0
+Q022-OPT1,Q022,إقناع الآخرين بفكرة أو مشروع,Persuading others about an idea or project,3.0
+Q022-OPT2,Q022,بدء مشروع تجاري صغير,Starting a small business project,3.0
+Q022-OPT3,Q022,تمثيل فريق في مفاوضات,Representing a team in negotiations,2.0
+Q022-OPT4,Q022,غير متأكد,Not Sure,0.0
+Q023-OPT1,Q023,لا أوافق بشدة,Strongly Disagree,1.0
+Q023-OPT2,Q023,لا أوافق,Disagree,2.0
+Q023-OPT3,Q023,محايد,Neutral,3.0
+Q023-OPT4,Q023,أوافق,Agree,4.0
+Q023-OPT5,Q023,أوافق بشدة,Strongly Agree,5.0
+Q024-OPT1,Q024,لا أوافق بشدة,Strongly Disagree,1.0
+Q024-OPT2,Q024,لا أوافق,Disagree,2.0
+Q024-OPT3,Q024,محايد,Neutral,3.0
+Q024-OPT4,Q024,أوافق,Agree,4.0
+Q024-OPT5,Q024,أوافق بشدة,Strongly Agree,5.0
+Q025-OPT1,Q025,بيئة عمل تنافسية وسريعة الإيقاع,"A competitive, fast-paced environment",3.0
+Q025-OPT2,Q025,بيئة عمل هادئة وثابتة الإجراءات,A calm environment with fixed procedures,1.0
+Q025-OPT3,Q025,غير متأكد,Not Sure,0.0
+Q026-OPT1,Q026,لا أوافق بشدة,Strongly Disagree,1.0
+Q026-OPT2,Q026,لا أوافق,Disagree,2.0
+Q026-OPT3,Q026,محايد,Neutral,3.0
+Q026-OPT4,Q026,أوافق,Agree,4.0
+Q026-OPT5,Q026,أوافق بشدة,Strongly Agree,5.0
+Q027-OPT1,Q027,تنظيم ملفات أو بيانات,Organizing files or data,3.0
+Q027-OPT2,Q027,إعداد جدول أو ميزانية,Preparing a schedule or budget,3.0
+Q027-OPT3,Q027,مراجعة تقرير للتأكد من دقته,Reviewing a report for accuracy,2.0
+Q027-OPT4,Q027,غير متأكد,Not Sure,0.0
+Q028-OPT1,Q028,لا أوافق بشدة,Strongly Disagree,1.0
+Q028-OPT2,Q028,لا أوافق,Disagree,2.0
+Q028-OPT3,Q028,محايد,Neutral,3.0
+Q028-OPT4,Q028,أوافق,Agree,4.0
+Q028-OPT5,Q028,أوافق بشدة,Strongly Agree,5.0
+Q029-OPT1,Q029,لا أوافق بشدة,Strongly Disagree,1.0
+Q029-OPT2,Q029,لا أوافق,Disagree,2.0
+Q029-OPT3,Q029,محايد,Neutral,3.0
+Q029-OPT4,Q029,أوافق,Agree,4.0
+Q029-OPT5,Q029,أوافق بشدة,Strongly Agree,5.0
+Q030-OPT1,Q030,بيئة عمل منظمة تعتمد على إجراءات واضحة,A structured environment with clear procedures,3.0
+Q030-OPT2,Q030,بيئة عمل عشوائية ومتغيرة باستمرار,"A chaotic, constantly changing environment",1.0
+Q030-OPT3,Q030,غير متأكد,Not Sure,0.0
