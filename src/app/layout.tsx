@@ -58,6 +58,25 @@ export const metadata: Metadata = {
  *   the current URL. `ThemeInitScript` runs before any of this hydrates, to
  *   avoid a theme flash — see that file for why it can't simply be part of
  *   `ThemeProvider`.
+ *
+ * Why `<html>` has `suppressHydrationWarning`:
+ *   `ThemeInitScript` runs *before* React hydrates and may add the `dark`
+ *   class to this exact `<html>` element (based on localStorage / the
+ *   browser's OS theme — neither of which the server can know while
+ *   rendering the initial HTML). That means the `className` React sees in
+ *   the browser can legitimately differ from what the server sent, purely
+ *   on this one element. Without this flag, React 19 treats that as a real
+ *   hydration bug and throws away + re-renders the whole tree on the
+ *   client to "recover" — and it's specifically *that* fallback client
+ *   render (not normal hydration) where `next/script`'s `beforeInteractive`
+ *   script stops being handled as a special resource and gets processed as
+ *   a plain `<script>` element instead, which is what produced the
+ *   "Encountered a script tag while rendering React component" error.
+ *   `suppressHydrationWarning` only silences the mismatch warning for this
+ *   element's own attributes (not for any child content), which is exactly
+ *   the documented, recommended way to pair a pre-hydration theme script
+ *   with the App Router — the same technique used by the `next-themes`
+ *   library.
  */
 export default function RootLayout({
   children,
@@ -65,7 +84,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl" className={`${cairo.variable} h-full antialiased`}>
+    <html
+      lang="ar"
+      dir="rtl"
+      className={`${cairo.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
       <body className="min-h-full">
         <ThemeInitScript />
         <ThemeProvider>
