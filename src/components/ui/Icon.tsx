@@ -73,6 +73,18 @@ const ICON_SHAPES: Record<IconName, ReactNode> = {
     </>
   ),
   moon: <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" />,
+  // Ascending bars with a baseline — used for "خطة تطوير" (development
+  // plan) on the landing page's features section, where none of the
+  // existing icons (all tied to specific routes) fit the concept of
+  // progress/growth over time.
+  growth: (
+    <>
+      <path d="M4 20h16" />
+      <path d="M7 20v-6" />
+      <path d="M12 20V8" />
+      <path d="M17 20v-11" />
+    </>
+  ),
 };
 
 /**

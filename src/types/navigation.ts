@@ -33,7 +33,8 @@ export type IconName =
   | "menu"
   | "close"
   | "sun"
-  | "moon";
+  | "moon"
+  | "growth";
 
 /**
  * One entry in the primary navigation.

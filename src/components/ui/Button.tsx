@@ -24,6 +24,14 @@ interface BaseButtonProps {
   size?: ButtonSize;
   className?: string;
   children: ReactNode;
+  /**
+   * Optional accessible name override, exposed as the `aria-label`
+   * attribute. Most buttons don't need this — visible text is already an
+   * accessible name — but it's useful for a button whose visible label is
+   * short (e.g. "ابدأ الآن") and benefits from a fuller description for
+   * screen-reader users (e.g. "ابدأ الآن — الميزة غير مفعّلة بعد").
+   */
+  ariaLabel?: string;
 }
 
 interface ButtonAsButtonProps extends BaseButtonProps {
@@ -79,15 +87,22 @@ export type ButtonProps = ButtonAsButtonProps | ButtonAsLinkProps;
  *
  * How it interacts with the rest of the application:
  *   Used anywhere a call-to-action is needed — e.g. the landing page's
- *   "ابدأ الآن" (Get Started) button, which links to `/interview`.
+ *   hero and CTA buttons, which currently render in action-button form (no
+ *   `href`) because the flows they'll eventually start aren't built yet.
  */
 export function Button(props: ButtonProps) {
-  const { variant = "primary", size = "md", className, children } = props;
+  const { variant = "primary", size = "md", className, children, ariaLabel } = props;
   const classes = cn(BASE_CLASSES, VARIANT_CLASSES[variant], SIZE_CLASSES[size], className);
 
   if (props.href !== undefined) {
     return (
-      <Link href={props.href} target={props.target} rel={props.rel} className={classes}>
+      <Link
+        href={props.href}
+        target={props.target}
+        rel={props.rel}
+        aria-label={ariaLabel}
+        className={classes}
+      >
         {children}
       </Link>
     );
@@ -98,6 +113,7 @@ export function Button(props: ButtonProps) {
       type={props.type ?? "button"}
       onClick={props.onClick}
       disabled={props.disabled}
+      aria-label={ariaLabel}
       className={classes}
     >
       {children}
