@@ -1,6 +1,13 @@
 import type { ReactNode } from "react";
 
 interface PageHeaderProps {
+  /**
+   * Optional small label shown above the title, e.g. a category tag on an
+   * entity detail page ("كلية الحاسبات وتقنية المعلومات"). Uses the same
+   * pill style as `SectionTitle`'s and `HeroSection`'s eyebrow, for
+   * visual consistency wherever a small label-above-heading is needed.
+   */
+  eyebrow?: string;
   /** Main Arabic heading for the page, e.g. "لوحة التحكم". */
   title: string;
   /** One or two sentences describing what the page is for. */
@@ -27,12 +34,22 @@ interface PageHeaderProps {
  *
  * How it interacts with the rest of the application:
  *   Used directly by `PlaceholderPage` (which every placeholder route
- *   renders) and by the home page's hero section.
+ *   renders), by the home page's hero section, by `InterviewHeader`
+ *   (which supplies `actions` instead of `eyebrow`), and directly by
+ *   `/majors/[id]` (which supplies `eyebrow` for the major's faculty/
+ *   category) — the same component covers both "badge off to the side"
+ *   and "small label above the title" needs, so any future entity detail
+ *   page (a career, a university) can reuse it exactly as-is.
  */
-export function PageHeader({ title, description, actions }: PageHeaderProps) {
+export function PageHeader({ eyebrow, title, description, actions }: PageHeaderProps) {
   return (
     <div className="flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
       <div className="flex flex-col gap-2">
+        {eyebrow ? (
+          <span className="w-fit rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
+            {eyebrow}
+          </span>
+        ) : null}
         <h1 className="text-2xl font-bold text-foreground sm:text-3xl">{title}</h1>
         {description ? (
           <p className="max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
