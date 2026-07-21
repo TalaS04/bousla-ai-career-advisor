@@ -3,6 +3,16 @@ interface RecommendationCardProps {
   title: string;
   /** Match strength, 0–100. */
   matchPercentage: number;
+  /**
+   * Optional accessible-name override for the row's progress bar. Falls
+   * back to the original "نسبة التوافق مع تخصص {title}" (major-
+   * compatibility) phrasing when omitted, so the dashboard's existing
+   * usage keeps its exact current behavior unchanged. Pass this when the
+   * row isn't describing a major match — e.g. a RIASEC trait score on
+   * `/profile`, where "compatibility with major X" would misdescribe what
+   * the percentage means.
+   */
+  ariaLabel?: string;
 }
 
 /**
@@ -32,9 +42,12 @@ interface RecommendationCardProps {
  *
  * When it is used:
  *   Once per entry in `TOP_RECOMMENDATIONS`, inside a `DashboardCard`, in
- *   `src/app/dashboard/page.tsx`.
+ *   `src/app/dashboard/page.tsx` — and, since a "label + percentage + bar"
+ *   row is a more general pattern than just major recommendations, once
+ *   per RIASEC trait, inside a `DashboardCard`, in
+ *   `src/app/profile/page.tsx`.
  */
-export function RecommendationCard({ title, matchPercentage }: RecommendationCardProps) {
+export function RecommendationCard({ title, matchPercentage, ariaLabel }: RecommendationCardProps) {
   return (
     <div className="flex flex-col gap-2 py-4 first:pt-0 last:pb-0">
       <div className="flex items-center justify-between gap-4">
@@ -46,7 +59,7 @@ export function RecommendationCard({ title, matchPercentage }: RecommendationCar
         aria-valuenow={matchPercentage}
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-label={`نسبة التوافق مع تخصص ${title}`}
+        aria-label={ariaLabel ?? `نسبة التوافق مع تخصص ${title}`}
         className="h-2 w-full overflow-hidden rounded-full bg-muted/15"
       >
         <div className="h-full rounded-full bg-primary" style={{ width: `${matchPercentage}%` }} />
