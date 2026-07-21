@@ -85,6 +85,14 @@ const ICON_SHAPES: Record<IconName, ReactNode> = {
       <path d="M17 20v-11" />
     </>
   ),
+  // A magnifying glass — used inside `SearchInput` to give the search
+  // field a standard, recognizable affordance.
+  search: (
+    <>
+      <circle cx="10.5" cy="10.5" r="6.5" />
+      <path d="m20 20-4.35-4.35" />
+    </>
+  ),
 };
 
 /**
