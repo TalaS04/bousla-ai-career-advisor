@@ -40,15 +40,18 @@ interface MajorCardProps {
  * Why it's likely reusable beyond `/majors`:
  *   `/careers` and `/universities` are the same kind of browsable catalog
  *   (a name, a category, a short description, a "view details" action),
- *   so this shape is expected to fit there too, not just here. Confirmed:
- *   `/careers` reuses this component completely unchanged — a career card
- *   needs exactly a name, a related field, a description, and an action,
- *   the same four props already defined here, which is why no separate
- *   "CareerCard" or generic "CatalogCard" was introduced for it.
+ *   so this shape is expected to fit there too, not just here. Confirmed
+ *   twice over: `/careers` reuses it for a name/related-field/description/
+ *   action, and `/universities` reuses it for a name/type/description/
+ *   action — three unrelated domains sharing one card shape, with nothing
+ *   domain-specific added for any of them, which is why no separate
+ *   "CareerCard", "UniversityCard", or generic "CatalogCard" was ever
+ *   introduced.
  *
  * When it is used:
- *   Once per entry in `SAMPLE_MAJORS`, in `src/app/majors/page.tsx`, and
- *   once per entry in `SAMPLE_CAREERS`, in `src/app/careers/page.tsx`.
+ *   Once per entry in `SAMPLE_MAJORS` (`src/app/majors/page.tsx`), once
+ *   per entry in `SAMPLE_CAREERS` (`src/app/careers/page.tsx`), and once
+ *   per entry in `SAMPLE_UNIVERSITIES` (`src/app/universities/page.tsx`).
  */
 export function MajorCard({
   title,
