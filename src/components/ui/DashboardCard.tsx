@@ -36,14 +36,14 @@ interface DashboardCardProps {
  */
 export function DashboardCard({ title, icon, children }: DashboardCardProps) {
   return (
-    <Card className="flex flex-col gap-5">
+    <Card className="flex flex-col gap-6">
       <div className="flex items-center gap-3">
         {icon ? (
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
             <Icon name={icon} className="h-5 w-5" />
           </span>
         ) : null}
-        <h2 className="text-lg font-bold text-foreground">{title}</h2>
+        <h2 className="text-lg font-semibold text-foreground">{title}</h2>
       </div>
       {children}
     </Card>

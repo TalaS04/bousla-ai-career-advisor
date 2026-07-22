@@ -44,10 +44,10 @@ export function NavLink({ item, onNavigate }: NavLinkProps) {
       onClick={onNavigate}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
+        "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors",
         active
           ? "bg-primary/10 text-primary"
-          : "text-foreground/80 hover:bg-muted/10 hover:text-foreground",
+          : "text-foreground/80 hover:bg-primary/5 hover:text-foreground",
       )}
     >
       <Icon name={item.icon} className="h-5 w-5 shrink-0" />

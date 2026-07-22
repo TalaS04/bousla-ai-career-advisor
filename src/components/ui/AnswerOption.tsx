@@ -47,7 +47,7 @@ export function AnswerOption({ label, selected, onSelect }: AnswerOptionProps) {
       aria-checked={selected}
       onClick={onSelect}
       className={cn(
-        "flex w-full items-center gap-3 rounded-lg border px-4 py-3 text-start text-sm font-medium transition-colors",
+        "flex w-full items-center gap-3 rounded-xl border px-4 py-3 text-start text-sm font-medium transition-colors",
         selected
           ? "border-primary bg-primary/10 text-primary"
           : "border-border text-foreground hover:bg-muted/10",

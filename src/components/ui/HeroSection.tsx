@@ -66,7 +66,7 @@ export function HeroSection({
           {eyebrow}
         </span>
       ) : null}
-      <h1 className="max-w-2xl text-3xl font-bold leading-tight text-foreground sm:text-4xl lg:text-5xl">
+      <h1 className="max-w-2xl text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
         {title}
       </h1>
       <p className="max-w-xl text-base leading-relaxed text-muted sm:text-lg">{subtitle}</p>

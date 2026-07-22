@@ -61,7 +61,7 @@ export function Sidebar() {
   }, [isOpen]);
 
   const navList = (
-    <nav className="flex flex-1 flex-col gap-1 overflow-y-auto p-4">
+    <nav className="flex flex-1 flex-col gap-1.5 overflow-y-auto p-4">
       {NAV_ITEMS.map((item) => (
         <NavLink key={item.href} item={item} onNavigate={close} />
       ))}
@@ -94,12 +94,12 @@ export function Sidebar() {
           )}
         >
           <div className="flex h-16 shrink-0 items-center justify-between border-b border-border px-4">
-            <span className="text-base font-bold text-foreground">القائمة</span>
+            <span className="text-base font-semibold text-foreground">القائمة</span>
             <button
               type="button"
               onClick={close}
               aria-label="إغلاق القائمة"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-foreground hover:bg-muted/10"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-xl text-foreground transition-colors hover:bg-primary/5"
             >
               <Icon name="close" className="h-5 w-5" />
             </button>

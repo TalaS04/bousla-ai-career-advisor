@@ -61,10 +61,12 @@ export function MajorCard({
   actionAriaLabel,
 }: MajorCardProps) {
   return (
-    <Card className="flex flex-col gap-4">
-      <div className="flex flex-col gap-1">
-        <h3 className="text-lg font-bold text-foreground">{title}</h3>
-        <span className="text-xs font-medium text-muted">{category}</span>
+    <Card className="flex flex-col gap-5">
+      <div className="flex flex-col gap-2">
+        <h3 className="text-lg font-semibold text-foreground">{title}</h3>
+        <span className="w-fit rounded-full bg-primary/8 px-2.5 py-0.5 text-xs font-medium text-primary">
+          {category}
+        </span>
       </div>
       <p className="text-sm leading-relaxed text-muted">{description}</p>
       <Button variant="secondary" size="sm" ariaLabel={actionAriaLabel} className="self-start">

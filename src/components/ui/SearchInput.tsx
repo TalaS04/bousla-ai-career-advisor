@@ -51,7 +51,7 @@ export function SearchInput({ value, onChange, placeholder, ariaLabel }: SearchI
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
         aria-label={ariaLabel ?? placeholder}
-        className="w-full rounded-lg border border-border bg-card py-2.5 ps-9 pe-4 text-sm text-foreground placeholder:text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+        className="w-full rounded-xl border border-border bg-card py-2.5 ps-9 pe-4 text-sm text-foreground placeholder:text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
       />
     </div>
   );

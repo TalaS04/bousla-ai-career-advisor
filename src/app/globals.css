@@ -15,37 +15,61 @@
  * present). Every token is a CSS custom property so it can be redefined by
  * theme or by media query without duplicating every Tailwind utility class
  * that uses it.
+ *
+ * Values below are the Bousla design system palette: a warm off-white
+ * background paired with a deep teal-green primary, matching a "modern
+ * educational platform" feel rather than a generic blue SaaS look.
+ * `--primary-hover` and `--accent`/`--success`/`--warning`/`--error` are new
+ * additions on top of the original token set — every existing utility
+ * (`bg-card`, `border-border`, `text-muted`, `bg-primary`, …) keeps working
+ * unchanged, it just now resolves to the new palette.
  */
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #fffbf1;
+  --foreground: #1f2937;
   --card: #ffffff;
-  --border: #e2e8f0;
-  --muted: #64748b;
-  --primary: #2563eb;
+  --border: #e8e4da;
+  --muted: #6b7280;
+  --primary: #1e6f5c;
+  --primary-hover: #185a4a;
   --primary-foreground: #ffffff;
+  --accent: #34a853;
+  --success: #34a853;
+  --warning: #f4b400;
+  --error: #ea4335;
 }
 
 /*
  * Overrides applied whenever the `dark` class is present on `<html>` — see
  * `ThemeInitScript` (sets it before first paint) and `ThemeProvider` (keeps
  * it in sync with user toggles afterward).
+ *
+ * The design system above only specifies light-mode values, so dark mode is
+ * an adapted variant: same hue family (warm neutrals + teal/green), shifted
+ * to dark surfaces with enough contrast to stay readable — not a literal
+ * per-token spec.
  */
 .dark {
-  --background: #0b1220;
-  --foreground: #e2e8f0;
-  --card: #111827;
-  --border: #1f2937;
-  --muted: #94a3b8;
-  --primary: #3b82f6;
-  --primary-foreground: #0b1220;
+  --background: #16211c;
+  --foreground: #f3f1ea;
+  --card: #1e2b25;
+  --border: #2e3b34;
+  --muted: #9ca8a0;
+  --primary: #34a853;
+  --primary-hover: #2e9048;
+  --primary-foreground: #0b140f;
+  --accent: #4cc26b;
+  --success: #4cc26b;
+  --warning: #f6c445;
+  --error: #f1685a;
 }
 
 /*
  * Exposes the CSS custom properties above as Tailwind theme colors, so
  * utilities like `bg-background`, `text-foreground`, `border-border`,
- * `text-muted`, `bg-primary`, and `text-primary-foreground` become
- * available throughout the app and automatically follow the active theme.
+ * `text-muted`, `bg-primary`, `hover:bg-primary-hover`, `text-accent`,
+ * `text-success`, `text-warning`, and `text-error` become available
+ * throughout the app and automatically follow the active theme.
  */
 @theme inline {
   --color-background: var(--background);
@@ -54,7 +78,12 @@
   --color-border: var(--border);
   --color-muted: var(--muted);
   --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
   --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
   --font-sans: var(--font-cairo);
 }
 

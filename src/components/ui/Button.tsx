@@ -5,10 +5,20 @@ import { cn } from "@/utils/cn";
 type ButtonVariant = "primary" | "secondary" | "ghost";
 type ButtonSize = "sm" | "md";
 
+/*
+ * Three variants, in descending visual weight, matching the design
+ * system's button hierarchy: `primary` (filled, brand color, one clear
+ * call-to-action per section), `secondary` (outlined, for a supporting
+ * action next to a primary one), `ghost` (text-only, for the lowest-
+ * emphasis actions like a dismiss/close). `hover:bg-primary-hover` uses
+ * the dedicated hover token from `globals.css` instead of an opacity trick,
+ * so the hover color is an intentional design-system value, not a
+ * side-effect of dimming the brand color.
+ */
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
-  primary: "bg-primary text-primary-foreground hover:opacity-90",
-  secondary: "bg-card text-foreground border border-border hover:bg-muted/10",
-  ghost: "text-foreground hover:bg-muted/10",
+  primary: "bg-primary text-primary-foreground shadow-sm hover:bg-primary-hover",
+  secondary: "bg-card text-foreground border border-border hover:border-primary/40 hover:bg-primary/5",
+  ghost: "text-foreground hover:bg-foreground/5",
 };
 
 const SIZE_CLASSES: Record<ButtonSize, string> = {
@@ -17,7 +27,7 @@ const SIZE_CLASSES: Record<ButtonSize, string> = {
 };
 
 const BASE_CLASSES =
-  "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 disabled:pointer-events-none disabled:opacity-50";
 
 interface BaseButtonProps {
   variant?: ButtonVariant;

@@ -11,7 +11,7 @@ export const metadata: Metadata = { title: "التوصيات" };
 const STUDENT_NAME = "سارة أحمد";
 
 /** The RIASEC type closest to the student's interview results. */
-const CLOSEST_PERSONALITY_TYPE = "Investigative (I)";
+const CLOSEST_PERSONALITY_TYPE = "بحثي (I)";
 
 interface MajorRecommendationSample {
   title: string;

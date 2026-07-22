@@ -13,8 +13,8 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
  *   notices, future major/career detail sections) needs a simple "box of
  *   content on a slightly raised surface" — the same idea as a card in most
  *   design systems. Rather than repeating
- *   `rounded-xl border border-border bg-card p-6` on every page, that
- *   styling is defined once here.
+ *   `rounded-2xl border border-border bg-card p-6 shadow-sm` on every page,
+ *   that styling is defined once here.
  *
  * Why this logic belongs in a component rather than a Tailwind `@apply`
  * class:
@@ -32,7 +32,10 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 export function Card({ children, className, ...props }: CardProps) {
   return (
     <div
-      className={cn("rounded-xl border border-border bg-card p-6 shadow-sm", className)}
+      className={cn(
+        "rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-7",
+        className,
+      )}
       {...props}
     >
       {children}

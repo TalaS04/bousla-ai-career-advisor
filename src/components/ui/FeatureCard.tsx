@@ -36,12 +36,12 @@ interface FeatureCardProps {
  */
 export function FeatureCard({ icon, title, description }: FeatureCardProps) {
   return (
-    <Card className="flex flex-col gap-4">
-      <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
+    <Card className="flex flex-col gap-5">
+      <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
         <Icon name={icon} className="h-6 w-6" />
       </span>
       <div className="flex flex-col gap-2">
-        <h3 className="text-lg font-bold text-foreground">{title}</h3>
+        <h3 className="text-lg font-semibold text-foreground">{title}</h3>
         <p className="text-sm leading-relaxed text-muted">{description}</p>
       </div>
     </Card>

@@ -56,12 +56,12 @@ interface RiasecScoreSample {
  * to render one `RecommendationCard` row per trait.
  */
 const RIASEC_SCORES: RiasecScoreSample[] = [
-  { trait: "Realistic", score: 40 },
-  { trait: "Investigative", score: 88 },
-  { trait: "Artistic", score: 64 },
-  { trait: "Social", score: 76 },
-  { trait: "Enterprising", score: 58 },
-  { trait: "Conventional", score: 45 },
+  { trait: "واقعي", score: 40 },
+  { trait: "بحثي", score: 88 },
+  { trait: "فني", score: 64 },
+  { trait: "اجتماعي", score: 76 },
+  { trait: "قيادي", score: 58 },
+  { trait: "منظم", score: 45 },
 ];
 
 /** One paragraph summarizing the student's personality, in static sample text. */

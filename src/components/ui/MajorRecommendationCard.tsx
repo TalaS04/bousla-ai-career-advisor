@@ -64,9 +64,9 @@ export function MajorRecommendationCard({
   actionAriaLabel,
 }: MajorRecommendationCardProps) {
   return (
-    <Card className="flex flex-col gap-4">
+    <Card className="flex flex-col gap-5">
       <div className="flex items-start justify-between gap-4">
-        <h3 className="text-lg font-bold text-foreground">{title}</h3>
+        <h3 className="text-lg font-semibold text-foreground">{title}</h3>
         <span className="shrink-0 rounded-full bg-primary/10 px-3 py-1 text-sm font-bold text-primary">
           {matchPercentage}%
         </span>

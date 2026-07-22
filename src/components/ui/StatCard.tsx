@@ -39,7 +39,7 @@ export function StatCard({ icon, value, label }: StatCardProps) {
   return (
     <Card className="flex flex-col items-start gap-3">
       {icon ? (
-        <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
           <Icon name={icon} className="h-5 w-5" />
         </span>
       ) : null}

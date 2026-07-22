@@ -34,23 +34,23 @@ export function Navbar() {
   const { toggle } = useSidebar();
 
   return (
-    <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b border-border bg-background/95 shadow-sm backdrop-blur">
       <div className="flex h-16 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-3">
           <button
             type="button"
             onClick={toggle}
             aria-label="فتح القائمة"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-foreground hover:bg-muted/10 md:hidden"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-xl text-foreground transition-colors hover:bg-primary/5 md:hidden"
           >
             <Icon name="menu" className="h-5 w-5" />
           </button>
 
           <Link href="/" className="flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground">
+            <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground">
               ب
             </span>
-            <span className="text-lg font-bold text-foreground">بوصلة</span>
+            <span className="text-lg font-bold tracking-tight text-foreground">بوصلة</span>
           </Link>
         </div>
 
