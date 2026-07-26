@@ -12,6 +12,8 @@ interface CallToActionCardProps {
    * that the flow isn't live yet). Optional — falls back to `actionLabel`.
    */
   actionAriaLabel?: string;
+  /** Optional destination for a live call to action. */
+  actionHref?: string;
 }
 
 /**
@@ -38,13 +40,23 @@ interface CallToActionCardProps {
  *   isn't implemented yet, so it renders as an inert action button rather
  *   than a broken or misleading link.
  */
-export function CallToActionCard({ text, actionLabel, actionAriaLabel }: CallToActionCardProps) {
+export function CallToActionCard({ text, actionLabel, actionAriaLabel, actionHref }: CallToActionCardProps) {
+  const action = actionHref ? (
+    <Button size="lg" href={actionHref} className="bg-background text-foreground hover:bg-background/90" ariaLabel={actionAriaLabel}>
+      {actionLabel}
+    </Button>
+  ) : (
+    <Button size="lg" className="bg-background text-foreground hover:bg-background/90" ariaLabel={actionAriaLabel}>
+      {actionLabel}
+    </Button>
+  );
+
   return (
-    <Card className="flex flex-col items-center gap-6 bg-primary/5 p-10 text-center sm:p-14">
-      <h2 className="max-w-xl text-xl font-bold text-foreground sm:text-2xl">{text}</h2>
-      <Button size="md" ariaLabel={actionAriaLabel}>
-        {actionLabel}
-      </Button>
+    <Card className="flex flex-col items-center gap-6 border-primary bg-primary p-10 text-center text-primary-foreground sm:p-14">
+      <span aria-hidden="true" className="text-4xl">⌁</span>
+      <h2 className="max-w-xl text-3xl font-bold leading-tight sm:text-4xl">{text}</h2>
+      <p className="max-w-lg text-sm leading-relaxed text-primary-foreground/85 sm:text-base">ابدأ رحلتك لاكتشاف التخصص والمسار المهني الأنسب لك.</p>
+      {action}
     </Card>
   );
 }

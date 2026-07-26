@@ -1,0 +1,110 @@
+[
+  {
+    "id": "UNI001",
+    "nameAr": "جامعة الملك سعود",
+    "nameEn": "King Saud University",
+    "cityAr": "الرياض",
+    "cityEn": "Riyadh",
+    "website": "https://ksu.edu.sa",
+    "type": "government"
+  },
+  {
+    "id": "UNI002",
+    "nameAr": "جامعة الملك عبدالعزيز",
+    "nameEn": "King Abdulaziz University",
+    "cityAr": "جدة",
+    "cityEn": "Jeddah",
+    "website": "https://kau.edu.sa",
+    "type": "government"
+  },
+  {
+    "id": "UNI003",
+    "nameAr": "جامعة الملك فهد للبترول والمعادن",
+    "nameEn": "King Fahd University of Petroleum and Minerals",
+    "cityAr": "الظهران",
+    "cityEn": "Dhahran",
+    "website": "https://kfupm.edu.sa",
+    "type": "government"
+  },
+  {
+    "id": "UNI004",
+    "nameAr": "جامعة الأميرة نورة بنت عبدالرحمن",
+    "nameEn": "Princess Nourah bint Abdulrahman University",
+    "cityAr": "الرياض",
+    "cityEn": "Riyadh",
+    "website": "https://pnu.edu.sa",
+    "type": "government"
+  },
+  {
+    "id": "UNI005",
+    "nameAr": "جامعة الإمام عبدالرحمن بن فيصل",
+    "nameEn": "Imam Abdulrahman Bin Faisal University",
+    "cityAr": "الدمام",
+    "cityEn": "Dammam",
+    "website": "https://iau.edu.sa",
+    "type": "government"
+  },
+  {
+    "id": "UNI006",
+    "nameAr": "جامعة الملك خالد",
+    "nameEn": "King Khalid University",
+    "cityAr": "أبها",
+    "cityEn": "Abha",
+    "website": "https://kku.edu.sa",
+    "type": "government"
+  },
+  {
+    "id": "UNI007",
+    "nameAr": "جامعة أم القرى",
+    "nameEn": "Umm Al-Qura University",
+    "cityAr": "مكة المكرمة",
+    "cityEn": "Mecca",
+    "website": "https://uqu.edu.sa",
+    "type": "government"
+  },
+  {
+    "id": "UNI008",
+    "nameAr": "الجامعة الإسلامية بالمدينة المنورة",
+    "nameEn": "Islamic University of Madinah",
+    "cityAr": "المدينة المنورة",
+    "cityEn": "Medina",
+    "website": "https://iu.edu.sa",
+    "type": "government"
+  },
+  {
+    "id": "UNI009",
+    "nameAr": "جامعة طيبة",
+    "nameEn": "Taibah University",
+    "cityAr": "المدينة المنورة",
+    "cityEn": "Medina",
+    "website": "https://taibahu.edu.sa",
+    "type": "government"
+  },
+  {
+    "id": "UNI010",
+    "nameAr": "جامعة الملك عبدالله للعلوم والتقنية",
+    "nameEn": "King Abdullah University of Science and Technology",
+    "cityAr": "ثول",
+    "cityEn": "Thuwal",
+    "website": "https://kaust.edu.sa",
+    "type": "government"
+  },
+  {
+    "id": "UNI011",
+    "nameAr": "جامعة الأمير سلطان",
+    "nameEn": "Prince Sultan University",
+    "cityAr": "الرياض",
+    "cityEn": "Riyadh",
+    "website": "https://psu.edu.sa",
+    "type": "private"
+  },
+  {
+    "id": "UNI012",
+    "nameAr": "جامعة عفت",
+    "nameEn": "Effat University",
+    "cityAr": "جدة",
+    "cityEn": "Jeddah",
+    "website": "https://effatuniversity.edu.sa",
+    "type": "private"
+  }
+]

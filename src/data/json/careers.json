@@ -1,0 +1,254 @@
+[
+  {
+    "id": "CAR001",
+    "nameAr": "مطور برمجيات",
+    "nameEn": "Software Developer",
+    "descriptionAr": "يصمم ويبني ويختبر التطبيقات والأنظمة البرمجية",
+    "descriptionEn": "Designs, builds, and tests software applications and systems",
+    "salaryRange": "8000-18000 SAR/month",
+    "careerPath": "Junior Developer -> Senior Developer -> Tech Lead -> Engineering Manager"
+  },
+  {
+    "id": "CAR002",
+    "nameAr": "محلل أنظمة",
+    "nameEn": "Systems Analyst",
+    "descriptionAr": "يحلل احتياجات الأعمال ويصمم حلول تقنية مناسبة",
+    "descriptionEn": "Analyzes business needs and designs suitable technical solutions",
+    "salaryRange": "8000-15000 SAR/month",
+    "careerPath": "Analyst -> Senior Analyst -> Systems Architect"
+  },
+  {
+    "id": "CAR003",
+    "nameAr": "مهندس شبكات",
+    "nameEn": "Network Engineer",
+    "descriptionAr": "يصمم ويدير وينفذ الصيانة على شبكات الحاسب",
+    "descriptionEn": "Designs, manages, and maintains computer networks",
+    "salaryRange": "7500-14000 SAR/month",
+    "careerPath": "Network Technician -> Network Engineer -> Network Architect"
+  },
+  {
+    "id": "CAR004",
+    "nameAr": "أخصائي دعم تقني",
+    "nameEn": "IT Support Specialist",
+    "descriptionAr": "يقدم الدعم الفني ويحل المشكلات التقنية للمستخدمين",
+    "descriptionEn": "Provides technical support and resolves user IT issues",
+    "salaryRange": "6000-11000 SAR/month",
+    "careerPath": "Support Specialist -> IT Administrator -> IT Manager"
+  },
+  {
+    "id": "CAR005",
+    "nameAr": "مهندس كهرباء",
+    "nameEn": "Electrical Engineer",
+    "descriptionAr": "يصمم وينفذ الأنظمة الكهربائية ويشرف على تنفيذها",
+    "descriptionEn": "Designs and oversees implementation of electrical systems",
+    "salaryRange": "9000-16000 SAR/month",
+    "careerPath": "Engineer -> Senior Engineer -> Project Manager"
+  },
+  {
+    "id": "CAR006",
+    "nameAr": "مهندس ميكانيكي",
+    "nameEn": "Mechanical Engineer",
+    "descriptionAr": "يصمم ويطور الأنظمة والآلات الميكانيكية",
+    "descriptionEn": "Designs and develops mechanical systems and machinery",
+    "salaryRange": "8500-15000 SAR/month",
+    "careerPath": "Engineer -> Senior Engineer -> Engineering Manager"
+  },
+  {
+    "id": "CAR007",
+    "nameAr": "مهندس مدني",
+    "nameEn": "Civil Engineer",
+    "descriptionAr": "يشرف على تصميم وتنفيذ مشاريع البنية التحتية",
+    "descriptionEn": "Oversees design and execution of infrastructure projects",
+    "salaryRange": "8000-14000 SAR/month",
+    "careerPath": "Site Engineer -> Project Engineer -> Project Manager"
+  },
+  {
+    "id": "CAR008",
+    "nameAr": "مهندس كيميائي",
+    "nameEn": "Chemical Engineer",
+    "descriptionAr": "يشرف على العمليات الصناعية الكيميائية وتحسينها",
+    "descriptionEn": "Oversees and optimizes chemical industrial processes",
+    "salaryRange": "9000-16000 SAR/month",
+    "careerPath": "Process Engineer -> Senior Engineer -> Plant Manager"
+  },
+  {
+    "id": "CAR009",
+    "nameAr": "مهندس صناعي",
+    "nameEn": "Industrial Engineer",
+    "descriptionAr": "يحسن العمليات الإنتاجية ويدير سلاسل الإمداد",
+    "descriptionEn": "Improves production processes and manages supply chains",
+    "salaryRange": "8000-14000 SAR/month",
+    "careerPath": "Industrial Engineer -> Operations Manager -> Plant Director"
+  },
+  {
+    "id": "CAR010",
+    "nameAr": "طبيب",
+    "nameEn": "Physician",
+    "descriptionAr": "يشخص ويعالج الأمراض ويقدم الرعاية الطبية للمرضى",
+    "descriptionEn": "Diagnoses and treats illnesses and provides patient care",
+    "salaryRange": "18000-35000 SAR/month",
+    "careerPath": "Resident -> Specialist -> Consultant"
+  },
+  {
+    "id": "CAR011",
+    "nameAr": "طبيب أسنان",
+    "nameEn": "Dentist",
+    "descriptionAr": "يشخص ويعالج مشاكل الفم والأسنان",
+    "descriptionEn": "Diagnoses and treats oral and dental conditions",
+    "salaryRange": "14000-26000 SAR/month",
+    "careerPath": "General Dentist -> Specialist -> Practice Owner"
+  },
+  {
+    "id": "CAR012",
+    "nameAr": "صيدلي",
+    "nameEn": "Pharmacist",
+    "descriptionAr": "يصرف الأدوية ويقدم الاستشارات الدوائية للمرضى",
+    "descriptionEn": "Dispenses medication and provides pharmaceutical guidance",
+    "salaryRange": "10000-18000 SAR/month",
+    "careerPath": "Pharmacist -> Senior Pharmacist -> Pharmacy Manager"
+  },
+  {
+    "id": "CAR013",
+    "nameAr": "ممرض",
+    "nameEn": "Registered Nurse",
+    "descriptionAr": "يقدم الرعاية الصحية المباشرة ويدعم فرق العلاج",
+    "descriptionEn": "Provides direct patient care and supports treatment teams",
+    "salaryRange": "7000-13000 SAR/month",
+    "careerPath": "Staff Nurse -> Charge Nurse -> Nursing Director"
+  },
+  {
+    "id": "CAR014",
+    "nameAr": "مدير أعمال",
+    "nameEn": "Business Manager",
+    "descriptionAr": "يشرف على العمليات اليومية ويقود فرق العمل",
+    "descriptionEn": "Oversees daily operations and leads teams",
+    "salaryRange": "8000-16000 SAR/month",
+    "careerPath": "Coordinator -> Manager -> Director"
+  },
+  {
+    "id": "CAR015",
+    "nameAr": "محاسب",
+    "nameEn": "Accountant",
+    "descriptionAr": "يعد ويراجع السجلات والتقارير المالية",
+    "descriptionEn": "Prepares and reviews financial records and reports",
+    "salaryRange": "7500-14000 SAR/month",
+    "careerPath": "Accountant -> Senior Accountant -> Finance Manager"
+  },
+  {
+    "id": "CAR016",
+    "nameAr": "محلل مالي",
+    "nameEn": "Financial Analyst",
+    "descriptionAr": "يحلل البيانات المالية ويقدم توصيات استثمارية",
+    "descriptionEn": "Analyzes financial data and provides investment recommendations",
+    "salaryRange": "8500-16000 SAR/month",
+    "careerPath": "Analyst -> Senior Analyst -> Finance Director"
+  },
+  {
+    "id": "CAR017",
+    "nameAr": "أخصائي تسويق",
+    "nameEn": "Marketing Specialist",
+    "descriptionAr": "يخطط وينفذ حملات تسويقية لزيادة الوعي بالمنتج",
+    "descriptionEn": "Plans and executes marketing campaigns to boost product awareness",
+    "salaryRange": "7000-13000 SAR/month",
+    "careerPath": "Coordinator -> Specialist -> Marketing Manager"
+  },
+  {
+    "id": "CAR018",
+    "nameAr": "محامي",
+    "nameEn": "Lawyer",
+    "descriptionAr": "يقدم الاستشارات القانونية ويمثل الموكلين في القضايا",
+    "descriptionEn": "Provides legal counsel and represents clients in legal matters",
+    "salaryRange": "9000-18000 SAR/month",
+    "careerPath": "Associate -> Senior Associate -> Partner"
+  },
+  {
+    "id": "CAR019",
+    "nameAr": "أخصائي نفسي",
+    "nameEn": "Psychologist",
+    "descriptionAr": "يقيّم ويدعم الصحة النفسية للأفراد",
+    "descriptionEn": "Assesses and supports individuals' mental well-being",
+    "salaryRange": "7000-13000 SAR/month",
+    "careerPath": "Counselor -> Licensed Psychologist -> Clinical Director"
+  },
+  {
+    "id": "CAR020",
+    "nameAr": "معلم",
+    "nameEn": "Teacher",
+    "descriptionAr": "يخطط للدروس ويعلم الطلاب المواد الدراسية",
+    "descriptionEn": "Plans lessons and teaches students academic subjects",
+    "salaryRange": "6000-11000 SAR/month",
+    "careerPath": "Teacher -> Senior Teacher -> Academic Supervisor"
+  },
+  {
+    "id": "CAR021",
+    "nameAr": "مهندس معماري",
+    "nameEn": "Architect",
+    "descriptionAr": "يصمم المباني ويشرف على تنفيذ المخططات المعمارية",
+    "descriptionEn": "Designs buildings and oversees execution of architectural plans",
+    "salaryRange": "8500-16000 SAR/month",
+    "careerPath": "Junior Architect -> Architect -> Principal Architect"
+  },
+  {
+    "id": "CAR022",
+    "nameAr": "مصمم جرافيك",
+    "nameEn": "Graphic Designer",
+    "descriptionAr": "يصمم المواد البصرية والهوية البصرية للعلامات التجارية",
+    "descriptionEn": "Designs visual materials and brand identities",
+    "salaryRange": "6000-12000 SAR/month",
+    "careerPath": "Junior Designer -> Designer -> Art Director"
+  },
+  {
+    "id": "CAR023",
+    "nameAr": "صحفي",
+    "nameEn": "Journalist",
+    "descriptionAr": "يجمع ويحرر الأخبار والمحتوى الإعلامي",
+    "descriptionEn": "Gathers and writes news and media content",
+    "salaryRange": "6000-11000 SAR/month",
+    "careerPath": "Reporter -> Senior Reporter -> Editor"
+  },
+  {
+    "id": "CAR024",
+    "nameAr": "كيميائي",
+    "nameEn": "Chemist",
+    "descriptionAr": "يجري تجارب وتحاليل كيميائية في المختبرات",
+    "descriptionEn": "Conducts chemical experiments and lab analysis",
+    "salaryRange": "7000-13000 SAR/month",
+    "careerPath": "Lab Chemist -> Senior Chemist -> Lab Manager"
+  },
+  {
+    "id": "CAR025",
+    "nameAr": "أخصائي أحياء",
+    "nameEn": "Biologist",
+    "descriptionAr": "يدرس الكائنات الحية ويجري أبحاثاً بيولوجية",
+    "descriptionEn": "Studies living organisms and conducts biological research",
+    "salaryRange": "6500-12000 SAR/month",
+    "careerPath": "Research Assistant -> Biologist -> Research Lead"
+  },
+  {
+    "id": "CAR026",
+    "nameAr": "مدير مشروع",
+    "nameEn": "Project Manager",
+    "descriptionAr": "يخطط وينسق وينفذ المشاريع ضمن الوقت والميزانية المحددة",
+    "descriptionEn": "Plans, coordinates, and delivers projects on time and budget",
+    "salaryRange": "9000-17000 SAR/month",
+    "careerPath": "Coordinator -> Project Manager -> Program Director"
+  },
+  {
+    "id": "CAR027",
+    "nameAr": "محلل بيانات",
+    "nameEn": "Data Analyst",
+    "descriptionAr": "يجمع ويحلل البيانات لدعم اتخاذ القرار",
+    "descriptionEn": "Collects and analyzes data to support decision-making",
+    "salaryRange": "8000-15000 SAR/month",
+    "careerPath": "Analyst -> Senior Analyst -> Data Science Manager"
+  },
+  {
+    "id": "CAR028",
+    "nameAr": "مهندس أنظمة تقنية المعلومات",
+    "nameEn": "IT Systems Engineer",
+    "descriptionAr": "يدير وينفذ حلول البنية التحتية التقنية للمؤسسات",
+    "descriptionEn": "Manages and implements IT infrastructure solutions",
+    "salaryRange": "8000-15000 SAR/month",
+    "careerPath": "Systems Engineer -> Senior Engineer -> IT Infrastructure Manager"
+  }
+]

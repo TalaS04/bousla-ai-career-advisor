@@ -3,6 +3,8 @@ interface StepCardProps {
   number: string;
   /** Short description of what happens in this step. Rendered as an `<h3>`. */
   title: string;
+  /** A short explanation shown below the step title. */
+  description?: string;
 }
 
 /**
@@ -35,20 +37,21 @@ interface StepCardProps {
  *   any individual step — the same reasoning `Sidebar` uses for not asking
  *   `NavLink` to render its own separators.
  */
-export function StepCard({ number, title }: StepCardProps) {
+export function StepCard({ number, title, description }: StepCardProps) {
   return (
-    <div className="flex flex-col items-center gap-3 text-center">
+    <div className="flex h-full flex-col items-center rounded-3xl border border-border bg-card p-6 text-center shadow-sm">
       {/*
         Not aria-hidden: unlike a purely decorative icon, this number is
         meaningful content — it's the only explicit "step 1/2/3" signal for
         screen-reader users, since these steps aren't marked up as an <ol>.
       */}
-      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+      <span className="mb-4 flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground">
         {number}
       </span>
-      <h3 className="max-w-[10rem] text-sm font-semibold text-foreground sm:text-base">
+      <h3 className="text-lg font-bold text-foreground">
         {title}
       </h3>
+      {description ? <p className="mt-2 text-sm leading-relaxed text-muted">{description}</p> : null}
     </div>
   );
 }

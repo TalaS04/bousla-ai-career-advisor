@@ -1,0 +1,362 @@
+[
+  {
+    "majorId": "MAJ001",
+    "skillId": "SKL001",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ001",
+    "skillId": "SKL002",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ001",
+    "skillId": "SKL005",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ002",
+    "skillId": "SKL001",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ002",
+    "skillId": "SKL018",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ002",
+    "skillId": "SKL006",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ003",
+    "skillId": "SKL001",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ003",
+    "skillId": "SKL017",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ003",
+    "skillId": "SKL009",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ004",
+    "skillId": "SKL003",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ004",
+    "skillId": "SKL002",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ004",
+    "skillId": "SKL009",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ005",
+    "skillId": "SKL003",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ005",
+    "skillId": "SKL002",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ005",
+    "skillId": "SKL008",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ006",
+    "skillId": "SKL003",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ006",
+    "skillId": "SKL009",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ006",
+    "skillId": "SKL018",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ007",
+    "skillId": "SKL003",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ007",
+    "skillId": "SKL010",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ007",
+    "skillId": "SKL009",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ008",
+    "skillId": "SKL018",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ008",
+    "skillId": "SKL002",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ008",
+    "skillId": "SKL017",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ009",
+    "skillId": "SKL012",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ009",
+    "skillId": "SKL005",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ009",
+    "skillId": "SKL009",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ010",
+    "skillId": "SKL012",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ010",
+    "skillId": "SKL009",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ010",
+    "skillId": "SKL002",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ011",
+    "skillId": "SKL012",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ011",
+    "skillId": "SKL009",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ011",
+    "skillId": "SKL010",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ012",
+    "skillId": "SKL012",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ012",
+    "skillId": "SKL004",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ012",
+    "skillId": "SKL006",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ013",
+    "skillId": "SKL007",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ013",
+    "skillId": "SKL004",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ013",
+    "skillId": "SKL014",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ014",
+    "skillId": "SKL013",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ014",
+    "skillId": "SKL009",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ014",
+    "skillId": "SKL005",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ015",
+    "skillId": "SKL013",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ015",
+    "skillId": "SKL003",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ015",
+    "skillId": "SKL005",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ016",
+    "skillId": "SKL008",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ016",
+    "skillId": "SKL004",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ016",
+    "skillId": "SKL016",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ017",
+    "skillId": "SKL005",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ017",
+    "skillId": "SKL004",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ017",
+    "skillId": "SKL014",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ018",
+    "skillId": "SKL004",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ018",
+    "skillId": "SKL010",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ018",
+    "skillId": "SKL005",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ019",
+    "skillId": "SKL004",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ019",
+    "skillId": "SKL007",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ019",
+    "skillId": "SKL006",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ020",
+    "skillId": "SKL008",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ020",
+    "skillId": "SKL015",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ020",
+    "skillId": "SKL009",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ021",
+    "skillId": "SKL008",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ021",
+    "skillId": "SKL015",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ021",
+    "skillId": "SKL004",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ022",
+    "skillId": "SKL004",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ022",
+    "skillId": "SKL016",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ022",
+    "skillId": "SKL008",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ023",
+    "skillId": "SKL010",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ023",
+    "skillId": "SKL009",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ023",
+    "skillId": "SKL005",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ024",
+    "skillId": "SKL010",
+    "importanceLevel": "High"
+  },
+  {
+    "majorId": "MAJ024",
+    "skillId": "SKL009",
+    "importanceLevel": "Medium"
+  },
+  {
+    "majorId": "MAJ024",
+    "skillId": "SKL005",
+    "importanceLevel": "Medium"
+  }
+]

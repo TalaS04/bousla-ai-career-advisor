@@ -5,6 +5,8 @@ interface HeroAction {
   label: string;
   /** Optional accessible-name override — see `Button`'s `ariaLabel` prop. */
   ariaLabel?: string;
+  /** Optional destination. Omit it when an action is intentionally not live yet. */
+  href?: string;
 }
 
 interface HeroSectionProps {
@@ -59,24 +61,77 @@ export function HeroSection({
   primaryAction,
   secondaryAction,
 }: HeroSectionProps) {
+  const primaryButton = primaryAction.href ? (
+    <Button size="lg" href={primaryAction.href} ariaLabel={primaryAction.ariaLabel}>
+      {primaryAction.label}
+      <span aria-hidden="true">←</span>
+    </Button>
+  ) : (
+    <Button size="lg" ariaLabel={primaryAction.ariaLabel}>
+      {primaryAction.label}
+      <span aria-hidden="true">←</span>
+    </Button>
+  );
+
+  const secondaryButton = secondaryAction.href ? (
+    <Button variant="secondary" size="lg" href={secondaryAction.href} ariaLabel={secondaryAction.ariaLabel}>
+      {secondaryAction.label}
+    </Button>
+  ) : (
+    <Button variant="secondary" size="lg" ariaLabel={secondaryAction.ariaLabel}>
+      {secondaryAction.label}
+    </Button>
+  );
+
   return (
-    <section className="flex flex-col items-start gap-6 text-start">
-      {eyebrow ? (
-        <span className="rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
-          {eyebrow}
-        </span>
-      ) : null}
-      <h1 className="max-w-2xl text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-        {title}
-      </h1>
-      <p className="max-w-xl text-base leading-relaxed text-muted sm:text-lg">{subtitle}</p>
-      <div className="flex flex-wrap gap-4">
-        <Button size="md" ariaLabel={primaryAction.ariaLabel}>
-          {primaryAction.label}
-        </Button>
-        <Button variant="secondary" size="md" ariaLabel={secondaryAction.ariaLabel}>
-          {secondaryAction.label}
-        </Button>
+    <section className="grid items-center gap-10 py-2 lg:grid-cols-2 lg:gap-12">
+      <div className="flex flex-col items-start text-start">
+        {eyebrow ? (
+          <span className="mb-6 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary">
+            {eyebrow}
+          </span>
+        ) : null}
+        <h1 className="max-w-2xl text-4xl font-bold leading-[1.25] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+          {title}
+        </h1>
+        <p className="mt-6 max-w-xl text-base leading-8 text-muted sm:text-lg">{subtitle}</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          {primaryButton}
+          {secondaryButton}
+        </div>
+        <div className="mt-10 flex items-center gap-5 text-sm text-muted">
+          <div>
+            <p className="text-2xl font-bold text-foreground">+١٢٬٠٠٠</p>
+            <p>طالب استخدم بوصلة</p>
+          </div>
+          <span aria-hidden="true" className="h-10 w-px bg-border" />
+          <div>
+            <p className="text-2xl font-bold text-foreground">٩٦٪</p>
+            <p>رضا الطلاب</p>
+          </div>
+        </div>
+      </div>
+
+      {/* A visual preview only: the real interview remains available at /interview. */}
+      <div className="relative">
+        <div className="absolute -bottom-5 -left-5 h-36 w-36 rounded-full bg-primary/15 blur-3xl" />
+        <div className="absolute -right-4 -top-4 h-28 w-28 rounded-full bg-accent/30 blur-3xl" />
+        <div className="relative rounded-3xl border border-border bg-card p-6 shadow-lg shadow-primary/5 sm:p-7">
+          <div className="mb-5 flex items-center justify-between gap-3">
+            <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">مقابلة نشطة</span>
+            <span className="text-xs text-muted">السؤال ٤ من ١٢</span>
+          </div>
+          <p className="mb-5 text-lg font-bold leading-relaxed text-foreground">أي من الأنشطة التالية تستمتع بها أكثر؟</p>
+          <div className="space-y-2.5 text-sm">
+            <div className="rounded-xl border border-primary bg-primary/10 px-4 py-3 font-medium text-foreground">حل ألغاز رياضية ومنطقية</div>
+            <div className="rounded-xl border border-border px-4 py-3 text-muted">رسم شيء إبداعي</div>
+            <div className="rounded-xl border border-border px-4 py-3 text-muted">مساعدة صديق</div>
+            <div className="rounded-xl border border-border px-4 py-3 text-muted">قيادة فريق</div>
+          </div>
+          <div className="mt-5 h-2 overflow-hidden rounded-full bg-muted/15">
+            <div className="h-full w-1/3 rounded-full bg-primary" />
+          </div>
+        </div>
       </div>
     </section>
   );

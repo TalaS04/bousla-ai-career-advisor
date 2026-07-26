@@ -1,0 +1,110 @@
+[
+  {
+    "id": "SKL001",
+    "nameAr": "البرمجة",
+    "nameEn": "Programming",
+    "category": "Technical"
+  },
+  {
+    "id": "SKL002",
+    "nameAr": "حل المشكلات",
+    "nameEn": "Problem Solving",
+    "category": "Analytical"
+  },
+  {
+    "id": "SKL003",
+    "nameAr": "التحليل الرياضي",
+    "nameEn": "Mathematical Analysis",
+    "category": "Analytical"
+  },
+  {
+    "id": "SKL004",
+    "nameAr": "التواصل",
+    "nameEn": "Communication",
+    "category": "Interpersonal"
+  },
+  {
+    "id": "SKL005",
+    "nameAr": "التفكير النقدي",
+    "nameEn": "Critical Thinking",
+    "category": "Analytical"
+  },
+  {
+    "id": "SKL006",
+    "nameAr": "العمل الجماعي",
+    "nameEn": "Teamwork",
+    "category": "Interpersonal"
+  },
+  {
+    "id": "SKL007",
+    "nameAr": "القيادة",
+    "nameEn": "Leadership",
+    "category": "Interpersonal"
+  },
+  {
+    "id": "SKL008",
+    "nameAr": "الإبداع",
+    "nameEn": "Creativity",
+    "category": "Creative"
+  },
+  {
+    "id": "SKL009",
+    "nameAr": "الدقة والانتباه للتفاصيل",
+    "nameEn": "Attention to Detail",
+    "category": "Analytical"
+  },
+  {
+    "id": "SKL010",
+    "nameAr": "مهارات البحث",
+    "nameEn": "Research Skills",
+    "category": "Analytical"
+  },
+  {
+    "id": "SKL011",
+    "nameAr": "الكتابة التقنية",
+    "nameEn": "Technical Writing",
+    "category": "Technical"
+  },
+  {
+    "id": "SKL012",
+    "nameAr": "رعاية المرضى",
+    "nameEn": "Patient Care",
+    "category": "Interpersonal"
+  },
+  {
+    "id": "SKL013",
+    "nameAr": "التحليل المالي",
+    "nameEn": "Financial Analysis",
+    "category": "Analytical"
+  },
+  {
+    "id": "SKL014",
+    "nameAr": "التفاوض",
+    "nameEn": "Negotiation",
+    "category": "Interpersonal"
+  },
+  {
+    "id": "SKL015",
+    "nameAr": "التفكير التصميمي",
+    "nameEn": "Design Thinking",
+    "category": "Creative"
+  },
+  {
+    "id": "SKL016",
+    "nameAr": "التحدث أمام الجمهور",
+    "nameEn": "Public Speaking",
+    "category": "Interpersonal"
+  },
+  {
+    "id": "SKL017",
+    "nameAr": "تحليل البيانات",
+    "nameEn": "Data Analysis",
+    "category": "Technical"
+  },
+  {
+    "id": "SKL018",
+    "nameAr": "إدارة المشاريع",
+    "nameEn": "Project Management",
+    "category": "Technical"
+  }
+]

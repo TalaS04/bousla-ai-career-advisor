@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { Container } from "@/components/ui/Container";
 import { HeroSection } from "@/components/ui/HeroSection";
 import { SectionTitle } from "@/components/ui/SectionTitle";
@@ -54,6 +53,7 @@ interface ProcessStep {
   /** Arabic-Indic ordinal, e.g. "١". */
   number: string;
   title: string;
+  description: string;
 }
 
 /**
@@ -71,9 +71,9 @@ interface ProcessStep {
  * display order of the steps.
  */
 const STEPS: ProcessStep[] = [
-  { number: "١", title: "أجب عن الأسئلة" },
-  { number: "٢", title: "تحليل شخصيتك واهتماماتك" },
-  { number: "٣", title: "الحصول على أفضل التوصيات" },
+  { number: "١", title: "أجب على المقابلة", description: "خمس دقائق فقط من الأسئلة الذكية." },
+  { number: "٢", title: "استلم توصياتك", description: "تخصصات مرتبة حسب توافقها مع ميولك." },
+  { number: "٣", title: "ابدأ خطتك", description: "خطوات عملية لتطوير مهاراتك وبناء مستقبلك." },
 ];
 
 /**
@@ -105,18 +105,20 @@ const STEPS: ProcessStep[] = [
  */
 export default function HomePage() {
   return (
-    <Container className="flex flex-col gap-20 py-12 sm:py-16">
+    <Container className="flex flex-col gap-24 py-12 sm:py-16">
       <HeroSection
         eyebrow="مساعدك الذكي لاختيار المستقبل"
-        title="مرحباً بك في بوصلة"
+        title="مرحبًا بك في بوصلة"
         subtitle="اكتشف التخصص الجامعي والمسار المهني الأنسب لك باستخدام الذكاء الاصطناعي."
         primaryAction={{
+          href: "/login",
           label: "ابدأ المقابلة",
-          ariaLabel: "ابدأ المقابلة الشخصية — الميزة غير مفعّلة بعد",
+          ariaLabel: "ابدأ المقابلة الشخصية — انتقل إلى تسجيل الدخول",
         }}
         secondaryAction={{
+          href: "#how-it-works-heading",
           label: "استكشف التخصصات",
-          ariaLabel: "استكشف التخصصات الجامعية — الميزة غير مفعّلة بعد",
+          ariaLabel: "اكتشف كيف تعمل بوصلة",
         }}
       />
 
@@ -139,25 +141,9 @@ export default function HomePage() {
           title="كيف تعمل المنصة؟"
           description="ثلاث خطوات بسيطة تفصلك عن اكتشاف مسارك المناسب."
         />
-        <div className="flex flex-col items-center gap-6 md:flex-row md:items-center md:justify-center md:gap-10">
-          {STEPS.map((step, index) => (
-            <Fragment key={step.title}>
-              <StepCard number={step.number} title={step.title} />
-              {index < STEPS.length - 1 ? (
-                // Decorative connector between steps — the sequence itself
-                // is already conveyed by StepCard's visible number and by
-                // DOM order, so this arrow is aria-hidden. It points down
-                // by default (stacked mobile layout) and rotates 90° at the
-                // `md` breakpoint, where the steps switch to a horizontal
-                // row — since the document direction is fixed to rtl, a
-                // 90° clockwise rotation turns "down" into "toward the
-                // start" (left), which is the correct "next step" direction
-                // for a right-to-left flow.
-                <span aria-hidden="true" className="text-2xl leading-none text-muted md:rotate-90">
-                  ↓
-                </span>
-              ) : null}
-            </Fragment>
+        <div className="grid gap-6 md:grid-cols-3">
+          {STEPS.map((step) => (
+            <StepCard key={step.title} {...step} />
           ))}
         </div>
       </section>
@@ -165,7 +151,8 @@ export default function HomePage() {
       <CallToActionCard
         text="ابدأ رحلتك الآن نحو اختيار تخصصك المناسب."
         actionLabel="ابدأ الآن"
-        actionAriaLabel="ابدأ الآن — الميزة غير مفعّلة بعد"
+        actionHref="/login"
+        actionAriaLabel="ابدأ الآن — انتقل إلى تسجيل الدخول"
       />
     </Container>
   );

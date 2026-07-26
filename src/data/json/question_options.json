@@ -1,0 +1,926 @@
+[
+  {
+    "id": "Q001-OPT1",
+    "questionId": "Q001",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q001-OPT2",
+    "questionId": "Q001",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q001-OPT3",
+    "questionId": "Q001",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q001-OPT4",
+    "questionId": "Q001",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q001-OPT5",
+    "questionId": "Q001",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q002-OPT1",
+    "questionId": "Q002",
+    "labelAr": "إصلاح أو بناء الأشياء",
+    "labelEn": "Fixing or building things",
+    "value": 3.0
+  },
+  {
+    "id": "Q002-OPT2",
+    "questionId": "Q002",
+    "labelAr": "العمل في الحديقة أو الأنشطة الخارجية",
+    "labelEn": "Gardening or outdoor activities",
+    "value": 2.0
+  },
+  {
+    "id": "Q002-OPT3",
+    "questionId": "Q002",
+    "labelAr": "تجميع الأجهزة الإلكترونية",
+    "labelEn": "Assembling electronics",
+    "value": 3.0
+  },
+  {
+    "id": "Q002-OPT4",
+    "questionId": "Q002",
+    "labelAr": "غير متأكد",
+    "labelEn": "Not Sure",
+    "value": 0.0
+  },
+  {
+    "id": "Q003-OPT1",
+    "questionId": "Q003",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q003-OPT2",
+    "questionId": "Q003",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q003-OPT3",
+    "questionId": "Q003",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q003-OPT4",
+    "questionId": "Q003",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q003-OPT5",
+    "questionId": "Q003",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q004-OPT1",
+    "questionId": "Q004",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q004-OPT2",
+    "questionId": "Q004",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q004-OPT3",
+    "questionId": "Q004",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q004-OPT4",
+    "questionId": "Q004",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q004-OPT5",
+    "questionId": "Q004",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q005-OPT1",
+    "questionId": "Q005",
+    "labelAr": "العمل الميداني أو الورشة",
+    "labelEn": "Fieldwork or a workshop",
+    "value": 3.0
+  },
+  {
+    "id": "Q005-OPT2",
+    "questionId": "Q005",
+    "labelAr": "مكتب هادئ",
+    "labelEn": "A quiet office",
+    "value": 1.0
+  },
+  {
+    "id": "Q005-OPT3",
+    "questionId": "Q005",
+    "labelAr": "غير متأكد",
+    "labelEn": "Not Sure",
+    "value": 0.0
+  },
+  {
+    "id": "Q006-OPT1",
+    "questionId": "Q006",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q006-OPT2",
+    "questionId": "Q006",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q006-OPT3",
+    "questionId": "Q006",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q006-OPT4",
+    "questionId": "Q006",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q006-OPT5",
+    "questionId": "Q006",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q007-OPT1",
+    "questionId": "Q007",
+    "labelAr": "إجراء تجربة علمية",
+    "labelEn": "Conducting a science experiment",
+    "value": 3.0
+  },
+  {
+    "id": "Q007-OPT2",
+    "questionId": "Q007",
+    "labelAr": "حل الألغاز المنطقية",
+    "labelEn": "Solving logical puzzles",
+    "value": 3.0
+  },
+  {
+    "id": "Q007-OPT3",
+    "questionId": "Q007",
+    "labelAr": "قراءة مقال بحثي",
+    "labelEn": "Reading a research article",
+    "value": 2.0
+  },
+  {
+    "id": "Q007-OPT4",
+    "questionId": "Q007",
+    "labelAr": "غير متأكد",
+    "labelEn": "Not Sure",
+    "value": 0.0
+  },
+  {
+    "id": "Q008-OPT1",
+    "questionId": "Q008",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q008-OPT2",
+    "questionId": "Q008",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q008-OPT3",
+    "questionId": "Q008",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q008-OPT4",
+    "questionId": "Q008",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q008-OPT5",
+    "questionId": "Q008",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q009-OPT1",
+    "questionId": "Q009",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q009-OPT2",
+    "questionId": "Q009",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q009-OPT3",
+    "questionId": "Q009",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q009-OPT4",
+    "questionId": "Q009",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q009-OPT5",
+    "questionId": "Q009",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q010-OPT1",
+    "questionId": "Q010",
+    "labelAr": "مختبر أو مركز أبحاث",
+    "labelEn": "A lab or research center",
+    "value": 3.0
+  },
+  {
+    "id": "Q010-OPT2",
+    "questionId": "Q010",
+    "labelAr": "بيئة عمل تعتمد على الإجراءات الروتينية",
+    "labelEn": "An environment based on routine procedures",
+    "value": 1.0
+  },
+  {
+    "id": "Q010-OPT3",
+    "questionId": "Q010",
+    "labelAr": "غير متأكد",
+    "labelEn": "Not Sure",
+    "value": 0.0
+  },
+  {
+    "id": "Q011-OPT1",
+    "questionId": "Q011",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q011-OPT2",
+    "questionId": "Q011",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q011-OPT3",
+    "questionId": "Q011",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q011-OPT4",
+    "questionId": "Q011",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q011-OPT5",
+    "questionId": "Q011",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q012-OPT1",
+    "questionId": "Q012",
+    "labelAr": "تصميم شيء جديد",
+    "labelEn": "Designing something new",
+    "value": 3.0
+  },
+  {
+    "id": "Q012-OPT2",
+    "questionId": "Q012",
+    "labelAr": "تأليف قصة أو كتابة إبداعية",
+    "labelEn": "Writing a story or creative piece",
+    "value": 3.0
+  },
+  {
+    "id": "Q012-OPT3",
+    "questionId": "Q012",
+    "labelAr": "المشاركة في عرض فني أو مسرحي",
+    "labelEn": "Participating in an art or theater performance",
+    "value": 2.0
+  },
+  {
+    "id": "Q012-OPT4",
+    "questionId": "Q012",
+    "labelAr": "غير متأكد",
+    "labelEn": "Not Sure",
+    "value": 0.0
+  },
+  {
+    "id": "Q013-OPT1",
+    "questionId": "Q013",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q013-OPT2",
+    "questionId": "Q013",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q013-OPT3",
+    "questionId": "Q013",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q013-OPT4",
+    "questionId": "Q013",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q013-OPT5",
+    "questionId": "Q013",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q014-OPT1",
+    "questionId": "Q014",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q014-OPT2",
+    "questionId": "Q014",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q014-OPT3",
+    "questionId": "Q014",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q014-OPT4",
+    "questionId": "Q014",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q014-OPT5",
+    "questionId": "Q014",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q015-OPT1",
+    "questionId": "Q015",
+    "labelAr": "استوديو تصميم أو بيئة إبداعية مرنة",
+    "labelEn": "A design studio or flexible creative environment",
+    "value": 3.0
+  },
+  {
+    "id": "Q015-OPT2",
+    "questionId": "Q015",
+    "labelAr": "بيئة عمل ذات قواعد صارمة وثابتة",
+    "labelEn": "A strict, fixed-rule environment",
+    "value": 1.0
+  },
+  {
+    "id": "Q015-OPT3",
+    "questionId": "Q015",
+    "labelAr": "غير متأكد",
+    "labelEn": "Not Sure",
+    "value": 0.0
+  },
+  {
+    "id": "Q016-OPT1",
+    "questionId": "Q016",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q016-OPT2",
+    "questionId": "Q016",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q016-OPT3",
+    "questionId": "Q016",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q016-OPT4",
+    "questionId": "Q016",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q016-OPT5",
+    "questionId": "Q016",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q017-OPT1",
+    "questionId": "Q017",
+    "labelAr": "التطوع في خدمة المجتمع",
+    "labelEn": "Volunteering in community service",
+    "value": 3.0
+  },
+  {
+    "id": "Q017-OPT2",
+    "questionId": "Q017",
+    "labelAr": "تعليم شخص مهارة جديدة",
+    "labelEn": "Teaching someone a new skill",
+    "value": 3.0
+  },
+  {
+    "id": "Q017-OPT3",
+    "questionId": "Q017",
+    "labelAr": "تنظيم فعالية جماعية",
+    "labelEn": "Organizing a group event",
+    "value": 2.0
+  },
+  {
+    "id": "Q017-OPT4",
+    "questionId": "Q017",
+    "labelAr": "غير متأكد",
+    "labelEn": "Not Sure",
+    "value": 0.0
+  },
+  {
+    "id": "Q018-OPT1",
+    "questionId": "Q018",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q018-OPT2",
+    "questionId": "Q018",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q018-OPT3",
+    "questionId": "Q018",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q018-OPT4",
+    "questionId": "Q018",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q018-OPT5",
+    "questionId": "Q018",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q019-OPT1",
+    "questionId": "Q019",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q019-OPT2",
+    "questionId": "Q019",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q019-OPT3",
+    "questionId": "Q019",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q019-OPT4",
+    "questionId": "Q019",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q019-OPT5",
+    "questionId": "Q019",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q020-OPT1",
+    "questionId": "Q020",
+    "labelAr": "بيئة تعتمد على التواصل المباشر مع الناس",
+    "labelEn": "An environment based on direct interaction with people",
+    "value": 3.0
+  },
+  {
+    "id": "Q020-OPT2",
+    "questionId": "Q020",
+    "labelAr": "بيئة عمل منعزلة بعيدة عن التواصل المباشر",
+    "labelEn": "An isolated environment with little direct interaction",
+    "value": 1.0
+  },
+  {
+    "id": "Q020-OPT3",
+    "questionId": "Q020",
+    "labelAr": "غير متأكد",
+    "labelEn": "Not Sure",
+    "value": 0.0
+  },
+  {
+    "id": "Q021-OPT1",
+    "questionId": "Q021",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q021-OPT2",
+    "questionId": "Q021",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q021-OPT3",
+    "questionId": "Q021",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q021-OPT4",
+    "questionId": "Q021",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q021-OPT5",
+    "questionId": "Q021",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q022-OPT1",
+    "questionId": "Q022",
+    "labelAr": "إقناع الآخرين بفكرة أو مشروع",
+    "labelEn": "Persuading others about an idea or project",
+    "value": 3.0
+  },
+  {
+    "id": "Q022-OPT2",
+    "questionId": "Q022",
+    "labelAr": "بدء مشروع تجاري صغير",
+    "labelEn": "Starting a small business project",
+    "value": 3.0
+  },
+  {
+    "id": "Q022-OPT3",
+    "questionId": "Q022",
+    "labelAr": "تمثيل فريق في مفاوضات",
+    "labelEn": "Representing a team in negotiations",
+    "value": 2.0
+  },
+  {
+    "id": "Q022-OPT4",
+    "questionId": "Q022",
+    "labelAr": "غير متأكد",
+    "labelEn": "Not Sure",
+    "value": 0.0
+  },
+  {
+    "id": "Q023-OPT1",
+    "questionId": "Q023",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q023-OPT2",
+    "questionId": "Q023",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q023-OPT3",
+    "questionId": "Q023",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q023-OPT4",
+    "questionId": "Q023",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q023-OPT5",
+    "questionId": "Q023",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q024-OPT1",
+    "questionId": "Q024",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q024-OPT2",
+    "questionId": "Q024",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q024-OPT3",
+    "questionId": "Q024",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q024-OPT4",
+    "questionId": "Q024",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q024-OPT5",
+    "questionId": "Q024",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q025-OPT1",
+    "questionId": "Q025",
+    "labelAr": "بيئة عمل تنافسية وسريعة الإيقاع",
+    "labelEn": "A competitive, fast-paced environment",
+    "value": 3.0
+  },
+  {
+    "id": "Q025-OPT2",
+    "questionId": "Q025",
+    "labelAr": "بيئة عمل هادئة وثابتة الإجراءات",
+    "labelEn": "A calm environment with fixed procedures",
+    "value": 1.0
+  },
+  {
+    "id": "Q025-OPT3",
+    "questionId": "Q025",
+    "labelAr": "غير متأكد",
+    "labelEn": "Not Sure",
+    "value": 0.0
+  },
+  {
+    "id": "Q026-OPT1",
+    "questionId": "Q026",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q026-OPT2",
+    "questionId": "Q026",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q026-OPT3",
+    "questionId": "Q026",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q026-OPT4",
+    "questionId": "Q026",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q026-OPT5",
+    "questionId": "Q026",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q027-OPT1",
+    "questionId": "Q027",
+    "labelAr": "تنظيم ملفات أو بيانات",
+    "labelEn": "Organizing files or data",
+    "value": 3.0
+  },
+  {
+    "id": "Q027-OPT2",
+    "questionId": "Q027",
+    "labelAr": "إعداد جدول أو ميزانية",
+    "labelEn": "Preparing a schedule or budget",
+    "value": 3.0
+  },
+  {
+    "id": "Q027-OPT3",
+    "questionId": "Q027",
+    "labelAr": "مراجعة تقرير للتأكد من دقته",
+    "labelEn": "Reviewing a report for accuracy",
+    "value": 2.0
+  },
+  {
+    "id": "Q027-OPT4",
+    "questionId": "Q027",
+    "labelAr": "غير متأكد",
+    "labelEn": "Not Sure",
+    "value": 0.0
+  },
+  {
+    "id": "Q028-OPT1",
+    "questionId": "Q028",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q028-OPT2",
+    "questionId": "Q028",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q028-OPT3",
+    "questionId": "Q028",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q028-OPT4",
+    "questionId": "Q028",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q028-OPT5",
+    "questionId": "Q028",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q029-OPT1",
+    "questionId": "Q029",
+    "labelAr": "لا أوافق بشدة",
+    "labelEn": "Strongly Disagree",
+    "value": 1.0
+  },
+  {
+    "id": "Q029-OPT2",
+    "questionId": "Q029",
+    "labelAr": "لا أوافق",
+    "labelEn": "Disagree",
+    "value": 2.0
+  },
+  {
+    "id": "Q029-OPT3",
+    "questionId": "Q029",
+    "labelAr": "محايد",
+    "labelEn": "Neutral",
+    "value": 3.0
+  },
+  {
+    "id": "Q029-OPT4",
+    "questionId": "Q029",
+    "labelAr": "أوافق",
+    "labelEn": "Agree",
+    "value": 4.0
+  },
+  {
+    "id": "Q029-OPT5",
+    "questionId": "Q029",
+    "labelAr": "أوافق بشدة",
+    "labelEn": "Strongly Agree",
+    "value": 5.0
+  },
+  {
+    "id": "Q030-OPT1",
+    "questionId": "Q030",
+    "labelAr": "بيئة عمل منظمة تعتمد على إجراءات واضحة",
+    "labelEn": "A structured environment with clear procedures",
+    "value": 3.0
+  },
+  {
+    "id": "Q030-OPT2",
+    "questionId": "Q030",
+    "labelAr": "بيئة عمل عشوائية ومتغيرة باستمرار",
+    "labelEn": "A chaotic, constantly changing environment",
+    "value": 1.0
+  },
+  {
+    "id": "Q030-OPT3",
+    "questionId": "Q030",
+    "labelAr": "غير متأكد",
+    "labelEn": "Not Sure",
+    "value": 0.0
+  }
+]

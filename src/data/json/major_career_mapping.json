@@ -1,0 +1,174 @@
+[
+  {
+    "majorId": "MAJ001",
+    "careerId": "CAR001"
+  },
+  {
+    "majorId": "MAJ001",
+    "careerId": "CAR027"
+  },
+  {
+    "majorId": "MAJ001",
+    "careerId": "CAR002"
+  },
+  {
+    "majorId": "MAJ002",
+    "careerId": "CAR001"
+  },
+  {
+    "majorId": "MAJ002",
+    "careerId": "CAR028"
+  },
+  {
+    "majorId": "MAJ002",
+    "careerId": "CAR002"
+  },
+  {
+    "majorId": "MAJ003",
+    "careerId": "CAR004"
+  },
+  {
+    "majorId": "MAJ003",
+    "careerId": "CAR028"
+  },
+  {
+    "majorId": "MAJ003",
+    "careerId": "CAR003"
+  },
+  {
+    "majorId": "MAJ004",
+    "careerId": "CAR005"
+  },
+  {
+    "majorId": "MAJ004",
+    "careerId": "CAR026"
+  },
+  {
+    "majorId": "MAJ005",
+    "careerId": "CAR006"
+  },
+  {
+    "majorId": "MAJ005",
+    "careerId": "CAR026"
+  },
+  {
+    "majorId": "MAJ006",
+    "careerId": "CAR007"
+  },
+  {
+    "majorId": "MAJ006",
+    "careerId": "CAR026"
+  },
+  {
+    "majorId": "MAJ007",
+    "careerId": "CAR008"
+  },
+  {
+    "majorId": "MAJ007",
+    "careerId": "CAR024"
+  },
+  {
+    "majorId": "MAJ008",
+    "careerId": "CAR009"
+  },
+  {
+    "majorId": "MAJ008",
+    "careerId": "CAR026"
+  },
+  {
+    "majorId": "MAJ009",
+    "careerId": "CAR010"
+  },
+  {
+    "majorId": "MAJ010",
+    "careerId": "CAR011"
+  },
+  {
+    "majorId": "MAJ011",
+    "careerId": "CAR012"
+  },
+  {
+    "majorId": "MAJ011",
+    "careerId": "CAR024"
+  },
+  {
+    "majorId": "MAJ012",
+    "careerId": "CAR013"
+  },
+  {
+    "majorId": "MAJ013",
+    "careerId": "CAR014"
+  },
+  {
+    "majorId": "MAJ013",
+    "careerId": "CAR026"
+  },
+  {
+    "majorId": "MAJ014",
+    "careerId": "CAR015"
+  },
+  {
+    "majorId": "MAJ014",
+    "careerId": "CAR016"
+  },
+  {
+    "majorId": "MAJ015",
+    "careerId": "CAR016"
+  },
+  {
+    "majorId": "MAJ015",
+    "careerId": "CAR015"
+  },
+  {
+    "majorId": "MAJ016",
+    "careerId": "CAR017"
+  },
+  {
+    "majorId": "MAJ016",
+    "careerId": "CAR023"
+  },
+  {
+    "majorId": "MAJ017",
+    "careerId": "CAR018"
+  },
+  {
+    "majorId": "MAJ018",
+    "careerId": "CAR019"
+  },
+  {
+    "majorId": "MAJ018",
+    "careerId": "CAR020"
+  },
+  {
+    "majorId": "MAJ019",
+    "careerId": "CAR020"
+  },
+  {
+    "majorId": "MAJ020",
+    "careerId": "CAR021"
+  },
+  {
+    "majorId": "MAJ020",
+    "careerId": "CAR026"
+  },
+  {
+    "majorId": "MAJ021",
+    "careerId": "CAR022"
+  },
+  {
+    "majorId": "MAJ022",
+    "careerId": "CAR023"
+  },
+  {
+    "majorId": "MAJ022",
+    "careerId": "CAR017"
+  },
+  {
+    "majorId": "MAJ023",
+    "careerId": "CAR024"
+  },
+  {
+    "majorId": "MAJ024",
+    "careerId": "CAR025"
+  }
+]

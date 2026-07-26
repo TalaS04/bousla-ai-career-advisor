@@ -25,7 +25,7 @@
  * unchanged, it just now resolves to the new palette.
  */
 :root {
-  --background: #fffbf1;
+  --background: #fcfcfc;
   --foreground: #1f2937;
   --card: #ffffff;
   --border: #e8e4da;

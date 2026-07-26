@@ -1,0 +1,302 @@
+[
+  {
+    "universityId": "UNI001",
+    "majorId": "MAJ001"
+  },
+  {
+    "universityId": "UNI001",
+    "majorId": "MAJ002"
+  },
+  {
+    "universityId": "UNI001",
+    "majorId": "MAJ004"
+  },
+  {
+    "universityId": "UNI001",
+    "majorId": "MAJ006"
+  },
+  {
+    "universityId": "UNI001",
+    "majorId": "MAJ009"
+  },
+  {
+    "universityId": "UNI001",
+    "majorId": "MAJ013"
+  },
+  {
+    "universityId": "UNI001",
+    "majorId": "MAJ017"
+  },
+  {
+    "universityId": "UNI001",
+    "majorId": "MAJ019"
+  },
+  {
+    "universityId": "UNI002",
+    "majorId": "MAJ001"
+  },
+  {
+    "universityId": "UNI002",
+    "majorId": "MAJ003"
+  },
+  {
+    "universityId": "UNI002",
+    "majorId": "MAJ005"
+  },
+  {
+    "universityId": "UNI002",
+    "majorId": "MAJ010"
+  },
+  {
+    "universityId": "UNI002",
+    "majorId": "MAJ011"
+  },
+  {
+    "universityId": "UNI002",
+    "majorId": "MAJ013"
+  },
+  {
+    "universityId": "UNI002",
+    "majorId": "MAJ020"
+  },
+  {
+    "universityId": "UNI002",
+    "majorId": "MAJ022"
+  },
+  {
+    "universityId": "UNI003",
+    "majorId": "MAJ001"
+  },
+  {
+    "universityId": "UNI003",
+    "majorId": "MAJ002"
+  },
+  {
+    "universityId": "UNI003",
+    "majorId": "MAJ004"
+  },
+  {
+    "universityId": "UNI003",
+    "majorId": "MAJ007"
+  },
+  {
+    "universityId": "UNI003",
+    "majorId": "MAJ008"
+  },
+  {
+    "universityId": "UNI003",
+    "majorId": "MAJ013"
+  },
+  {
+    "universityId": "UNI004",
+    "majorId": "MAJ001"
+  },
+  {
+    "universityId": "UNI004",
+    "majorId": "MAJ009"
+  },
+  {
+    "universityId": "UNI004",
+    "majorId": "MAJ012"
+  },
+  {
+    "universityId": "UNI004",
+    "majorId": "MAJ016"
+  },
+  {
+    "universityId": "UNI004",
+    "majorId": "MAJ019"
+  },
+  {
+    "universityId": "UNI004",
+    "majorId": "MAJ021"
+  },
+  {
+    "universityId": "UNI005",
+    "majorId": "MAJ001"
+  },
+  {
+    "universityId": "UNI005",
+    "majorId": "MAJ006"
+  },
+  {
+    "universityId": "UNI005",
+    "majorId": "MAJ009"
+  },
+  {
+    "universityId": "UNI005",
+    "majorId": "MAJ010"
+  },
+  {
+    "universityId": "UNI005",
+    "majorId": "MAJ011"
+  },
+  {
+    "universityId": "UNI005",
+    "majorId": "MAJ014"
+  },
+  {
+    "universityId": "UNI005",
+    "majorId": "MAJ018"
+  },
+  {
+    "universityId": "UNI006",
+    "majorId": "MAJ001"
+  },
+  {
+    "universityId": "UNI006",
+    "majorId": "MAJ009"
+  },
+  {
+    "universityId": "UNI006",
+    "majorId": "MAJ012"
+  },
+  {
+    "universityId": "UNI006",
+    "majorId": "MAJ013"
+  },
+  {
+    "universityId": "UNI006",
+    "majorId": "MAJ019"
+  },
+  {
+    "universityId": "UNI006",
+    "majorId": "MAJ024"
+  },
+  {
+    "universityId": "UNI007",
+    "majorId": "MAJ001"
+  },
+  {
+    "universityId": "UNI007",
+    "majorId": "MAJ013"
+  },
+  {
+    "universityId": "UNI007",
+    "majorId": "MAJ017"
+  },
+  {
+    "universityId": "UNI007",
+    "majorId": "MAJ018"
+  },
+  {
+    "universityId": "UNI007",
+    "majorId": "MAJ019"
+  },
+  {
+    "universityId": "UNI007",
+    "majorId": "MAJ023"
+  },
+  {
+    "universityId": "UNI008",
+    "majorId": "MAJ017"
+  },
+  {
+    "universityId": "UNI008",
+    "majorId": "MAJ018"
+  },
+  {
+    "universityId": "UNI008",
+    "majorId": "MAJ019"
+  },
+  {
+    "universityId": "UNI008",
+    "majorId": "MAJ022"
+  },
+  {
+    "universityId": "UNI009",
+    "majorId": "MAJ001"
+  },
+  {
+    "universityId": "UNI009",
+    "majorId": "MAJ009"
+  },
+  {
+    "universityId": "UNI009",
+    "majorId": "MAJ013"
+  },
+  {
+    "universityId": "UNI009",
+    "majorId": "MAJ014"
+  },
+  {
+    "universityId": "UNI009",
+    "majorId": "MAJ019"
+  },
+  {
+    "universityId": "UNI009",
+    "majorId": "MAJ024"
+  },
+  {
+    "universityId": "UNI010",
+    "majorId": "MAJ001"
+  },
+  {
+    "universityId": "UNI010",
+    "majorId": "MAJ004"
+  },
+  {
+    "universityId": "UNI010",
+    "majorId": "MAJ005"
+  },
+  {
+    "universityId": "UNI010",
+    "majorId": "MAJ007"
+  },
+  {
+    "universityId": "UNI010",
+    "majorId": "MAJ023"
+  },
+  {
+    "universityId": "UNI010",
+    "majorId": "MAJ024"
+  },
+  {
+    "universityId": "UNI011",
+    "majorId": "MAJ001"
+  },
+  {
+    "universityId": "UNI011",
+    "majorId": "MAJ002"
+  },
+  {
+    "universityId": "UNI011",
+    "majorId": "MAJ013"
+  },
+  {
+    "universityId": "UNI011",
+    "majorId": "MAJ015"
+  },
+  {
+    "universityId": "UNI011",
+    "majorId": "MAJ017"
+  },
+  {
+    "universityId": "UNI011",
+    "majorId": "MAJ020"
+  },
+  {
+    "universityId": "UNI012",
+    "majorId": "MAJ001"
+  },
+  {
+    "universityId": "UNI012",
+    "majorId": "MAJ002"
+  },
+  {
+    "universityId": "UNI012",
+    "majorId": "MAJ013"
+  },
+  {
+    "universityId": "UNI012",
+    "majorId": "MAJ020"
+  },
+  {
+    "universityId": "UNI012",
+    "majorId": "MAJ021"
+  },
+  {
+    "universityId": "UNI012",
+    "majorId": "MAJ022"
+  }
+]

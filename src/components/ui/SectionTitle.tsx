@@ -46,15 +46,15 @@ export function SectionTitle({ eyebrow, title, description, headingId }: Section
   return (
     <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 text-center">
       {eyebrow ? (
-        <span className="rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
+        <span className="rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary">
           {eyebrow}
         </span>
       ) : null}
-      <h2 id={headingId} className="text-2xl font-bold text-foreground sm:text-3xl">
+      <h2 id={headingId} className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
         {title}
       </h2>
       {description ? (
-        <p className="text-sm leading-relaxed text-muted sm:text-base">{description}</p>
+        <p className="max-w-xl text-sm leading-relaxed text-muted sm:text-base">{description}</p>
       ) : null}
     </div>
   );
