@@ -4,9 +4,8 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
-  useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 import { THEME_STORAGE_KEY, type Theme } from "@/types/theme";
@@ -28,25 +27,21 @@ interface ThemeContextValue {
  */
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
-/**
- * Reads the theme that is already applied to `<html>` at the moment this
- * component mounts.
- *
- * Why read the DOM instead of just defaulting to "light":
- *   The root layout injects a tiny inline script (`ThemeInitScript`) that
- *   runs *before* React hydrates and adds the `dark` class to `<html>` if
- *   that's the correct theme (from localStorage or the OS preference). If
- *   `ThemeProvider` ignored that and always started its state at "light",
- *   the first render would briefly disagree with the already-painted page,
- *   causing either a visible flash or a React hydration-mismatch warning.
- *   Reading the class that's already there keeps this component's state in
- *   sync with what the user already sees.
- */
-function readInitialTheme(): Theme {
-  if (typeof window === "undefined") {
-    return "light";
-  }
+const THEME_CHANGE_EVENT = "bousla-theme-change";
+
+/** Lets React refresh consumers after the user changes the theme. */
+function subscribeToTheme(onStoreChange: () => void) {
+  window.addEventListener(THEME_CHANGE_EVENT, onStoreChange);
+  return () => window.removeEventListener(THEME_CHANGE_EVENT, onStoreChange);
+}
+
+function getThemeSnapshot(): Theme {
   return document.documentElement.classList.contains("dark") ? "dark" : "light";
+}
+
+// React uses this value for both the server and first hydration render.
+function getServerThemeSnapshot(): Theme {
+  return "light";
 }
 
 /**
@@ -85,16 +80,20 @@ function readInitialTheme(): Theme {
  *   `ThemeToggle` (the button users click).
  */
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(readInitialTheme);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
-    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
-  }, [theme]);
+  // The server snapshot keeps the first client render identical to SSR.
+  // React then reads the class applied by ThemeInitScript after hydration.
+  const theme = useSyncExternalStore(
+    subscribeToTheme,
+    getThemeSnapshot,
+    getServerThemeSnapshot,
+  );
 
   const toggleTheme = useCallback(() => {
-    setTheme((current) => (current === "dark" ? "light" : "dark"));
-  }, []);
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    document.documentElement.classList.toggle("dark", nextTheme === "dark");
+    window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
+  }, [theme]);
 
   // Memoized so consumers that only read `theme` (or only call
   // `toggleTheme`) don't re-render on every provider render for no reason —
