@@ -256,3 +256,60 @@ export interface RiasecMajorWeight {
   explanationTemplateAr: string;
   explanationTemplateEn: string;
 }
+
+
+/**
+ * ------------------------------------------------------------
+ * Preparation Roadmap
+ * ------------------------------------------------------------
+ * Represents a preparation guide for a university major.
+ *
+ * Unlike a traditional study plan, this roadmap helps students
+ * prepare before and during university by recommending:
+ *
+ * • Skills to develop
+ * • Courses
+ * • Tools
+ * • Activities
+ * • Learning roadmap
+ * • Common challenges
+ * • Success tips
+ * ------------------------------------------------------------
+ */
+
+export interface PreparationSkill {
+  skill: string;
+  importance: number;
+  descriptionAr: string;
+}
+
+export interface RecommendedCourse {
+  titleAr: string;
+  provider: string;
+  reasonAr: string;
+}
+
+export interface RecommendedTool {
+  name: string;
+  purposeAr: string;
+}
+
+export interface PreparationRoadmap {
+  majorId: string;
+
+  overviewAr: string;
+
+  skillsToDevelop: PreparationSkill[];
+
+  recommendedCourses: RecommendedCourse[];
+
+  recommendedTools: RecommendedTool[];
+
+  recommendedActivities: string[];
+
+  learningRoadmap: string[];
+
+  commonChallenges: string[];
+
+  successTips: string[];
+}

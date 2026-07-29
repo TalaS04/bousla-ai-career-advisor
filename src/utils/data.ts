@@ -34,6 +34,7 @@ import majorCareerMappingData from "@/data/json/major_career_mapping.json";
 import majorSkillMappingData from "@/data/json/major_skill_mapping.json";
 import universityMajorMappingData from "@/data/json/university_major_mapping.json";
 import riasecMajorWeightsData from "@/data/json/riasec_major_weights.json";
+import preparationRoadmapsData from "@/data/json/preparation_roadmaps.json";
 
 /**
  * Import the interfaces so every dataset has a known type.
@@ -50,6 +51,7 @@ import type {
   MajorSkillMapping,
   UniversityMajorMapping,
   RiasecMajorWeight,
+  PreparationRoadmap,
 } from "@/types/data";
 
 /**
@@ -81,3 +83,6 @@ export const universityMajorMapping =
 
 export const riasecMajorWeights =
   riasecMajorWeightsData as RiasecMajorWeight[];
+
+export const preparationRoadmaps =
+  preparationRoadmapsData as PreparationRoadmap[];

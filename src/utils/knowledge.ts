@@ -28,6 +28,7 @@ import {
   majorCareerMapping,
   majorSkillMapping,
   universityMajorMapping,
+  preparationRoadmaps,
 } from "@/utils/data";
 
 /**
@@ -99,4 +100,39 @@ export function getCompatibilityLabel(score: number) {
  */
 export function getMajorById(majorId: string) {
   return majors.find((major) => major.id === majorId);
+}
+
+/**
+ * --------------------------------------------------------------
+ * Returns the preparation roadmap for a major.
+ * --------------------------------------------------------------
+ */
+export function getPreparationRoadmap(majorId: string) {
+  return (
+    preparationRoadmaps.find(
+      (roadmap) => roadmap.majorId === majorId
+    ) ?? null
+  );
+}
+
+/**
+ * --------------------------------------------------------------
+ * Returns the recommended courses for a major.
+ * --------------------------------------------------------------
+ */
+export function getRecommendedCourses(majorId: string) {
+  return (
+    getPreparationRoadmap(majorId)?.recommendedCourses ?? []
+  );
+}
+
+/**
+ * --------------------------------------------------------------
+ * Returns the recommended tools for a major.
+ * --------------------------------------------------------------
+ */
+export function getRecommendedTools(majorId: string) {
+  return (
+    getPreparationRoadmap(majorId)?.recommendedTools ?? []
+  );
 }
