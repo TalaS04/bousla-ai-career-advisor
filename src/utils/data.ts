@@ -22,7 +22,7 @@
  * ============================================================
  */
 
-import majorsData from "@/data/json/majors.json";
+import officialSpecializationsData from "@/data/json/official_specializations.json";
 import careersData from "@/data/json/careers.json";
 import universitiesData from "@/data/json/universities.json";
 import skillsData from "@/data/json/skills.json";
@@ -41,7 +41,7 @@ import preparationRoadmapsData from "@/data/json/preparation_roadmaps.json";
  */
 
 import type {
-  Major,
+  OfficialSpecialization,
   Career,
   University,
   Skill,
@@ -60,7 +60,8 @@ import type {
  * to detect mistakes during development.
  */
 
-export const majors = majorsData as Major[];
+export const officialSpecializations =
+  officialSpecializationsData as OfficialSpecialization[];
 
 export const careers = careersData as Career[];
 
@@ -86,3 +87,29 @@ export const riasecMajorWeights =
 
 export const preparationRoadmaps =
   preparationRoadmapsData as PreparationRoadmap[];
+
+export interface OfficialSpecialization {
+
+  id: string;
+
+  classificationCode: string;
+
+  nameAr: string;
+
+  officialClassification: {
+
+    broadField: string;
+
+    narrowField: string;
+
+    detailedField: string;
+
+  };
+
+  officialDefinitionAr: string;
+
+  includedSpecializations: string[];
+
+  coreSubjects: string[];
+
+}

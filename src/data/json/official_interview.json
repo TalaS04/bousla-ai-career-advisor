@@ -1,0 +1,423 @@
+{
+  "metadata": {
+    "name": "AI Career Advisor Interview",
+    "version": "1.0",
+    "language": "ar",
+    "total_questions": 35,
+    "frameworks": [
+      "RIASEC",
+      "Big Five",
+      "Work Values",
+      "Skills Confidence",
+      "Career Goals"
+    ]
+  },
+
+  "likert_scale": {
+    "1": "لا أوافق بشدة",
+    "2": "لا أوافق",
+    "3": "محايد",
+    "4": "أوافق",
+    "5": "أوافق بشدة"
+  },
+
+  "sections": [
+    {
+      "id": "riasec",
+      "title_ar": "الاهتمامات المهنية",
+      "title_en": "RIASEC Interests",
+      "framework": "RIASEC",
+      "questions_count": 12
+    },
+    {
+      "id": "big_five",
+      "title_ar": "الشخصية",
+      "title_en": "Big Five Personality",
+      "framework": "Big Five",
+      "questions_count": 10
+    },
+    {
+      "id": "work_values",
+      "title_ar": "قيم العمل",
+      "title_en": "Work Values",
+      "framework": "O*NET Work Values",
+      "questions_count": 5
+    },
+    {
+      "id": "skills_confidence",
+      "title_ar": "الثقة بالمهارات",
+      "title_en": "Skills Confidence",
+      "framework": "Self Assessment",
+      "questions_count": 5
+    },
+    {
+      "id": "career_goals",
+      "title_ar": "التفضيلات المهنية",
+      "title_en": "Career Goals",
+      "framework": "Career Preferences",
+      "questions_count": 3
+    }
+  ],
+
+  "dimensions": {
+    "riasec": [
+      {
+        "code": "R",
+        "name_ar": "عملي",
+        "name_en": "Realistic"
+      },
+      {
+        "code": "I",
+        "name_ar": "استقصائي وتحليلي",
+        "name_en": "Investigative"
+      },
+      {
+        "code": "A",
+        "name_ar": "إبداعي",
+        "name_en": "Artistic"
+      },
+      {
+        "code": "S",
+        "name_ar": "اجتماعي",
+        "name_en": "Social"
+      },
+      {
+        "code": "E",
+        "name_ar": "قيادي",
+        "name_en": "Enterprising"
+      },
+      {
+        "code": "C",
+        "name_ar": "تنظيمي",
+        "name_en": "Conventional"
+      }
+    ],
+
+    "big_five": [
+      {
+        "code": "O",
+        "name_ar": "الانفتاح على الخبرة",
+        "name_en": "Openness"
+      },
+      {
+        "code": "C",
+        "name_ar": "يقظة الضمير",
+        "name_en": "Conscientiousness"
+      },
+      {
+        "code": "E",
+        "name_ar": "الانبساط",
+        "name_en": "Extraversion"
+      },
+      {
+        "code": "A",
+        "name_ar": "التوافق",
+        "name_en": "Agreeableness"
+      },
+      {
+        "code": "N",
+        "name_ar": "الاستقرار الانفعالي",
+        "name_en": "Neuroticism"
+      }
+    ],
+
+    "work_values": [
+      "الإنجاز",
+      "الاستقلالية",
+      "العمل الجماعي",
+      "الأمان الوظيفي",
+      "الإبداع"
+    ],
+
+    "skills_confidence": [
+      "التفكير التحليلي",
+      "التواصل",
+      "حل المشكلات",
+      "استخدام التقنية",
+      "القيادة"
+    ],
+
+    "career_goals": [
+      "بيئة العمل",
+      "طبيعة الوظيفة",
+      "التطلعات المستقبلية"
+    ]
+  },
+
+  "questions": {
+    "riasec": [
+  {
+    "id": "R01",
+    "framework": "RIASEC",
+    "dimension": "عملي",
+    "dimension_code": "R",
+    "question": "أستمتع بالعمل باستخدام الأدوات أو الأجهزة أو المعدات."
+  },
+  {
+    "id": "R02",
+    "framework": "RIASEC",
+    "dimension": "عملي",
+    "dimension_code": "R",
+    "question": "أفضل تنفيذ المهام العملية أكثر من الجلوس لساعات في العمل المكتبي."
+  },
+  {
+    "id": "I01",
+    "framework": "RIASEC",
+    "dimension": "استقصائي وتحليلي",
+    "dimension_code": "I",
+    "question": "أستمتع بتحليل المشكلات المعقدة والبحث عن حلول منطقية لها."
+  },
+  {
+    "id": "I02",
+    "framework": "RIASEC",
+    "dimension": "استقصائي وتحليلي",
+    "dimension_code": "I",
+    "question": "أحب تعلم المفاهيم العلمية أو التقنية الجديدة باستمرار."
+  },
+  {
+    "id": "A01",
+    "framework": "RIASEC",
+    "dimension": "إبداعي",
+    "dimension_code": "A",
+    "question": "أستمتع بابتكار أفكار جديدة أو تصميم أعمال مميزة."
+  },
+  {
+    "id": "A02",
+    "framework": "RIASEC",
+    "dimension": "إبداعي",
+    "dimension_code": "A",
+    "question": "أفضل المهام التي تسمح لي بالتعبير عن أفكاري بحرية."
+  },
+  {
+    "id": "S01",
+    "framework": "RIASEC",
+    "dimension": "اجتماعي",
+    "dimension_code": "S",
+    "question": "أستمتع بمساعدة الآخرين أو تعليمهم."
+  },
+  {
+    "id": "S02",
+    "framework": "RIASEC",
+    "dimension": "اجتماعي",
+    "dimension_code": "S",
+    "question": "أفضل العمل الذي يتطلب التواصل المستمر مع الناس."
+  },
+  {
+    "id": "E01",
+    "framework": "RIASEC",
+    "dimension": "قيادي",
+    "dimension_code": "E",
+    "question": "أستمتع بقيادة الفرق واتخاذ القرارات."
+  },
+  {
+    "id": "E02",
+    "framework": "RIASEC",
+    "dimension": "قيادي",
+    "dimension_code": "E",
+    "question": "أشعر بالحماس عند إقناع الآخرين بفكرة أو مشروع."
+  },
+  {
+    "id": "C01",
+    "framework": "RIASEC",
+    "dimension": "تنظيمي",
+    "dimension_code": "C",
+    "question": "أفضل العمل المنظم الذي يعتمد على الخطوات الواضحة."
+  },
+  {
+    "id": "C02",
+    "framework": "RIASEC",
+    "dimension": "تنظيمي",
+    "dimension_code": "C",
+    "question": "أهتم بالدقة والتفاصيل عند تنفيذ المهام."
+  }
+    ],
+
+
+    "big_five": 
+    [
+  {
+    "id": "P01",
+    "framework": "Big Five",
+    "dimension": "الانفتاح على الخبرة",
+    "dimension_code": "O",
+    "question": "أستمتع بتجربة أفكار وأساليب جديدة حتى لو كانت مختلفة عن المعتاد."
+  },
+  {
+    "id": "P02",
+    "framework": "Big Five",
+    "dimension": "الانفتاح على الخبرة",
+    "dimension_code": "O",
+    "question": "أشعر بالفضول لمعرفة أشياء جديدة وتعلم مهارات متنوعة."
+  },
+
+  {
+    "id": "P03",
+    "framework": "Big Five",
+    "dimension": "يقظة الضمير",
+    "dimension_code": "C",
+    "question": "أحرص على إنهاء المهام في الوقت المحدد."
+  },
+  {
+    "id": "P04",
+    "framework": "Big Five",
+    "dimension": "يقظة الضمير",
+    "dimension_code": "C",
+    "question": "أخطط لأعمالي قبل البدء بها."
+  },
+
+  {
+    "id": "P05",
+    "framework": "Big Five",
+    "dimension": "الانبساط",
+    "dimension_code": "E",
+    "question": "أستمتع بالتفاعل مع أشخاص جدد."
+  },
+  {
+    "id": "P06",
+    "framework": "Big Five",
+    "dimension": "الانبساط",
+    "dimension_code": "E",
+    "question": "أشعر بالطاقة عند العمل ضمن فريق."
+  },
+
+  {
+    "id": "P07",
+    "framework": "Big Five",
+    "dimension": "التوافق",
+    "dimension_code": "A",
+    "question": "أحرص على التعاون مع الآخرين حتى عند اختلاف الآراء."
+  },
+  {
+    "id": "P08",
+    "framework": "Big Five",
+    "dimension": "التوافق",
+    "dimension_code": "A",
+    "question": "أهتم بمشاعر الآخرين وأحاول مساعدتهم."
+  },
+
+  {
+    "id": "P09",
+    "framework": "Big Five",
+    "dimension": "الاستقرار الانفعالي",
+    "dimension_code": "N",
+    "question": "أتمكن من المحافظة على هدوئي عند مواجهة الضغوط."
+  },
+  {
+    "id": "P10",
+    "framework": "Big Five",
+    "dimension": "الاستقرار الانفعالي",
+    "dimension_code": "N",
+    "question": "أستطيع التعامل مع التحديات دون أن تؤثر كثيرًا على أدائي."
+  }
+    ],
+
+    "work_values": 
+    [
+  {
+    "id": "WV01",
+    "framework": "Work Values",
+    "dimension": "الإنجاز",
+    "question": "أرغب في عمل يمنحني شعورًا بالإنجاز وتحقيق الأهداف."
+  },
+  {
+    "id": "WV02",
+    "framework": "Work Values",
+    "dimension": "الاستقلالية",
+    "question": "أفضل أن يكون لدي حرية في اتخاذ القرارات أثناء عملي."
+  },
+  {
+    "id": "WV03",
+    "framework": "Work Values",
+    "dimension": "العمل الجماعي",
+    "question": "أفضل العمل مع فريق لتحقيق أهداف مشتركة."
+  },
+  {
+    "id": "WV04",
+    "framework": "Work Values",
+    "dimension": "الأمان الوظيفي",
+    "question": "أعتبر الاستقرار الوظيفي من أهم أولوياتي."
+  },
+  {
+    "id": "WV05",
+    "framework": "Work Values",
+    "dimension": "الإبداع",
+    "question": "أفضل وظيفة تسمح لي بابتكار أفكار وحلول جديدة."
+  }
+],
+
+    "skills_confidence": 
+    [
+  {
+    "id": "SK01",
+    "framework": "Skills Confidence",
+    "dimension": "التفكير التحليلي",
+    "question": "أثق بقدرتي على تحليل المشكلات المعقدة."
+  },
+  {
+    "id": "SK02",
+    "framework": "Skills Confidence",
+    "dimension": "التواصل",
+    "question": "أستطيع التعبير عن أفكاري بوضوح والتواصل مع الآخرين بفعالية."
+  },
+  {
+    "id": "SK03",
+    "framework": "Skills Confidence",
+    "dimension": "حل المشكلات",
+    "question": "أستطيع إيجاد حلول مناسبة عند مواجهة تحديات جديدة."
+  },
+  {
+    "id": "SK04",
+    "framework": "Skills Confidence",
+    "dimension": "استخدام التقنية",
+    "question": "أشعر بالثقة عند استخدام التقنيات والبرامج الحديثة."
+  },
+  {
+    "id": "SK05",
+    "framework": "Skills Confidence",
+    "dimension": "القيادة",
+    "question": "أستطيع قيادة فريق أو تنظيم العمل عند الحاجة."
+  }
+],
+
+    "career_goals": [
+  {
+    "id": "CG01",
+    "framework": "Career Goals",
+    "question": "أي بيئة عمل تفضل؟",
+    "type": "single_choice",
+    "options": [
+      "مكتبية",
+      "ميدانية",
+      "مختلطة",
+      "لا أفضل نوعًا معينًا"
+    ]
+  },
+  {
+    "id": "CG02",
+    "framework": "Career Goals",
+    "question": "أي قطاع تفضل العمل فيه مستقبلًا؟",
+    "type": "single_choice",
+    "options": [
+      "القطاع الحكومي",
+      "القطاع الخاص",
+      "العمل الحر",
+      "ريادة الأعمال",
+      "لا أعلم بعد"
+    ]
+  },
+  {
+    "id": "CG03",
+    "framework": "Career Goals",
+    "question": "ما الهدف الأكثر أهمية بالنسبة لك في مستقبلك المهني؟",
+    "type": "single_choice",
+    "options": [
+      "دخل مرتفع",
+      "خدمة المجتمع",
+      "الابتكار والإبداع",
+      "الاستقرار الوظيفي",
+      "التطور المهني المستمر"
+    ]
+  }
+]
+  }
+}

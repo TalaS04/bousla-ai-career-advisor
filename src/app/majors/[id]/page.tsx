@@ -1,190 +1,232 @@
 import type { Metadata } from "next";
-import { Container } from "@/components/ui/Container";
-import { PageHeader } from "@/components/ui/PageHeader";
 import { Button } from "@/components/ui/Button";
-import { StatCard } from "@/components/ui/StatCard";
+import { Container } from "@/components/ui/Container";
 import { DashboardCard } from "@/components/ui/DashboardCard";
+import { PageHeader } from "@/components/ui/PageHeader";
+import { StatCard } from "@/components/ui/StatCard";
+import { majors } from "@/utils/data";
+import {
+  getMajorCareers,
+  getMajorSkills,
+  getMajorUniversities,
+  getPreparationRoadmap,
+} from "@/utils/knowledge";
 
 export const metadata: Metadata = { title: "تفاصيل التخصص" };
 
-/** The sample major's name, shown as this static prototype's fixed content. */
-const MAJOR_NAME = "علوم الحاسب";
-
-/** The major's owning faculty, shown as the page header's eyebrow. */
-const MAJOR_FACULTY = "كلية الحاسبات وتقنية المعلومات";
-
-/** Short description of the major, shown under the title. */
-const MAJOR_DESCRIPTION =
-  "يركز هذا التخصص على دراسة الخوارزميات وهياكل البيانات وأسس البرمجة، ويؤهل الطلاب لتصميم البرمجيات وحل المشكلات التقنية المعقدة. كما يفتح المجال أمام العمل في قطاعات متعددة مثل تطوير البرمجيات والذكاء الاصطناعي وأمن المعلومات.";
-
-interface MajorFactSample {
-  label: string;
-  value: string;
+interface MajorDetailPageProps {
+  params: Promise<{ id: string }>;
 }
 
-/**
- * Quick facts about the major, shown as the information grid.
- *
- * What it does: a plain data array pairing each fact's label with its
- * value.
- *
- * Why it exists: no CSV loading or database exists yet (Week 4 is UI-
- * only), so this stands in for real major metadata, letting the
- * information grid be built and reviewed now against realistic values.
- *
- * When it is used: read once, by the `.map()` call in `MajorDetailPage`
- * below, to render one `StatCard` per fact.
- */
-const MAJOR_FACTS: MajorFactSample[] = [
-  { label: "مدة الدراسة", value: "4 سنوات" },
-  { label: "درجة التخصص", value: "بكالوريوس" },
-  { label: "لغة الدراسة", value: "العربية / الإنجليزية" },
-  { label: "فرص العمل", value: "مرتفعة" },
-];
+/** Keeps roadmap skill importance within the five-star display scale. */
+function getImportanceStars(importance: number) {
+  const starCount = Math.max(0, Math.min(5, importance));
 
-/**
- * Skills this major requires, shown as badges.
- *
- * What it does: a plain list of skill names.
- *
- * Why it exists: stands in for real skill data
- * (`src/data/major_skill_mapping.csv`, planned in Week 3) that isn't
- * loaded yet.
- *
- * When it is used: read once, by the `.map()` call in `MajorDetailPage`
- * below.
- */
-const REQUIRED_SKILLS: string[] = ["حل المشكلات", "البرمجة", "التفكير المنطقي", "الرياضيات", "التواصل"];
+  return {
+    filled: "★".repeat(starCount),
+    empty: "★".repeat(5 - starCount),
+  };
+}
 
-/**
- * Career paths this major leads to.
- *
- * What it does: a plain list of career titles.
- *
- * Why it exists: stands in for real career data
- * (`src/data/major_career_mapping.csv`, planned in Week 3) that isn't
- * loaded yet.
- *
- * When it is used: read once, by the `.map()` call in `MajorDetailPage`
- * below.
- */
-const CAREER_OPPORTUNITIES: string[] = [
-  "مهندس برمجيات",
-  "محلل نظم",
-  "مطور تطبيقات",
-  "مهندس ذكاء اصطناعي",
-];
+export default async function MajorDetailPage({ params }: MajorDetailPageProps) {
+  const { id } = await params;
+  const major = majors.find((item) => item.id === id);
 
-/**
- * The four-year study plan's stage labels, in order.
- *
- * What it does: a plain, ordered list — array order is meaningful, it's
- * the study-plan's display order.
- *
- * Why it exists: stands in for a real term-by-term curriculum, not
- * available without the (not-yet-loaded) Week 3 data layer.
- *
- * When it is used: read once, by the `.map()` call in `MajorDetailPage`
- * below, to render a native numbered list.
- */
-const STUDY_PLAN_STAGES: string[] = ["السنة الأولى", "السنة الثانية", "السنة الثالثة", "السنة الرابعة"];
+  if (!major) {
+    return (
+      <Container className="flex flex-col gap-10 py-10">
+        <PageHeader
+          title="التخصص غير موجود"
+          description="لم نتمكن من العثور على التخصص الذي تبحث عنه."
+        />
+        <DashboardCard title="ماذا يمكنك أن تفعل؟">
+          <Button variant="secondary">العودة إلى التخصصات</Button>
+        </DashboardCard>
+      </Container>
+    );
+  }
 
-/**
- * `/majors/[id]` — the detail page for one specific university major.
- *
- * Purpose & responsibility:
- *   Show everything about one major on a single page: quick facts,
- *   required skills, the careers it leads to, and its study plan —
- *   replacing the Week 4 `PlaceholderPage` that stood here before. It
- *   renders a realistic layout built from static sample data
- *   (`MAJOR_NAME`, `MAJOR_FACTS`, `REQUIRED_SKILLS`,
- *   `CAREER_OPPORTUNITIES`, `STUDY_PLAN_STAGES` above), since there's
- *   still no CSV loading or database to look a major up by id from.
- *
- * Why this no longer reads the `id` route param:
- *   The previous placeholder awaited `params` just to echo the requested
- *   id back, to prove the dynamic route resolved correctly. With no data
- *   source to look majors up in, every id under `/majors/*` shows this
- *   same static sample major — there's nothing yet to select with the id,
- *   so keeping the unused param would only add dead code.
- *
- * Why the required-skills badges are inline markup, not a new component:
- *   The same small "rounded pill per skill" styling already exists inline
- *   inside `MajorRecommendationCard` (on `/recommendations`). Reusing that
- *   exact styling here (rather than the differently-shaped
- *   `MajorRecommendationCard` itself, or a new one-off badge component)
- *   satisfies "reuse existing badge styling" without touching that
- *   existing, working component.
- *
- * Why the information grid, skills, careers, and study plan sections
- * reuse `StatCard`/`DashboardCard` instead of new components:
- *   `StatCard` (an icon-less label+value tile here) already is exactly
- *   "a fact with a label," and `DashboardCard` already is exactly "a
- *   titled card wrapping a list" — both existing, generic components
- *   (not specific to the dashboard despite the name), so building this
- *   page from them is reuse, not a coincidence of similar-looking new
- *   code.
- *
- * Why "ابدأ المقابلة" and "العودة للتخصصات" don't do anything:
- *   Both would require real navigation/flow logic that's out of scope
- *   this week. `Button` is used in its plain action-button form (no
- *   `href`/`onClick`), the same honest-placeholder treatment used
- *   throughout the app.
- *
- * How it interacts with the rest of the application:
- *   Reached from each major card's "عرض التفاصيل" button conceptually
- *   (that button is itself still a placeholder — see `/majors`). Rendered
- *   inside `AppShell`, so it automatically gets the Navbar/Sidebar/Footer.
- */
-export default function MajorDetailPage() {
+  const majorSkills = getMajorSkills(major.id);
+  const majorCareers = getMajorCareers(major.id);
+  const majorUniversities = getMajorUniversities(major.id);
+  const preparationRoadmap = getPreparationRoadmap(major.id);
+
   return (
     <Container className="flex flex-col gap-10 py-10">
-      <PageHeader eyebrow={MAJOR_FACULTY} title={MAJOR_NAME} description={MAJOR_DESCRIPTION} />
+      <PageHeader
+        eyebrow={major.category}
+        title={major.nameAr}
+        description={major.descriptionAr}
+      />
 
-      <section aria-label="معلومات سريعة" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {MAJOR_FACTS.map((fact) => (
-          <StatCard key={fact.label} value={fact.value} label={fact.label} />
-        ))}
+      <section
+        aria-label="معلومات سريعة"
+        className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+      >
+        <StatCard value={major.studyDuration} label="مدة الدراسة" />
+        <StatCard value={major.futureDemand} label="الطلب المستقبلي" />
+        <StatCard value={major.salaryRange} label="نطاق الراتب" />
+        <StatCard value={major.category} label="التصنيف" />
       </section>
 
       <DashboardCard title="المهارات المطلوبة">
-        <ul className="flex flex-wrap gap-2">
-          {REQUIRED_SKILLS.map((skill) => (
-            <li
-              key={skill}
-              className="rounded-full bg-muted/10 px-3 py-1 text-xs font-medium text-foreground"
-            >
-              {skill}
-            </li>
-          ))}
-        </ul>
+        {majorSkills.length > 0 ? (
+          <ul className="flex flex-wrap gap-2">
+            {majorSkills.map((skill) => (
+              <li
+                key={skill.id}
+                className="rounded-full bg-muted/10 px-3 py-1 text-xs font-medium text-foreground"
+              >
+                {skill.nameAr}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-sm text-muted">لا تتوفر مهارات مسجلة لهذا التخصص حالياً.</p>
+        )}
       </DashboardCard>
 
       <DashboardCard title="فرص العمل" icon="careers">
-        <ul className="flex flex-col divide-y divide-border">
-          {CAREER_OPPORTUNITIES.map((career) => (
-            <li
-              key={career}
-              className="py-3 text-sm font-medium text-foreground first:pt-0 last:pb-0"
-            >
-              {career}
-            </li>
-          ))}
-        </ul>
+        {majorCareers.length > 0 ? (
+          <ul className="flex flex-col divide-y divide-border">
+            {majorCareers.map((career) => (
+              <li
+                key={career.id}
+                className="py-3 text-sm font-medium text-foreground first:pt-0 last:pb-0"
+              >
+                {career.nameAr}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-sm text-muted">لا تتوفر مسارات مهنية مسجلة لهذا التخصص حالياً.</p>
+        )}
       </DashboardCard>
 
-      <DashboardCard title="الخطة الدراسية">
-        <ol className="list-inside list-decimal space-y-2 text-sm font-medium text-foreground">
-          {STUDY_PLAN_STAGES.map((stage) => (
-            <li key={stage}>{stage}</li>
-          ))}
-        </ol>
+      <DashboardCard title="الجامعات السعودية التي تقدم التخصص" icon="universities">
+        {majorUniversities.length > 0 ? (
+          <ul className="flex flex-col divide-y divide-border">
+            {majorUniversities.map((university) => (
+              <li
+                key={university.id}
+                className="py-3 text-sm font-medium text-foreground first:pt-0 last:pb-0"
+              >
+                {university.nameAr}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-sm text-muted">لا تتوفر جامعات مسجلة لهذا التخصص حالياً.</p>
+        )}
+      </DashboardCard>
+
+      <DashboardCard title="كيف تستعد لهذا التخصص؟">
+        {preparationRoadmap ? (
+          <div className="flex flex-col gap-8">
+            <section className="rounded-2xl border border-primary/15 bg-primary/5 p-5 sm:p-6">
+              <h3 className="text-base font-bold text-foreground">نظرة عامة</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted">
+                {preparationRoadmap.overviewAr}
+              </p>
+            </section>
+
+            <section>
+              <h3 className="mb-4 text-base font-bold text-foreground">خارطة التعلم</h3>
+              <ol className="list-inside list-decimal space-y-2 text-sm leading-relaxed text-muted">
+                {preparationRoadmap.learningRoadmap.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ol>
+            </section>
+
+            <section>
+              <h3 className="mb-4 text-base font-bold text-foreground">المهارات التي تحتاج لتطويرها</h3>
+              <ul className="flex flex-col gap-4">
+                {preparationRoadmap.skillsToDevelop.map((skill, index) => {
+                  const stars = getImportanceStars(skill.importance);
+
+                  return (
+                    <li key={`${skill.skill}-${index}`} className="rounded-xl bg-muted/10 p-4">
+                      <div className="flex items-center justify-between gap-4">
+                        <h4 className="font-semibold text-foreground">{skill.skill}</h4>
+                        <span
+                          aria-label={`مستوى الأهمية: ${skill.importance} من 5`}
+                          className="text-warning"
+                        >
+                          {stars.filled}
+                          <span className="text-border">{stars.empty}</span>
+                        </span>
+                      </div>
+                      <p className="mt-2 text-sm leading-relaxed text-muted">
+                        {skill.descriptionAr}
+                      </p>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+
+            <section>
+              <h3 className="mb-4 text-base font-bold text-foreground">الدورات المقترحة</h3>
+              <ul className="flex flex-col divide-y divide-border">
+                {preparationRoadmap.recommendedCourses.map((course) => (
+                  <li key={course.titleAr} className="py-3 first:pt-0 last:pb-0">
+                    <p className="font-medium text-foreground">{course.titleAr}</p>
+                    <p className="mt-1 text-sm text-muted">{course.provider}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted">{course.reasonAr}</p>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section>
+              <h3 className="mb-4 text-base font-bold text-foreground">الأدوات المقترحة</h3>
+              <ul className="flex flex-col divide-y divide-border">
+                {preparationRoadmap.recommendedTools.map((tool) => (
+                  <li key={tool.name} className="py-3 first:pt-0 last:pb-0">
+                    <p className="font-medium text-foreground">{tool.name}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted">{tool.purposeAr}</p>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section>
+              <h3 className="mb-4 text-base font-bold text-foreground">أنشطة موصى بها</h3>
+              <ul className="list-inside list-disc space-y-2 text-sm leading-relaxed text-muted">
+                {preparationRoadmap.recommendedActivities.map((activity) => (
+                  <li key={activity}>{activity}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section>
+              <h3 className="mb-4 text-base font-bold text-foreground">التحديات الشائعة</h3>
+              <ul className="list-inside list-disc space-y-2 text-sm leading-relaxed text-muted">
+                {preparationRoadmap.commonChallenges.map((challenge) => (
+                  <li key={challenge}>{challenge}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section>
+              <h3 className="mb-4 text-base font-bold text-foreground">نصائح للنجاح</h3>
+              <ul className="list-inside list-disc space-y-2 text-sm leading-relaxed text-muted">
+                {preparationRoadmap.successTips.map((tip) => (
+                  <li key={tip}>{tip}</li>
+                ))}
+              </ul>
+            </section>
+          </div>
+        ) : (
+          <p className="text-sm text-muted">لا تتوفر خطة استعداد لهذا التخصص حالياً.</p>
+        )}
       </DashboardCard>
 
       <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <Button ariaLabel="ابدأ المقابلة — الميزة غير مفعّلة بعد">ابدأ المقابلة</Button>
-        <Button variant="secondary" ariaLabel="العودة للتخصصات — الميزة غير مفعّلة بعد">
-          العودة للتخصصات
+        <Button ariaLabel="ابدأ المقابلة الشخصية">ابدأ المقابلة</Button>
+        <Button variant="secondary" ariaLabel="العودة إلى التخصصات">
+          العودة إلى التخصصات
         </Button>
       </div>
     </Container>

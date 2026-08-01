@@ -1,0 +1,68 @@
+[
+  {
+    "id": "00",
+    "nameAr": "البرامج والمؤهلات العامة",
+    "nameEn": null,
+    "source": "Saudi Unified Classification"
+  },
+  {
+    "id": "01",
+    "nameAr": "التعليم",
+    "nameEn": null,
+    "source": "Saudi Unified Classification"
+  },
+  {
+    "id": "02",
+    "nameAr": "الفنون والعلوم الإنسانية",
+    "nameEn": null,
+    "source": "Saudi Unified Classification"
+  },
+  {
+    "id": "03",
+    "nameAr": "العلوم الاجتماعية والصحافة والإعلام",
+    "nameEn": null,
+    "source": "Saudi Unified Classification"
+  },
+  {
+    "id": "04",
+    "nameAr": "الأعمال والإدارة والقانون",
+    "nameEn": null,
+    "source": "Saudi Unified Classification"
+  },
+  {
+    "id": "05",
+    "nameAr": "العلوم الطبيعية والرياضيات والإحصاء",
+    "nameEn": null,
+    "source": "Saudi Unified Classification"
+  },
+  {
+    "id": "06",
+    "nameAr": "تقنية الاتصالات والمعلومات",
+    "nameEn": null,
+    "source": "Saudi Unified Classification"
+  },
+  {
+    "id": "07",
+    "nameAr": "الهندسة والتصنيع والبناء",
+    "nameEn": null,
+    "source": "Saudi Unified Classification"
+  },
+  {
+    "id": "08",
+    "nameAr": "الزراعة والحراجة ومصائد الأسماك والبيطرة",
+    "nameEn": null,
+    "source": "Saudi Unified Classification"
+  },
+  {
+    "id": "09",
+    "nameAr": "الصحة والرفاه",
+    "nameEn": null,
+    "source": "Saudi Unified Classification"
+  },
+  {
+    "id": "10",
+    "nameAr": "الخدمات",
+    "nameEn": null,
+    "source": "Saudi Unified Classification"
+  }
+]

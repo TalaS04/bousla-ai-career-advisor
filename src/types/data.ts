@@ -313,3 +313,31 @@ export interface PreparationRoadmap {
 
   successTips: string[];
 }
+
+/**
+ * ------------------------------------------------------------
+ * Official Saudi Specialization
+ * ------------------------------------------------------------
+ * Represents one specialization from the official Saudi
+ * Unified Classification.
+ * ------------------------------------------------------------
+ */
+export interface OfficialSpecialization {
+  id: string;
+
+  classificationCode: string;
+
+  nameAr: string;
+
+  officialClassification: {
+    broadField: string;
+    narrowField: string;
+    detailedField: string;
+  };
+
+  officialDefinitionAr: string;
+
+  includedSpecializations: string[];
+
+  coreSubjects: string[];
+}
