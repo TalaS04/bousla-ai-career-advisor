@@ -84,6 +84,9 @@ export function calculateRiasecProfile(
   const profile = createEmptyProfile();
 
   for (const question of questions) {
+    if (question.category !== "RIASEC") {
+    continue;
+}
     const selectedOptionId = answers[question.id];
     const profileKey = getProfileKey(question.riasecDimension);
 

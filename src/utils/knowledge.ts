@@ -21,7 +21,7 @@
  */
 
 import {
-  majors,
+  officialSpecializations,
   careers,
   skills,
   universities,
@@ -99,7 +99,9 @@ export function getCompatibilityLabel(score: number) {
  * --------------------------------------------------------------
  */
 export function getMajorById(majorId: string) {
-  return majors.find((major) => major.id === majorId);
+  return officialSpecializations.find(
+    (major) => major.id === majorId
+  );
 }
 
 /**
