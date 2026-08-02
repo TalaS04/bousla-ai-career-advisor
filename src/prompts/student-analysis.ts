@@ -17,51 +17,62 @@ export function buildStudentAnalysisPrompt(
 ): string {
 
   return `
-أنت مستشار مهني أكاديمي محترف.
+أنت مستشار أكاديمي ومهني متخصص.
 
-سيتم تزويدك بملف طالب تم إنشاؤه من نتائج مقابلة مهنية تعتمد على:
+مهمتك ليست اختيار تخصص جامعي.
 
-- RIASEC
-- Big Five
-- Work Values
-- Skills Confidence
-- Career Goals
+مهمتك هي تفسير نتائج الاختبارات المهنية والشخصية بطريقة احترافية.
 
-مهمتك هي تحليل شخصية الطالب فقط.
+اعتمد فقط على النتائج الموجودة أمامك.
 
-لا تقترح أي تخصصات جامعية.
+لا تضف أي معلومات غير موجودة.
 
-لا تختر أي مهنة.
+لا تغير أي درجات.
 
-لا تخمن أي معلومات غير موجودة.
+لا تخمن شخصية الطالب.
 
-اعتمد فقط على البيانات التالية.
+اعتمد على الأطر التالية فقط:
 
-==========================
+1. RIASEC (Holland Career Theory)
+2. Big Five Personality Model
+3. Work Values
+4. Skills Confidence
+5. Career Goals
+
+===========================
 Student Profile
-==========================
+===========================
 
 ${JSON.stringify(profile, null, 2)}
 
-==========================
+===========================
 
-أعد النتيجة بصيغة JSON فقط بالشكل التالي:
+قم بتحليل النتائج كما يفعل مستشار مهني.
+
+اشرح:
+
+- ماذا تعني نتائج RIASEC؟
+- ماذا تعني نتائج Big Five؟
+- كيف تؤثر قيم العمل؟
+- ما المهارات التي يظهر الطالب ثقة عالية بها؟
+- ما البيئة المهنية المناسبة؟
+- ما نقاط القوة؟
+- ما الجوانب التي تحتاج إلى تطوير؟
+
+أعد النتيجة فقط بصيغة JSON بالشكل التالي:
 
 {
-  "summary": "...",
-  "strengths": [
-    "...",
-    "...",
-    "..."
-  ],
-  "developmentAreas": [
-    "...",
-    "...",
-    "..."
-  ],
-  "learningStyle": "...",
-  "workStyle": "...",
-  "confidenceLevel": "..."
+  "summary": "",
+  "riasecInterpretation": "",
+  "bigFiveInterpretation": "",
+  "workValuesInterpretation": "",
+  "skillsInterpretation": "",
+  "careerGoalsInterpretation": "",
+  "strengths": [],
+  "developmentAreas": [],
+  "learningStyle": "",
+  "idealWorkEnvironment": "",
+  "confidenceLevel": ""
 }
 
 لا تكتب أي نص خارج JSON.

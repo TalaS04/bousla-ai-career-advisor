@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
@@ -12,9 +12,45 @@ import { Container } from "@/components/ui/Container";
  * FastAPI authentication endpoint.
  */
 export default function LoginPage() {
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  const [isLoading, setIsLoading] = useState(false);
+
+async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  event.preventDefault();
+
+  setIsLoading(true);
+
+  try {
+    const form = new FormData(event.currentTarget);
+
+    const email = String(form.get("email"));
+    const password = String(form.get("password"));
+
+    const response = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+
+    const result = await response.json();
+
+    alert(result.message);
+
+    if (response.ok) {
+      console.log(result.user);
+
+      // Temporary redirect
+      window.location.href = "/interview";
+    }
+
+  } finally {
+    setIsLoading(false);
   }
+}
 
   return (
     <Container className="grid min-h-[calc(100vh-10rem)] items-center py-12 lg:grid-cols-2 lg:gap-16">
@@ -64,16 +100,23 @@ export default function LoginPage() {
               className="mt-2 h-12 w-full rounded-xl border border-border bg-background px-4 text-start text-sm text-foreground outline-none transition-colors placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/15"
             />
           </label>
-          <Button type="submit" size="lg" className="w-full">
-            تسجيل الدخول
-          </Button>
+          <Button
+          type="submit"
+          size="lg"
+          className="w-full"
+>
+        {isLoading ? "جاري تسجيل الدخول..." : "تسجيل الدخول"}
+</Button>
         </form>
 
         <p className="mt-6 text-center text-sm text-muted">
           ليس لديك حساب؟{" "}
-          <button type="button" className="font-semibold text-primary transition-colors hover:text-primary-hover">
-            أنشئ حساباً
-          </button>
+          <Link
+            href="/register"
+            className="font-semibold text-primary transition-colors hover:text-primary-hover"
+          >
+           أنشئ حساباً
+          </Link>
         </p>
         <Link href="/" className="mt-6 block text-center text-sm font-semibold text-foreground transition-colors hover:text-primary">
           العودة إلى الرئيسية

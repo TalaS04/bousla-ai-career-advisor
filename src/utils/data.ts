@@ -63,6 +63,12 @@ import type {
 export const officialSpecializations =
   officialSpecializationsData as OfficialSpecialization[];
 
+export const majors = officialSpecializations.map((item) => ({
+  id: item.id,
+  nameAr: item.nameAr,
+  descriptionAr: item.officialDefinitionAr,
+}));
+
 export const careers = careersData as Career[];
 
 export const universities = universitiesData as University[];

@@ -3,10 +3,19 @@ import { buildStudentAnalysisPrompt } from "@/prompts/student-analysis";
 
 export interface AIStudentAnalysis {
   summary: string;
+
+  riasecInterpretation: string;
+  bigFiveInterpretation: string;
+  workValuesInterpretation: string;
+  skillsInterpretation: string;
+  careerGoalsInterpretation: string;
+
   strengths: string[];
   developmentAreas: string[];
+
   learningStyle: string;
-  workStyle: string;
+  idealWorkEnvironment: string;
+
   confidenceLevel: string;
 }
 

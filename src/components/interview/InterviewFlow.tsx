@@ -9,10 +9,9 @@ import { InterviewTipsCard } from "@/components/ui/InterviewTipsCard";
 import { ProgressSection } from "@/components/ui/ProgressSection";
 import { QuestionCard } from "@/components/ui/QuestionCard";
 import { questionOptions, questions } from "@/utils/data";
-import {
-  calculateRiasecProfile,
-  type InterviewAnswers,
-} from "@/utils/riasec";
+import type { InterviewAnswers } from "@/utils/riasec";
+import { generateStudentProfile } from "@/utils/student-profile";
+import { generateStudentAnalysis } from "@/utils/ai-analysis";
 import { createRecommendationsUrl } from "@/utils/recommendation-navigation";
 
 const STUDENT_NAME = "سارة أحمد";
@@ -63,10 +62,36 @@ export function InterviewFlow() {
     setCurrentQuestionIndex((index) => Math.min(orderedQuestions.length - 1, index + 1));
   }
 
-  function finishInterview() {
-    const profile = calculateRiasecProfile(answers, orderedQuestions, questionOptions);
-    router.push(createRecommendationsUrl(profile));
+async function finishInterview() {
+
+  try {
+
+    const studentProfile = generateStudentProfile(
+      answers,
+      orderedQuestions,
+      questionOptions
+    );
+
+    console.log("Student Profile");
+    console.log(studentProfile);
+
+    const analysis = await generateStudentAnalysis(studentProfile);
+
+    console.log("AI Analysis");
+    console.log(analysis);
+
+    router.push(
+      createRecommendationsUrl(studentProfile.riasec)
+    );
+  } catch (error) {
+
+    console.error(error);
+
+    alert("Error:\n" + String(error));
+
   }
+
+}
 
   return (
     <Container className="flex flex-col gap-10 py-10">
