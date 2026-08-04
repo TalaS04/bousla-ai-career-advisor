@@ -1,0 +1,29 @@
+BEGIN TRY
+
+BEGIN TRAN;
+
+-- CreateTable
+CREATE TABLE [dbo].[Interview] (
+    [id] NVARCHAR(1000) NOT NULL,
+    [userId] NVARCHAR(1000) NOT NULL,
+    [startedAt] DATETIME2 NOT NULL CONSTRAINT [Interview_startedAt_df] DEFAULT CURRENT_TIMESTAMP,
+    [completedAt] DATETIME2,
+    [status] NVARCHAR(1000) NOT NULL CONSTRAINT [Interview_status_df] DEFAULT 'IN_PROGRESS',
+    CONSTRAINT [Interview_pkey] PRIMARY KEY CLUSTERED ([id])
+);
+
+-- AddForeignKey
+ALTER TABLE [dbo].[Interview] ADD CONSTRAINT [Interview_userId_fkey] FOREIGN KEY ([userId]) REFERENCES [dbo].[User]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+COMMIT TRAN;
+
+END TRY
+BEGIN CATCH
+
+IF @@TRANCOUNT > 0
+BEGIN
+    ROLLBACK TRAN;
+END;
+THROW
+
+END CATCH

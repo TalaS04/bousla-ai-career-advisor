@@ -1,38 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const API_URL = "https://openrouter.ai/api/v1/chat/completions";
+const PYTHON_API = "http://127.0.0.1:8001/analysis";
 
 export async function POST(request: NextRequest) {
   try {
-    const { prompt } = await request.json();
 
-    const response = await fetch(API_URL, {
+    const profile = await request.json();
+
+    const response = await fetch(PYTHON_API, {
       method: "POST",
-
       headers: {
-        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
         "Content-Type": "application/json",
       },
-
-      body: JSON.stringify({
-        model: process.env.OPENROUTER_MODEL,
-
-        messages: [
-          {
-            role: "user",
-            content: prompt,
-          },
-        ],
-      }),
+      body: JSON.stringify(profile),
     });
 
-    if (!response.ok) {
-      const error = await response.text();
+    const data = await response.json();
 
+    if (!response.ok) {
       return NextResponse.json(
         {
           success: false,
-          error,
+          error: data.detail ?? "Python AI service error",
         },
         {
           status: response.status,
@@ -40,13 +29,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const data = await response.json();
-
     return NextResponse.json({
       success: true,
-      response: data.choices[0].message.content,
+      response: data.analysis,
     });
+
   } catch (error) {
+
     return NextResponse.json(
       {
         success: false,
@@ -59,5 +48,6 @@ export async function POST(request: NextRequest) {
         status: 500,
       }
     );
+
   }
 }

@@ -1,5 +1,20 @@
 import type { StudentProfile } from "@/utils/student-profile";
-import { buildStudentAnalysisPrompt } from "@/prompts/student-analysis";
+
+/**
+ * ============================================================
+ * AI Student Analysis
+ *
+ * Sends the structured student profile to the Python AI service.
+ *
+ * The Python backend is responsible for:
+ * - Building the prompt
+ * - Calling OpenRouter
+ * - Validating the JSON response
+ *
+ * This file simply forwards the student's profile and returns
+ * the structured analysis.
+ * ============================================================
+ */
 
 export interface AIStudentAnalysis {
   summary: string;
@@ -23,16 +38,12 @@ export async function generateStudentAnalysis(
   profile: StudentProfile
 ): Promise<AIStudentAnalysis> {
 
-  const prompt = buildStudentAnalysisPrompt(profile);
-
   const response = await fetch("/api/openrouter", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      prompt,
-    }),
+    body: JSON.stringify(profile),
   });
 
   const data = await response.json();
@@ -41,6 +52,5 @@ export async function generateStudentAnalysis(
     throw new Error(data.error);
   }
 
-  return JSON.parse(data.response);
-
+  return data.response;
 }

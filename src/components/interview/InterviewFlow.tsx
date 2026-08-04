@@ -1,5 +1,10 @@
 "use client";
 
+import {
+  createInterview,
+  saveInterviewAnalysis,
+  completeInterview,
+} from "@/utils/interview";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
@@ -66,6 +71,10 @@ async function finishInterview() {
 
   try {
 
+    // --------------------------------------------------------
+    // Step 1
+    // Generate the student's profile from interview answers.
+    // --------------------------------------------------------
     const studentProfile = generateStudentProfile(
       answers,
       orderedQuestions,
@@ -75,23 +84,65 @@ async function finishInterview() {
     console.log("Student Profile");
     console.log(studentProfile);
 
+    // --------------------------------------------------------
+    // Step 2
+    // Create a new interview record in SQL Server.
+    // --------------------------------------------------------
+    const interviewId = await createInterview(studentProfile);
+
+    console.log("Interview Created");
+    console.log(interviewId);
+
+    // --------------------------------------------------------
+    // Step 3
+    // Generate the AI analysis using the Python service.
+    // --------------------------------------------------------
     const analysis = await generateStudentAnalysis(studentProfile);
 
     console.log("AI Analysis");
     console.log(analysis);
 
-    router.push(
-      createRecommendationsUrl(studentProfile.riasec)
+    // --------------------------------------------------------
+    // Step 4
+    // Save the AI analysis in the database.
+    // --------------------------------------------------------
+    await saveInterviewAnalysis(
+      interviewId,
+      analysis
     );
+
+    console.log("Analysis Saved");
+
+    // --------------------------------------------------------
+    // Step 5
+    // Mark the interview as completed.
+    // --------------------------------------------------------
+    await completeInterview(interviewId);
+
+    console.log("Interview Completed");
+
+    // --------------------------------------------------------
+    // Step 6
+    // Navigate to the recommendations page.
+    // --------------------------------------------------------
+    router.push(
+      createRecommendationsUrl(
+        studentProfile.riasec
+      )
+    );
+
   } catch (error) {
 
     console.error(error);
 
-    alert("Error:\n" + String(error));
+    alert(
+      "Error:\n" + String(error)
+    );
 
   }
 
 }
+
 
   return (
     <Container className="flex flex-col gap-10 py-10">
