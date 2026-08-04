@@ -100,3 +100,32 @@ export async function getInterview(
   });
 
 }
+
+/**
+ * ------------------------------------------------------------
+ * Returns the latest completed interview for a user.
+ * ------------------------------------------------------------
+ */
+export async function getLatestInterview(
+  userId: string
+) {
+
+  return prisma.interview.findFirst({
+
+    where: {
+
+      userId,
+
+      status: "COMPLETED",
+
+    },
+
+    orderBy: {
+
+      completedAt: "desc",
+
+    },
+
+  });
+
+}

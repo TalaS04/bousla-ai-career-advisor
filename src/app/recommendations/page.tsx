@@ -15,6 +15,9 @@ import {
 import { getTopMajorCompatibilities } from "@/utils/recommendations";
 import type { RiasecProfile } from "@/utils/riasec";
 
+import { cookies } from "next/headers";
+import { getLatestInterview } from "@/services/interview.service";
+
 export const metadata: Metadata = {
   title: "التوصيات",
 };
@@ -59,6 +62,18 @@ export default async function RecommendationsPage({
   const recommendedMajors = profile
     ? getRecommendedMajors(profile)
     : [];
+  
+  const cookieStore = await cookies();
+
+  const userId = cookieStore.get("userId")?.value;
+
+  const interview = userId
+    ? await getLatestInterview(userId)
+    : null;
+
+  const analysis = interview?.analysis
+    ? JSON.parse(interview.analysis)
+    : null;
 
   return (
     <Container className="flex flex-col gap-10 py-10">
@@ -67,7 +82,92 @@ export default async function RecommendationsPage({
         title="التوصيات"
         description="أفضل التخصصات المناسبة بناءً على نتائج المقابلة الشخصية."
       />
+      {analysis && (
+        <Card className="border-primary/20 bg-primary/5">
 
+          <h2 className="mb-3 text-xl font-bold">
+             تحليل شخصيتك
+          </h2>
+
+          <p className="leading-8 text-muted">
+            {analysis.summary}
+          </p>
+
+        </Card>
+      )}
+<div className="grid gap-6 lg:grid-cols-2">
+
+  {analysis && (
+    <Card>
+
+      <h2 className="mb-4 text-xl font-bold">
+        💪 نقاط القوة
+      </h2>
+
+      <ul className="space-y-3">
+
+        {analysis.strengths.map(
+          (strength: string, index: number) => (
+
+            <li
+              key={index}
+              className="flex items-start gap-3"
+            >
+
+              <span className="text-primary text-lg">
+                ✓
+              </span>
+
+              <span className="leading-7">
+                {strength}
+              </span>
+
+            </li>
+
+          )
+        )}
+
+      </ul>
+
+    </Card>
+  )}
+
+  {analysis && (
+    <Card>
+
+      <h2 className="mb-4 text-xl font-bold">
+        📈 الجوانب التي تحتاج إلى تطوير
+      </h2>
+
+      <ul className="space-y-3">
+
+        {analysis.developmentAreas.map(
+          (item: string, index: number) => (
+
+            <li
+              key={index}
+              className="flex items-start gap-3"
+            >
+
+              <span className="text-primary text-lg">
+                ✓
+              </span>
+
+              <span className="leading-7">
+                {item}
+              </span>
+
+            </li>
+
+          )
+        )}
+
+      </ul>
+
+    </Card>
+  )}
+
+</div>
       {profile ? (
         <section
           aria-label="التخصصات الموصى بها"
