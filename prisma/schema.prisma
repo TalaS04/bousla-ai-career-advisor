@@ -7,6 +7,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// ======================================================
+// Runtime Models
+// ======================================================
+
 model User {
   id           String      @id @default(cuid())
   fullName     String
@@ -26,4 +30,295 @@ model Interview {
   analysis       String?   @db.NVarChar(Max)
   studentProfile String?   @db.NVarChar(Max)
   user           User      @relation(fields: [userId], references: [id])
+}
+
+// ======================================================
+// Official Knowledge Base
+// ======================================================
+
+model DataSource {
+  id             String @id @default(cuid())
+
+  name           String @unique
+  organization   String
+  url            String
+  datasetVersion String?
+  lastVerified   DateTime
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  classifications Classification[]
+  majors          Major[]
+  careers         Career[]
+  skills          Skill[]
+  universities    University[]
+}
+
+model Classification {
+
+  id String @id @default(cuid())
+
+  officialCode String @unique
+
+  arabicName String
+
+  englishName String?
+
+  level Int?
+
+  parentId String?
+
+  dataSourceId String
+
+parent Classification? @relation("ClassificationHierarchy", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+children Classification[] @relation("ClassificationHierarchy")
+
+dataSource DataSource @relation(fields: [dataSourceId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  majors Major[]
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  @@index([officialCode])
+
+}
+
+model Major {
+
+  id String @id @default(cuid())
+
+  officialCode String @unique
+
+  arabicName String
+
+  englishName String?
+
+  description String? @db.NVarChar(Max)
+
+  classificationId String
+
+  dataSourceId String
+
+  classification Classification @relation(fields: [classificationId], references: [id])
+
+  dataSource DataSource @relation(fields: [dataSourceId], references: [id])
+
+  majorSkills MajorSkill[]
+
+  majorCareers MajorCareer[]
+
+  collegeMajors CollegeMajor[]
+
+  riasecProfile MajorRiasecProfile?
+
+  roadmap MajorRoadmap?
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  @@index([officialCode])
+
+}
+
+model Career {
+
+  id String @id @default(cuid())
+
+  officialCode String @unique
+
+  arabicName String
+
+  englishName String?
+
+  description String? @db.NVarChar(Max)
+
+  occupationGroup String?
+
+  dataSourceId String
+
+  dataSource DataSource @relation(fields: [dataSourceId], references: [id])
+
+  majorCareers MajorCareer[]
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  @@index([officialCode])
+
+}
+
+model Skill {
+
+  id String @id @default(cuid())
+
+  officialCode String @unique
+
+  arabicName String
+
+  englishName String?
+
+  category String?
+
+  description String? @db.NVarChar(Max)
+
+  dataSourceId String
+
+  dataSource DataSource @relation(fields: [dataSourceId], references: [id])
+
+  majorSkills MajorSkill[]
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  @@index([officialCode])
+
+}
+
+model University {
+
+  id String @id @default(cuid())
+
+  arabicName String @unique
+
+  englishName String?
+
+  city String?
+
+  website String?
+
+  sector String?
+
+  dataSourceId String
+
+  dataSource DataSource @relation(fields: [dataSourceId], references: [id])
+
+  colleges College[]
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+}
+
+model College {
+
+  id String @id @default(cuid())
+
+  officialCode String?
+
+  arabicName String
+
+  englishName String?
+
+  universityId String
+
+  university University @relation(fields: [universityId], references: [id])
+
+  collegeMajors CollegeMajor[]
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  @@unique([universityId, arabicName])
+
+}
+
+// ======================================================
+// Relationship Tables
+// ======================================================
+
+model MajorSkill {
+
+  majorId String
+
+  skillId String
+
+  importance Int?
+
+  major Major @relation(fields: [majorId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+
+  skill Skill @relation(fields: [skillId], references: [id])
+
+  @@id([majorId, skillId])
+
+}
+
+model MajorCareer {
+
+  majorId String
+
+  careerId String
+
+  matchLevel Int?
+
+  major Major @relation(fields: [majorId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+
+  career Career @relation(fields: [careerId], references: [id])
+
+  @@id([majorId, careerId])
+
+}
+
+model CollegeMajor {
+
+  collegeId String
+
+  majorId String
+
+  college College @relation(fields: [collegeId], references: [id])
+
+  major Major @relation(fields: [majorId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+
+  @@id([collegeId, majorId])
+
+}
+
+// ======================================================
+// BOUSLA Intelligence
+// ======================================================
+
+model MajorRiasecProfile {
+
+  majorId String @id
+
+  realistic Int
+
+  investigative Int
+
+  artistic Int
+
+  social Int
+
+  enterprising Int
+
+  conventional Int
+
+  major Major @relation(fields: [majorId], references: [id])
+
+}
+
+model MajorRoadmap {
+
+  majorId String @id
+
+  overview String? @db.NVarChar(Max)
+
+  learningPath String? @db.NVarChar(Max)
+
+  certifications String? @db.NVarChar(Max)
+
+  activities String? @db.NVarChar(Max)
+
+  tools String? @db.NVarChar(Max)
+
+  major Major @relation(fields: [majorId], references: [id])
+
 }
