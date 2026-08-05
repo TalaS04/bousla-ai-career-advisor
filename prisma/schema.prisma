@@ -199,6 +199,12 @@ model University {
 
   sector String?
 
+  // New official Study in Saudi fields
+  ministryId Int?
+  businessCode String?
+  logoUrl String?
+  imageUrl String?
+
   dataSourceId String
 
   dataSource DataSource @relation(fields: [dataSourceId], references: [id])
