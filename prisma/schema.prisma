@@ -123,6 +123,10 @@ model Major {
 
   @@index([officialCode])
 
+  includedSpecializations String? @db.NVarChar(Max)
+
+  coreSubjects String? @db.NVarChar(Max)
+
 }
 
 model Career {
