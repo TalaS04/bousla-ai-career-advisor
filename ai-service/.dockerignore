@@ -1,0 +1,20 @@
+# Local virtual environment — never ship into the image. requirements.txt
+# is the single source of truth for dependencies; without this line, this
+# entire committed venv/ folder (800+ files) would be sent as build context.
+app/venv
+
+# Python bytecode cache
+__pycache__
+app/__pycache__
+app/**/__pycache__
+*.pyc
+
+# Secrets — supplied at container runtime via docker-compose, never baked
+# into the image.
+.env
+app/.env
+
+# Version control / misc
+.git
+.gitignore
+README.md

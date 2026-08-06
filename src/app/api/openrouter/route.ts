@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const PYTHON_API = "http://127.0.0.1:8001/analysis";
+// Defaults to the existing local-dev address; docker-compose overrides
+// this with the ai-service container's network hostname (see
+// docker-compose.yml). Behavior and target port are otherwise unchanged.
+const PYTHON_API = process.env.AI_SERVICE_URL ?? "http://127.0.0.1:8001/analysis";
 
 export async function POST(request: NextRequest) {
   try {

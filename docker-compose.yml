@@ -1,0 +1,88 @@
+name: bousla
+
+services:
+  # ---------------------------------------------------------------------
+  # SQL Server — the same database engine Prisma already targets
+  # (provider = "sqlserver"). Data is written to a named volume so it
+  # survives `docker compose down` / `up` (only `down -v` removes it).
+  # ---------------------------------------------------------------------
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: bousla-sqlserver
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
+      MSSQL_PID: Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+      - type: bind
+        source: "C:/Program Files/Microsoft SQL Server/MSSQL16.MSSQLSERVER/MSSQL/Backup"
+        target: /backup
+        read_only: true
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -Q 'SELECT 1' || exit 1",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+    networks:
+      - bousla-network
+
+  # ---------------------------------------------------------------------
+  # FastAPI AI service — talks to OpenRouter exactly as it does outside
+  # Docker; only how it's reached (by the web service) changes.
+  # ---------------------------------------------------------------------
+  ai-service:
+    build:
+      context: ./ai-service
+      dockerfile: Dockerfile
+    container_name: bousla-ai-service
+    restart: unless-stopped
+    environment:
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+      OPENROUTER_MODEL: ${OPENROUTER_MODEL}
+    ports:
+      - "8001:8001"
+    networks:
+      - bousla-network
+
+  # ---------------------------------------------------------------------
+  # Next.js application.
+  # ---------------------------------------------------------------------
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bousla-web
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      # Overrides the http://127.0.0.1:8001/analysis default so the app
+      # crosses the Docker network to the ai-service container instead of
+      # looking for FastAPI inside its own container.
+      AI_SERVICE_URL: http://ai-service:8001/analysis
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      ai-service:
+        condition: service_healthy
+    networks:
+      - bousla-network
+
+volumes:
+  sqlserver_data:
+    name: bousla_sqlserver_data
+
+networks:
+  bousla-network:
+    name: bousla-network

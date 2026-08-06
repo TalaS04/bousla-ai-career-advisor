@@ -1,0 +1,36 @@
+# Dependencies (installed fresh inside the image)
+node_modules
+npm-debug.log*
+
+# Next.js build output (produced fresh inside the image)
+.next
+out
+
+# Environment files — never sent into the build context; real values are
+# injected at container runtime via docker-compose.
+.env*
+
+# Version control
+.git
+.gitignore
+
+# The FastAPI service is built from its own Dockerfile/context and isn't
+# needed inside the Next.js image.
+ai-service
+
+# Docs, editor, OS cruft
+docs
+.vscode
+.idea
+*.md
+.DS_Store
+Thumbs.db
+
+# Data-extraction / import tooling — not part of the running app
+src/extractors
+scripts/import
+output
+
+# Misc
+coverage
+*.pdf
