@@ -7,50 +7,51 @@ import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
 
 /**
- * Frontend-only sign-in screen. The submit handler deliberately does not
- * send data anywhere yet; it is the single place to connect the future
- * FastAPI authentication endpoint.
+ * Sign-in screen. Submits real credentials to `/api/auth/login`, which
+ * verifies them against the `User` table and sets the session cookie —
+ * on success, the student lands on `/dashboard`.
  */
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-  event.preventDefault();
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
 
-  setIsLoading(true);
+    setIsLoading(true);
+    setErrorMessage(null);
 
-  try {
-    const form = new FormData(event.currentTarget);
+    try {
+      const form = new FormData(event.currentTarget);
 
-    const email = String(form.get("email"));
-    const password = String(form.get("password"));
+      const email = String(form.get("email"));
+      const password = String(form.get("password"));
 
-    const response = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
 
-    const result = await response.json();
+      const result = await response.json();
 
-    alert(result.message);
+      if (!response.ok) {
+        setErrorMessage(result.message ?? "تعذّر تسجيل الدخول. الرجاء المحاولة مرة أخرى.");
+        setIsLoading(false);
+        return;
+      }
 
-    if (response.ok) {
-      console.log(result.user);
-
-      // Temporary redirect
-      window.location.href = "/interview";
+      window.location.href = "/dashboard";
+    } catch {
+      setErrorMessage("تعذّر الاتصال بالخادم. الرجاء المحاولة مرة أخرى.");
+      setIsLoading(false);
     }
-
-  } finally {
-    setIsLoading(false);
   }
-}
 
   return (
     <Container className="grid min-h-[calc(100vh-10rem)] items-center py-12 lg:grid-cols-2 lg:gap-16">
@@ -74,10 +75,13 @@ async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         <div className="mb-7">
           <p className="text-sm font-semibold text-primary">مرحباً بك</p>
           <h2 className="mt-2 text-2xl font-bold text-foreground">تسجيل الدخول إلى بوصلة</h2>
-          <p className="mt-2 text-sm leading-relaxed text-muted">
-            هذه واجهة تجريبية فقط، وسيتم ربطها بخدمة FastAPI لاحقاً.
-          </p>
         </div>
+
+        {errorMessage && (
+          <div className="mb-5 rounded-xl border border-error/20 bg-error/5 p-3 text-sm font-medium text-error">
+            {errorMessage}
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <label className="block text-sm font-semibold text-foreground">
@@ -100,13 +104,9 @@ async function handleSubmit(event: FormEvent<HTMLFormElement>) {
               className="mt-2 h-12 w-full rounded-xl border border-border bg-background px-4 text-start text-sm text-foreground outline-none transition-colors placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/15"
             />
           </label>
-          <Button
-          type="submit"
-          size="lg"
-          className="w-full"
->
-        {isLoading ? "جاري تسجيل الدخول..." : "تسجيل الدخول"}
-</Button>
+          <Button type="submit" size="lg" className="w-full" disabled={isLoading}>
+            {isLoading ? "جاري تسجيل الدخول..." : "تسجيل الدخول"}
+          </Button>
         </form>
 
         <p className="mt-6 text-center text-sm text-muted">
@@ -115,7 +115,7 @@ async function handleSubmit(event: FormEvent<HTMLFormElement>) {
             href="/register"
             className="font-semibold text-primary transition-colors hover:text-primary-hover"
           >
-           أنشئ حساباً
+            أنشئ حساباً
           </Link>
         </p>
         <Link href="/" className="mt-6 block text-center text-sm font-semibold text-foreground transition-colors hover:text-primary">

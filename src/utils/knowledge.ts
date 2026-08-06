@@ -74,6 +74,103 @@ export function getMajorUniversities(majorId: string) {
 
 /**
  * --------------------------------------------------------------
+ * Returns a career by its id — mirrors `getMajorById` below.
+ * --------------------------------------------------------------
+ */
+export function getCareerById(careerId: string) {
+  return careers.find((career) => career.id === careerId);
+}
+
+/**
+ * --------------------------------------------------------------
+ * Returns every major that leads to a given career — the reverse
+ * of `getMajorCareers`, using the same `majorCareerMapping` table.
+ * --------------------------------------------------------------
+ */
+export function getCareerMajors(careerId: string) {
+  const majorIds = majorCareerMapping
+    .filter((mapping) => mapping.careerId === careerId)
+    .map((mapping) => mapping.majorId);
+
+  return officialSpecializations.filter((major) => majorIds.includes(major.id));
+}
+
+/**
+ * --------------------------------------------------------------
+ * Returns the skills relevant to a career.
+ *
+ * There is no direct career-skill mapping in the knowledge base,
+ * so this derives one from data that already exists: every skill
+ * required by any major that leads to this career.
+ * --------------------------------------------------------------
+ */
+export function getCareerSkills(careerId: string) {
+  const relatedMajorIds = getCareerMajors(careerId).map((major) => major.id);
+  const skillIds = new Set(
+    majorSkillMapping
+      .filter((mapping) => relatedMajorIds.includes(mapping.majorId))
+      .map((mapping) => mapping.skillId),
+  );
+
+  return skills.filter((skill) => skillIds.has(skill.id));
+}
+
+/**
+ * --------------------------------------------------------------
+ * Returns a university by its id — mirrors `getMajorById`/`getCareerById`.
+ * --------------------------------------------------------------
+ */
+export function getUniversityById(universityId: string) {
+  return universities.find((university) => university.id === universityId);
+}
+
+/**
+ * --------------------------------------------------------------
+ * Returns every major offered by a university — the reverse of
+ * `getMajorUniversities`, using the same `universityMajorMapping`.
+ * --------------------------------------------------------------
+ */
+export function getUniversityMajors(universityId: string) {
+  const majorIds = universityMajorMapping
+    .filter((mapping) => mapping.universityId === universityId)
+    .map((mapping) => mapping.majorId);
+
+  return officialSpecializations.filter((major) => majorIds.includes(major.id));
+}
+
+/**
+ * --------------------------------------------------------------
+ * Returns the careers reachable through a university's majors.
+ *
+ * There is no direct university-career mapping in the knowledge
+ * base, so — like `getCareerSkills` — this derives one from data
+ * that already exists: every career linked to any major the
+ * university offers.
+ * --------------------------------------------------------------
+ */
+export function getUniversityCareers(universityId: string) {
+  const offeredMajorIds = getUniversityMajors(universityId).map((major) => major.id);
+  const careerIds = new Set(
+    majorCareerMapping
+      .filter((mapping) => offeredMajorIds.includes(mapping.majorId))
+      .map((mapping) => mapping.careerId),
+  );
+
+  return careers.filter((career) => careerIds.has(career.id));
+}
+
+/**
+ * --------------------------------------------------------------
+ * Converts a university's stored `type` ("government" / "private")
+ * into the Arabic label used throughout the UI.
+ * --------------------------------------------------------------
+ */
+export function getUniversityTypeLabel(type: string) {
+  return type === "government" ? "حكومية" : "أهلية";
+}
+
+/**
+ * --------------------------------------------------------------
  * Converts a compatibility percentage into a friendly Arabic label.
  *
  * This improves the UI without changing the recommendation

@@ -103,8 +103,39 @@ export async function getInterview(
 
 /**
  * ------------------------------------------------------------
- * Returns the latest completed interview for a user.
+ * Returns basic profile info for the logged-in user (name, email).
+ * Used by pages that need to greet the real signed-in student
+ * instead of a placeholder name.
  * ------------------------------------------------------------
+ */
+export async function getUserById(
+  userId: string
+) {
+
+  return prisma.user.findUnique({
+
+    where: {
+
+      id: userId,
+
+    },
+
+    select: {
+
+      fullName: true,
+      email: true,
+      createdAt: true,
+
+    },
+
+  });
+
+}
+
+/**
+ * --------------------------------------------------------------
+ * Returns the latest completed interview for a user.
+ * --------------------------------------------------------------
  */
 export async function getLatestInterview(
   userId: string

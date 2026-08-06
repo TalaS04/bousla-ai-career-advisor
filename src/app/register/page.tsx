@@ -7,49 +7,53 @@ import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
 
 /**
- * Frontend-only sign-in screen. The submit handler deliberately does not
- * send data anywhere yet; it is the single place to connect the future
- * FastAPI authentication endpoint.
+ * Account-creation screen. Submits real data to `/api/auth/register`,
+ * which creates a `User` row (bcrypt-hashed password) — on success, the
+ * student is sent to `/login` to sign in with their new account.
  */
 export default function RegisterPage() {
-const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-  event.preventDefault();
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
 
-  setIsLoading(true);
+    setIsLoading(true);
+    setErrorMessage(null);
 
-  try {
-    const form = new FormData(event.currentTarget);
+    try {
+      const form = new FormData(event.currentTarget);
 
-    const fullName = String(form.get("fullName"));
-    const email = String(form.get("email"));
-    const password = String(form.get("password"));
+      const fullName = String(form.get("fullName"));
+      const email = String(form.get("email"));
+      const password = String(form.get("password"));
 
-    const response = await fetch("/api/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        fullName,
-        email,
-        password,
-      }),
-    });
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName,
+          email,
+          password,
+        }),
+      });
 
-    const result = await response.json();
+      const result = await response.json();
 
-    alert(result.message);
+      if (!response.ok) {
+        setErrorMessage(result.message ?? "تعذّر إنشاء الحساب. الرجاء المحاولة مرة أخرى.");
+        setIsLoading(false);
+        return;
+      }
 
-    if (response.ok) {
       window.location.href = "/login";
+    } catch {
+      setErrorMessage("تعذّر الاتصال بالخادم. الرجاء المحاولة مرة أخرى.");
+      setIsLoading(false);
     }
-
-  } finally {
-    setIsLoading(false);
   }
-}
 
   return (
     <Container className="grid min-h-[calc(100vh-10rem)] items-center py-12 lg:grid-cols-2 lg:gap-16">
@@ -73,21 +77,24 @@ async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         <div className="mb-7">
           <p className="text-sm font-semibold text-primary">أهلاً بك</p>
           <h2 className="mt-2 text-2xl font-bold text-foreground">إنشاء حساب جديد</h2>
-          <p className="mt-2 text-sm leading-relaxed text-muted">
-            هذه واجهة تجريبية فقط، وسيتم ربطها بخدمة FastAPI لاحقاً.
-          </p>
         </div>
+
+        {errorMessage && (
+          <div className="mb-5 rounded-xl border border-error/20 bg-error/5 p-3 text-sm font-medium text-error">
+            {errorMessage}
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <label className="block text-sm font-semibold text-foreground">
-           الاسم الكامل
-          <input
-            type="text"
-            name="fullName"
-            autoComplete="name"
-            placeholder="أدخل اسمك الكامل"
-            className="mt-2 h-12 w-full rounded-xl border border-border bg-background px-4 text-start text-sm text-foreground outline-none transition-colors placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/15"
-          />
+            الاسم الكامل
+            <input
+              type="text"
+              name="fullName"
+              autoComplete="name"
+              placeholder="أدخل اسمك الكامل"
+              className="mt-2 h-12 w-full rounded-xl border border-border bg-background px-4 text-start text-sm text-foreground outline-none transition-colors placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/15"
+            />
           </label>
           <label className="block text-sm font-semibold text-foreground">
             البريد الإلكتروني
@@ -104,28 +111,24 @@ async function handleSubmit(event: FormEvent<HTMLFormElement>) {
             <input
               type="password"
               name="password"
-              autoComplete="current-password"
+              autoComplete="new-password"
               placeholder="أدخل كلمة المرور"
               className="mt-2 h-12 w-full rounded-xl border border-border bg-background px-4 text-start text-sm text-foreground outline-none transition-colors placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/15"
             />
           </label>
-          <Button
-              type="submit"
-              size="lg"
-              className="w-full"
-          >
-          {isLoading ? "جاري إنشاء الحساب..." : "إنشاء الحساب"}
+          <Button type="submit" size="lg" className="w-full" disabled={isLoading}>
+            {isLoading ? "جاري إنشاء الحساب..." : "إنشاء الحساب"}
           </Button>
         </form>
 
         <p className="mt-6 text-center text-sm text-muted">
-           لديك حساب بالفعل؟{" "}
-        <Link
+          لديك حساب بالفعل؟{" "}
+          <Link
             href="/login"
-            className="font-semibold text-primary hover:text-primary-hover"
-        >
-         سجّل الدخول
-        </Link>
+            className="font-semibold text-primary transition-colors hover:text-primary-hover"
+          >
+            سجّل الدخول
+          </Link>
         </p>
       </Card>
     </Container>

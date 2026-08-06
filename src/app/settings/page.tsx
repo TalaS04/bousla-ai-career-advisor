@@ -1,58 +1,28 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { DashboardCard } from "@/components/ui/DashboardCard";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { CurrentThemeLabel } from "@/components/theme/CurrentThemeLabel";
-import { SettingsToggleGroup, type SettingsToggleItem } from "@/components/ui/SettingsToggleGroup";
+import { getUserById } from "@/services/interview.service";
 
 export const metadata: Metadata = { title: "الإعدادات" };
-
-/**
- * The three notification preferences shown in their own section.
- *
- * What it does: plain data — no logic — pairing each preference with its
- * description and starting state.
- *
- * Why it exists: no backend exists yet to store real preferences (Week 4
- * is UI-only), so this stands in with realistic sample defaults, letting
- * `SettingsToggleGroup` be built and reviewed now.
- *
- * When it is used: passed once, as a whole array, to `SettingsToggleGroup`
- * below.
- */
-const NOTIFICATION_PREFERENCES: SettingsToggleItem[] = [
-  {
-    key: "recommendations",
-    label: "تحديثات التوصيات",
-    description: "إشعار عند توفر توصيات جديدة بناءً على نتائجك.",
-    defaultChecked: true,
-  },
-  {
-    key: "reminders",
-    label: "إشعارات التذكير",
-    description: "تذكير بإكمال المقابلة الشخصية إن لم تنتهِ بعد.",
-    defaultChecked: true,
-  },
-  {
-    key: "email",
-    label: "إشعارات البريد الإلكتروني",
-    description: "استلام ملخص التوصيات عبر البريد الإلكتروني.",
-    defaultChecked: false,
-  },
-];
 
 /**
  * `/settings` — app-wide preferences.
  *
  * Purpose & responsibility:
- *   Let the student review appearance, language, notification, and
- *   account settings — replacing the Week 4 `PlaceholderPage` that stood
- *   here before. It renders a realistic layout built from static sample
- *   data (`NOTIFICATION_PREFERENCES` above, plus the account/about text
- *   inline), since there's still no backend, database, or auth to source
- *   real settings from.
+ *   Let the student review appearance, language, and account settings.
+ *   The notifications section was removed — there is no notification
+ *   system in the app (no backend to send or store any), so a toggle
+ *   group that controlled nothing was misleading. The Account section
+ *   now shows the real signed-in user's name and email (via
+ *   `getUserById`, the same helper `/profile` and `/dashboard` already
+ *   use) instead of a hardcoded sample student, and no longer shows a
+ *   university field — `User` has no university relation, so that field
+ *   was always fabricated placeholder text.
  *
  * Why this page introduces only the components it does:
  *   Every section reuses an existing component wherever one already fit:
@@ -69,34 +39,35 @@ const NOTIFICATION_PREFERENCES: SettingsToggleItem[] = [
  *       one permanently disabled one (English) — there is no selection to
  *       manage, so reusing `FilterChip` would mean giving it a fake
  *       handler for a choice that can never actually change.
- *     - Notification preferences needed a genuinely new pattern —
- *       see `SettingsToggleRow`/`SettingsToggleGroup` for why no existing
- *       component (`AnswerOption`, `FilterChip`) fit an independent
- *       boolean on/off switch.
  *     - Account and About are both `DashboardCard` wrapping a `<dl>` /
  *       paragraphs — the same "titled card + static content" composition
  *       already used repeatedly (e.g. the personal-information card on
  *       `/profile`).
  *
  * Why "إعادة تعيين الإعدادات" and "حفظ التغييرات" don't do anything:
- *   There is nothing real to reset or save yet — no backend, no form
- *   submission (explicitly out of scope). `Button` is used in its plain
- *   action-button form (no `href`/`onClick`), the same honest-placeholder
- *   treatment used throughout the app.
+ *   There is nothing real to reset or save yet — no editable settings
+ *   exist in the data model (explicitly out of scope). `Button` is used
+ *   in its plain action-button form (no `href`/`onClick`), the same
+ *   honest-placeholder treatment used throughout the app.
  *
  * Why this stays a Server Component:
  *   The page itself renders no state and attaches no handlers — the two
  *   places that need the browser (`ThemeToggle`/`CurrentThemeLabel` for
- *   live theme state, `SettingsToggleGroup` for the switches' state) are
- *   each isolated into their own small Client Components, so the page
- *   composing them doesn't need to become one itself.
+ *   live theme state) are each isolated into their own small Client
+ *   Components, so the page composing them doesn't need to become one
+ *   itself. Fetching the signed-in user is plain server-side data
+ *   fetching, same as `/profile` and `/dashboard`.
  *
  * How it interacts with the rest of the application:
  *   Reached via the "الإعدادات" entry in `NAV_ITEMS`
  *   (`src/components/navigation/nav-config.ts`). Rendered inside
  *   `AppShell`, so it automatically gets the Navbar/Sidebar/Footer.
  */
-export default function SettingsPage() {
+export default async function SettingsPage() {
+  const cookieStore = await cookies();
+  const userId = cookieStore.get("userId")?.value;
+  const user = userId ? await getUserById(userId) : null;
+
   return (
     <Container className="flex flex-col gap-10 py-10">
       <PageHeader
@@ -132,26 +103,22 @@ export default function SettingsPage() {
         </div>
       </DashboardCard>
 
-      <DashboardCard title="تفضيلات الإشعارات">
-        <SettingsToggleGroup items={NOTIFICATION_PREFERENCES} />
-      </DashboardCard>
-
       <DashboardCard title="الحساب" icon="profile">
         <div className="flex flex-col gap-4">
-          <dl className="grid gap-6 sm:grid-cols-2">
-            <div className="flex flex-col gap-1">
-              <dt className="text-sm text-muted">اسم الطالبة</dt>
-              <dd className="text-base font-bold text-foreground">سارة أحمد</dd>
-            </div>
-            <div className="flex flex-col gap-1">
-              <dt className="text-sm text-muted">البريد الإلكتروني</dt>
-              <dd className="text-base font-bold text-foreground">sara.ahmed@example.com</dd>
-            </div>
-            <div className="flex flex-col gap-1">
-              <dt className="text-sm text-muted">الجامعة</dt>
-              <dd className="text-base font-bold text-foreground">جامعة الملك سعود</dd>
-            </div>
-          </dl>
+          {user ? (
+            <dl className="grid gap-6 sm:grid-cols-2">
+              <div className="flex flex-col gap-1">
+                <dt className="text-sm text-muted">اسم الطالبة</dt>
+                <dd className="text-base font-bold text-foreground">{user.fullName}</dd>
+              </div>
+              <div className="flex flex-col gap-1">
+                <dt className="text-sm text-muted">البريد الإلكتروني</dt>
+                <dd className="text-base font-bold text-foreground">{user.email}</dd>
+              </div>
+            </dl>
+          ) : (
+            <p className="text-sm text-muted">سجّل الدخول لعرض بيانات حسابك.</p>
+          )}
           <p className="text-xs text-muted">
             هذه البيانات للعرض فقط ولا يمكن تعديلها في هذا النموذج الأولي.
           </p>

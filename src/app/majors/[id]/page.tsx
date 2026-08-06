@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { DashboardCard } from "@/components/ui/DashboardCard";
@@ -11,6 +13,8 @@ import {
   getMajorUniversities,
   getPreparationRoadmap,
 } from "@/utils/knowledge";
+import { getMajorCompatibility } from "@/utils/recommendations";
+import { getLatestInterview } from "@/services/interview.service";
 
 export const metadata: Metadata = { title: "تفاصيل التخصص" };
 
@@ -40,7 +44,9 @@ export default async function MajorDetailPage({ params }: MajorDetailPageProps) 
           description="لم نتمكن من العثور على التخصص الذي تبحث عنه."
         />
         <DashboardCard title="ماذا يمكنك أن تفعل؟">
-          <Button variant="secondary">العودة إلى التخصصات</Button>
+          <Button href="/majors" variant="secondary">
+            العودة إلى التخصصات
+          </Button>
         </DashboardCard>
       </Container>
     );
@@ -51,23 +57,107 @@ export default async function MajorDetailPage({ params }: MajorDetailPageProps) 
   const majorUniversities = getMajorUniversities(major.id);
   const preparationRoadmap = getPreparationRoadmap(major.id);
 
+  // --------------------------------------------------------------------
+  // Compatibility (if available): only shown when a logged-in student has
+  // a completed interview to compute it from — same cookie + Prisma
+  // lookup already used on /recommendations, and the same cosine-
+  // similarity calculation, just scoped to this one major instead of the
+  // student's overall top 3.
+  // --------------------------------------------------------------------
+  const cookieStore = await cookies();
+  const userId = cookieStore.get("userId")?.value;
+  const interview = userId ? await getLatestInterview(userId) : null;
+  const studentProfile = interview?.studentProfile
+    ? JSON.parse(interview.studentProfile)
+    : null;
+  const compatibilityPercentage = studentProfile?.riasec
+    ? getMajorCompatibility(studentProfile.riasec, major.id)
+    : null;
+
   return (
     <Container className="flex flex-col gap-10 py-10">
       <PageHeader
-        eyebrow={major.category}
+        eyebrow={major.officialClassification.broadField}
         title={major.nameAr}
         description={major.descriptionAr}
       />
+
+      {compatibilityPercentage !== null && (
+        <section
+          aria-label="التوافق مع ملفك الشخصي"
+          className="flex flex-col gap-4 rounded-2xl border border-primary/15 bg-primary/5 p-5 sm:p-6"
+        >
+          <div className="flex items-center justify-between gap-4">
+            <span className="text-sm font-semibold text-foreground">
+              نسبة توافقك مع هذا التخصص بناءً على نتائج مقابلتك
+            </span>
+            <span className="text-2xl font-bold text-primary">{compatibilityPercentage}%</span>
+          </div>
+          <div
+            role="progressbar"
+            aria-valuenow={compatibilityPercentage}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label="نسبة التوافق"
+            className="h-2.5 w-full overflow-hidden rounded-full bg-muted/15"
+          >
+            <div
+              className="h-full rounded-full bg-primary"
+              style={{ width: `${compatibilityPercentage}%` }}
+            />
+          </div>
+        </section>
+      )}
 
       <section
         aria-label="معلومات سريعة"
         className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
       >
-        <StatCard value={major.studyDuration} label="مدة الدراسة" />
-        <StatCard value={major.futureDemand} label="الطلب المستقبلي" />
-        <StatCard value={major.salaryRange} label="نطاق الراتب" />
-        <StatCard value={major.category} label="التصنيف" />
+        <StatCard value={major.classificationCode} label="الرمز التصنيفي" />
+        <StatCard value={major.officialClassification.broadField} label="المجال العام" />
+        <StatCard value={major.officialClassification.narrowField} label="المجال الفرعي" />
+        <StatCard value={major.officialClassification.detailedField} label="المجال التفصيلي" />
       </section>
+
+      {(major.coreSubjects.length > 0 || major.includedSpecializations.length > 0) && (
+        <DashboardCard title="نبذة عن التصنيف الرسمي" icon="majors">
+          <div className="flex flex-col gap-6">
+            {major.coreSubjects.length > 0 && (
+              <div>
+                <h3 className="mb-2 text-sm font-semibold text-foreground">المواد الأساسية</h3>
+                <ul className="flex flex-wrap gap-2">
+                  {major.coreSubjects.map((subject) => (
+                    <li
+                      key={subject}
+                      className="rounded-full bg-muted/10 px-3 py-1 text-xs font-medium text-foreground"
+                    >
+                      {subject}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {major.includedSpecializations.length > 0 && (
+              <div>
+                <h3 className="mb-2 text-sm font-semibold text-foreground">
+                  التخصصات الدقيقة المشمولة
+                </h3>
+                <ul className="flex flex-wrap gap-2">
+                  {major.includedSpecializations.map((specialization) => (
+                    <li
+                      key={specialization}
+                      className="rounded-full bg-muted/10 px-3 py-1 text-xs font-medium text-foreground"
+                    >
+                      {specialization}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </DashboardCard>
+      )}
 
       <DashboardCard title="المهارات المطلوبة">
         {majorSkills.length > 0 ? (
@@ -90,11 +180,13 @@ export default async function MajorDetailPage({ params }: MajorDetailPageProps) 
         {majorCareers.length > 0 ? (
           <ul className="flex flex-col divide-y divide-border">
             {majorCareers.map((career) => (
-              <li
-                key={career.id}
-                className="py-3 text-sm font-medium text-foreground first:pt-0 last:pb-0"
-              >
-                {career.nameAr}
+              <li key={career.id} className="py-3 first:pt-0 last:pb-0">
+                <Link
+                  href={`/careers/${career.id}`}
+                  className="text-sm font-medium text-foreground transition-colors hover:text-primary"
+                >
+                  {career.nameAr}
+                </Link>
               </li>
             ))}
           </ul>
@@ -107,11 +199,13 @@ export default async function MajorDetailPage({ params }: MajorDetailPageProps) 
         {majorUniversities.length > 0 ? (
           <ul className="flex flex-col divide-y divide-border">
             {majorUniversities.map((university) => (
-              <li
-                key={university.id}
-                className="py-3 text-sm font-medium text-foreground first:pt-0 last:pb-0"
-              >
-                {university.nameAr}
+              <li key={university.id} className="py-3 first:pt-0 last:pb-0">
+                <Link
+                  href={`/universities/${university.id}`}
+                  className="text-sm font-medium text-foreground transition-colors hover:text-primary"
+                >
+                  {university.nameAr}
+                </Link>
               </li>
             ))}
           </ul>
@@ -120,7 +214,7 @@ export default async function MajorDetailPage({ params }: MajorDetailPageProps) 
         )}
       </DashboardCard>
 
-      <DashboardCard title="كيف تستعد لهذا التخصص؟">
+      <DashboardCard title="كيف تستعد لهذا التخصص؟" icon="growth">
         {preparationRoadmap ? (
           <div className="flex flex-col gap-8">
             <section className="rounded-2xl border border-primary/15 bg-primary/5 p-5 sm:p-6">
@@ -224,8 +318,10 @@ export default async function MajorDetailPage({ params }: MajorDetailPageProps) 
       </DashboardCard>
 
       <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <Button ariaLabel="ابدأ المقابلة الشخصية">ابدأ المقابلة</Button>
-        <Button variant="secondary" ariaLabel="العودة إلى التخصصات">
+        <Button href="/interview" ariaLabel="ابدأ المقابلة الشخصية">
+          ابدأ المقابلة
+        </Button>
+        <Button href="/majors" variant="secondary" ariaLabel="العودة إلى التخصصات">
           العودة إلى التخصصات
         </Button>
       </div>

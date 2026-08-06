@@ -82,18 +82,15 @@ const STEPS: ProcessStep[] = [
  * Purpose & responsibility:
  *   Introduce Bousla to a first-time visitor with a realistic marketing
  *   page: a hero banner, a features grid, a "how it works" walkthrough,
- *   and a closing call-to-action. It is still a Week 4 UI-only prototype —
- *   no AI, no interview logic, no database, no routing to real flows —
- *   built entirely by composing existing/new shared UI components
- *   (`Container`, `HeroSection`, `SectionTitle`, `FeatureCard`, `StepCard`,
- *   `CallToActionCard`).
+ *   and a closing call-to-action — built entirely by composing shared UI
+ *   components (`Container`, `HeroSection`, `SectionTitle`, `FeatureCard`,
+ *   `StepCard`, `CallToActionCard`).
  *
- * Why the buttons on this page don't navigate anywhere:
- *   The interview flow, majors listing, and recommendation flow the
- *   buttons describe aren't implemented yet. `HeroSection` and
- *   `CallToActionCard` both render their buttons in `Button`'s plain
- *   action-button form (no `href`), so clicking them does nothing rather
- *   than linking to an unfinished or misleading destination.
+ * Where the buttons on this page lead:
+ *   The hero's primary action and the closing CTA both link to `/login`
+ *   (the interview flow requires a signed-in session to save results to),
+ *   and the hero's secondary action jumps to the "How it Works" section
+ *   in-page via an anchor link.
  *
  * Why this stays a Server Component:
  *   The page is entirely static content — no state, no event handlers —

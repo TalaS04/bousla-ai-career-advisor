@@ -63,10 +63,21 @@ import type {
 export const officialSpecializations =
   officialSpecializationsData as OfficialSpecialization[];
 
+/**
+ * Kept as the full official record (not just id/nameAr/descriptionAr) so
+ * pages like /majors/[id] can show the real classification code, the
+ * three-level official field hierarchy, included specializations, and
+ * core subjects instead of the older studyDuration/futureDemand/
+ * salaryRange/category fields that no longer exist on the official data.
+ */
 export const majors = officialSpecializations.map((item) => ({
   id: item.id,
   nameAr: item.nameAr,
   descriptionAr: item.officialDefinitionAr,
+  classificationCode: item.classificationCode,
+  officialClassification: item.officialClassification,
+  includedSpecializations: item.includedSpecializations,
+  coreSubjects: item.coreSubjects,
 }));
 
 export const careers = careersData as Career[];
@@ -93,29 +104,3 @@ export const riasecMajorWeights =
 
 export const preparationRoadmaps =
   preparationRoadmapsData as PreparationRoadmap[];
-
-export interface OfficialSpecialization {
-
-  id: string;
-
-  classificationCode: string;
-
-  nameAr: string;
-
-  officialClassification: {
-
-    broadField: string;
-
-    narrowField: string;
-
-    detailedField: string;
-
-  };
-
-  officialDefinitionAr: string;
-
-  includedSpecializations: string[];
-
-  coreSubjects: string[];
-
-}

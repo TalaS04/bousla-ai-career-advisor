@@ -1,113 +1,72 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { SearchFilterBar } from "@/components/ui/SearchFilterBar";
-import { MajorCard } from "@/components/ui/MajorCard";
+import { FilterableCatalogGrid, type CatalogItem } from "@/components/ui/FilterableCatalogGrid";
+import { careers } from "@/utils/data";
+import { getCareerMajors } from "@/utils/knowledge";
 
 export const metadata: Metadata = { title: "المسارات المهنية" };
 
 /**
- * Category filter chips shown above the careers grid.
- *
- * What it does: a plain, ordered list of chip labels, "الكل" (All) first.
- *
- * Why it exists: passed as data to `SearchFilterBar` — the same component
- * `/majors` already uses with its own, different category set — rather
- * than hardcoded inside it.
- *
- * When it is used: passed once to `SearchFilterBar` below.
+ * Each career's category, derived the same way the card grid derives it:
+ * the `officialClassification.broadField` of the first major that leads to
+ * it (there is no category field on `Career` itself). Computed once, up
+ * front, so both the filter-chip list and the catalog items below read
+ * from the same values instead of computing it twice.
  */
-const CAREER_CATEGORY_FILTERS: string[] = ["الكل", "التقنية", "الهندسة", "الصحة", "الأعمال"];
-
-interface CareerSample {
-  title: string;
-  field: string;
-  description: string;
-}
+const CAREER_CATEGORIES = new Map(
+  careers.map((career) => [career.id, getCareerMajors(career.id)[0]?.officialClassification.broadField]),
+);
 
 /**
- * The careers shown in the browsable grid.
+ * Category filter chips shown above the careers grid.
  *
- * What it does: plain sample data — no logic — pairing each career with
- * its related field and a short description.
+ * What it does: "الكل" (All) followed by every distinct category actually
+ * present among `careers`, in first-seen order.
  *
- * Why it exists: no CSV loading or database exists yet (Week 4 is UI-
- * only), so this stands in for `src/data/careers.csv` (planned in Week
- * 3), letting this page's layout be built and reviewed now against
- * realistic values.
- *
- * When it is used: read once, by the `.map()` call in `CareersPage` below,
- * to render the grid.
+ * Why it's derived instead of a hardcoded list:
+ *   Same reasoning as `/majors`: the previous static list ("التقنية"،
+ *   "الهندسة"، "الصحة"، "الأعمال") didn't match any career's real derived
+ *   category, so it could never have filtered correctly. Deriving it from
+ *   `CAREER_CATEGORIES` guarantees every chip matches at least one real
+ *   career.
  */
-const SAMPLE_CAREERS: CareerSample[] = [
-  {
-    title: "مهندس برمجيات",
-    field: "التقنية",
-    description: "تصميم وبناء وصيانة الأنظمة والتطبيقات البرمجية لمختلف القطاعات.",
-  },
-  {
-    title: "محلل نظم",
-    field: "التقنية",
-    description: "دراسة احتياجات الأعمال وتصميم حلول تقنية تلبيها بكفاءة.",
-  },
-  {
-    title: "مهندس أمن سيبراني",
-    field: "التقنية",
-    description: "حماية الأنظمة والشبكات والبيانات من التهديدات والاختراقات الرقمية.",
-  },
-  {
-    title: "عالم بيانات",
-    field: "التقنية",
-    description: "تحليل البيانات الضخمة واستخلاص رؤى تدعم اتخاذ القرار.",
-  },
-  {
-    title: "مهندس ذكاء اصطناعي",
-    field: "التقنية",
-    description: "تطوير نماذج ذكاء اصطناعي وتعلم آلي قادرة على حل مشكلات معقدة.",
-  },
-  {
-    title: "مطور تطبيقات",
-    field: "التقنية",
-    description: "بناء تطبيقات الجوال والويب بتجربة استخدام سلسة وموثوقة.",
-  },
+const CAREER_CATEGORY_FILTERS: string[] = [
+  "الكل",
+  ...new Set([...CAREER_CATEGORIES.values()].filter((category): category is string => Boolean(category))),
 ];
+
+const CAREER_CATALOG_ITEMS: CatalogItem[] = careers.map((career) => ({
+  id: career.id,
+  title: career.nameAr,
+  category: CAREER_CATEGORIES.get(career.id) ?? career.nameAr,
+  description: career.descriptionAr,
+  href: `/careers/${career.id}`,
+  actionAriaLabel: `عرض تفاصيل مسار ${career.nameAr}`,
+}));
 
 /**
  * `/careers` — the browsable listing of career paths.
  *
  * Purpose & responsibility:
- *   Let a student browse available careers with a search field and
- *   category filter chips, and see each one as a card with its related
- *   field, a short description, and a "عرض التفاصيل" action — replacing
- *   the Week 4 `PlaceholderPage` that stood here before. It renders a
- *   realistic layout built from static sample data (`SAMPLE_CAREERS`
- *   above), since there's still no CSV loading or database to source real
- *   careers from.
+ *   Let a student browse the real careers in the knowledge base
+ *   (`src/data/json/careers.json`, via `utils/data`), each shown with the
+ *   Saudi Unified Classification field of a major that leads to it (there
+ *   is no category field on `Career` itself, so this is derived from the
+ *   existing major-career mapping rather than invented), and a link to
+ *   that career's own detail page. Search and category filtering are real:
+ *   `FilterableCatalogGrid` narrows the grid as the student types or picks
+ *   a chip, rather than rendering a purely decorative toolbar.
  *
  * Why this page introduces no new components:
- *   Its shape is identical to `/majors`' — a `PageHeader`, a
- *   `SearchFilterBar` with a different placeholder/filter set, and a grid
- *   of catalog cards. `SearchFilterBar` was already built generically
- *   (taking its placeholder and filter labels as props, precisely so a
- *   second listing page could reuse it), and `MajorCard`'s props
- *   (`title`/`category`/`description`/`actionLabel`) already match a
- *   career card's needs exactly — a name, a related field, a description,
- *   and an action — with nothing career-specific missing and nothing
- *   major-specific forced onto it. Introducing a separate "CareerCard" or
- *   a generic "CatalogCard" here would duplicate `MajorCard` for no
- *   behavioral difference, which is exactly what was to be avoided.
- *
- * Why the search field and filter chips don't actually filter the grid,
- * and why "عرض التفاصيل" doesn't navigate anywhere:
- *   Same reasoning as `/majors`: real filtering and real per-career detail
- *   pages are out of scope this week. `SearchFilterBar` only tracks local
- *   UI state, and `MajorCard` renders its button in `Button`'s plain
- *   action-button form (no `href`/`onClick`).
+ *   Same reasoning as `/majors`: `FilterableCatalogGrid` (built for that
+ *   page) composes `MajorCard`, whose shape (name, category caption,
+ *   description, action) already fits a career card exactly.
  *
  * How it interacts with the rest of the application:
- *   Reached via the "المسارات المهنية" entry in `NAV_ITEMS`
- *   (`src/components/navigation/nav-config.ts`). Rendered inside
- *   `AppShell`, so it automatically gets the Navbar/Sidebar/Footer.
+ *   Reached via the "المسارات المهنية" entry in `NAV_ITEMS`. Each card
+ *   links to `/careers/[id]`, which in turn links back to its related
+ *   majors — completing the Major ↔ Career navigation loop.
  */
 export default function CareersPage() {
   return (
@@ -117,27 +76,14 @@ export default function CareersPage() {
         description="استكشف الوظائف والمسارات المهنية المرتبطة بالتخصصات المختلفة."
       />
 
-      <SearchFilterBar
+      <FilterableCatalogGrid
+        items={CAREER_CATALOG_ITEMS}
         searchPlaceholder="ابحث عن مسار مهني..."
         filters={CAREER_CATEGORY_FILTERS}
+        actionLabel="عرض التفاصيل"
+        resultsAriaLabel="نتائج المسارات المهنية"
+        emptyMessage="لا توجد مسارات مهنية مطابقة لبحثك."
       />
-
-      <section aria-label="نتائج المسارات المهنية" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {SAMPLE_CAREERS.map((career) => (
-          <MajorCard
-            key={career.title}
-            title={career.title}
-            category={career.field}
-            description={career.description}
-            actionLabel="عرض التفاصيل"
-            actionAriaLabel={`عرض تفاصيل مسار ${career.title} — الميزة غير مفعّلة بعد`}
-          />
-        ))}
-      </section>
-
-      <p className="text-center text-sm text-muted">
-        يتم إضافة المزيد من المسارات المهنية في الإصدارات القادمة.
-      </p>
     </Container>
   );
 }

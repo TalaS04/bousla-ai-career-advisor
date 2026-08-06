@@ -87,3 +87,65 @@ export function getTopMajorCompatibilities(profile: RiasecProfile): MajorCompati
     })
     .slice(0, 3);
 }
+
+/**
+ * Compatibility percentage for one specific major, not just the overall
+ * top 3. Reuses the exact same `calculateCompatibilityPercentage` that
+ * `getTopMajorCompatibilities` calls internally — this only changes which
+ * major(s) the result is computed for, never how it's computed. Used by a
+ * major's own detail page, where the visitor is looking at one specific
+ * major that may or may not be in their personal top 3.
+ */
+export function getMajorCompatibility(profile: RiasecProfile, majorId: string): number | null {
+  const majorWeights = riasecMajorWeights.find((weights) => weights.majorId === majorId);
+
+  if (!majorWeights) {
+    return null;
+  }
+
+  return calculateCompatibilityPercentage(profile, majorWeights);
+}
+
+export interface MatchedRiasecDimension {
+  dimension: keyof RiasecProfile;
+  labelAr: string;
+}
+
+/** Arabic display name for each Holland/RIASEC dimension. */
+const RIASEC_DIMENSION_LABELS: Record<keyof RiasecProfile, string> = {
+  realistic: "الجانب العملي",
+  investigative: "التفكير التحليلي",
+  artistic: "الإبداع",
+  social: "التفاعل الاجتماعي",
+  enterprising: "القيادة وريادة الأعمال",
+  conventional: "التنظيم والدقة",
+};
+
+/**
+ * Identifies which RIASEC dimensions contributed most to one major's match.
+ *
+ * This does not add a new signal or change any ranking — it decomposes the
+ * exact same dot product `calculateCompatibilityPercentage` already sums
+ * (`Σ profile[dim] × majorWeights[dim]`) into its six per-dimension terms,
+ * so the highest-contributing dimensions can be shown to the student as
+ * "why this major matched you" instead of only the final percentage.
+ */
+export function getMatchedRiasecDimensions(
+  profile: RiasecProfile,
+  majorWeights: RiasecMajorWeight,
+  limit = 2,
+): MatchedRiasecDimension[] {
+  const dimensions = Object.keys(RIASEC_DIMENSION_LABELS) as (keyof RiasecProfile)[];
+
+  return dimensions
+    .map((dimension) => ({
+      dimension,
+      contribution: profile[dimension] * majorWeights[dimension],
+    }))
+    .sort((first, second) => second.contribution - first.contribution)
+    .slice(0, limit)
+    .map(({ dimension }) => ({
+      dimension,
+      labelAr: RIASEC_DIMENSION_LABELS[dimension],
+    }));
+}

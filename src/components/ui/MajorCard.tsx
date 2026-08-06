@@ -12,6 +12,8 @@ interface MajorCardProps {
   actionLabel: string;
   /** Optional accessible-name override for the button — see `Button`'s `ariaLabel` prop. */
   actionAriaLabel?: string;
+  /** Destination for the detail-view button, e.g. `/careers/${id}`. Omit to render an inert button. */
+  actionHref?: string;
 }
 
 /**
@@ -59,7 +61,24 @@ export function MajorCard({
   description,
   actionLabel,
   actionAriaLabel,
+  actionHref,
 }: MajorCardProps) {
+  const action = actionHref ? (
+    <Button
+      variant="secondary"
+      size="sm"
+      href={actionHref}
+      ariaLabel={actionAriaLabel}
+      className="self-start"
+    >
+      {actionLabel}
+    </Button>
+  ) : (
+    <Button variant="secondary" size="sm" ariaLabel={actionAriaLabel} className="self-start">
+      {actionLabel}
+    </Button>
+  );
+
   return (
     <Card className="flex flex-col gap-5">
       <div className="flex flex-col gap-2">
@@ -69,9 +88,7 @@ export function MajorCard({
         </span>
       </div>
       <p className="text-sm leading-relaxed text-muted">{description}</p>
-      <Button variant="secondary" size="sm" ariaLabel={actionAriaLabel} className="self-start">
-        {actionLabel}
-      </Button>
+      {action}
     </Card>
   );
 }

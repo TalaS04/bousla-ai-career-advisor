@@ -1,8 +1,13 @@
 import { PageHeader } from "@/components/ui/PageHeader";
 
 interface InterviewHeaderProps {
-  /** The student's display name, e.g. "سارة أحمد". */
-  studentName: string;
+  /**
+   * The student's display name, e.g. "سارة أحمد". Optional — there's no
+   * client-side session lookup yet, so callers that don't have a real
+   * name on hand can omit it rather than show a fabricated one; the
+   * greeting falls back to a generic, gender-neutral phrasing.
+   */
+  studentName?: string;
   /** The current question's position, 1-based. */
   questionNumber: number;
   /** Total number of questions in the interview. */
@@ -35,10 +40,14 @@ export function InterviewHeader({
   questionNumber,
   totalQuestions,
 }: InterviewHeaderProps) {
+  const description = studentName
+    ? `مرحباً بك، ${studentName}. الرجاء الإجابة عن الأسئلة التالية بصدق لمساعدتنا في فهم شخصيتك واهتماماتك.`
+    : "الرجاء الإجابة عن الأسئلة التالية بصدق لمساعدتنا في فهم شخصيتك واهتماماتك.";
+
   return (
     <PageHeader
       title="المقابلة الشخصية"
-      description={`مرحباً بك، ${studentName}. أجيبي عن الأسئلة التالية بصدق لمساعدتنا في فهم شخصيتك واهتماماتك.`}
+      description={description}
       actions={
         <span className="rounded-full bg-primary/10 px-4 py-1 text-sm font-semibold text-primary">
           السؤال {questionNumber} من {totalQuestions}

@@ -17,9 +17,6 @@ import { questionOptions, questions } from "@/utils/data";
 import type { InterviewAnswers } from "@/utils/riasec";
 import { generateStudentProfile } from "@/utils/student-profile";
 import { generateStudentAnalysis } from "@/utils/ai-analysis";
-import { createRecommendationsUrl } from "@/utils/recommendation-navigation";
-
-const STUDENT_NAME = "سارة أحمد";
 
 const INTERVIEW_TIPS = [
   "أجب بصدق؛ لا توجد إجابات صحيحة أو خاطئة.",
@@ -39,6 +36,8 @@ export function InterviewFlow() {
   );
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<InterviewAnswers>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const router = useRouter();
 
   const currentQuestion = orderedQuestions[currentQuestionIndex];
@@ -69,6 +68,9 @@ export function InterviewFlow() {
 
 async function finishInterview() {
 
+  setSubmitError(null);
+  setIsSubmitting(true);
+
   try {
 
     // --------------------------------------------------------
@@ -81,26 +83,17 @@ async function finishInterview() {
       questionOptions
     );
 
-    console.log("Student Profile");
-    console.log(studentProfile);
-
     // --------------------------------------------------------
     // Step 2
     // Create a new interview record in SQL Server.
     // --------------------------------------------------------
     const interviewId = await createInterview(studentProfile);
 
-    console.log("Interview Created");
-    console.log(interviewId);
-
     // --------------------------------------------------------
     // Step 3
     // Generate the AI analysis using the Python service.
     // --------------------------------------------------------
     const analysis = await generateStudentAnalysis(studentProfile);
-
-    console.log("AI Analysis");
-    console.log(analysis);
 
     // --------------------------------------------------------
     // Step 4
@@ -111,33 +104,34 @@ async function finishInterview() {
       analysis
     );
 
-    console.log("Analysis Saved");
-
     // --------------------------------------------------------
     // Step 5
     // Mark the interview as completed.
     // --------------------------------------------------------
     await completeInterview(interviewId);
 
-    console.log("Interview Completed");
-
     // --------------------------------------------------------
     // Step 6
-    // Navigate to the recommendations page.
+    // Navigate to the recommendations page. It reads the RIASEC
+    // profile back from the interview record we just saved, so no
+    // URL parameters are needed here.
     // --------------------------------------------------------
-    router.push(
-      createRecommendationsUrl(
-        studentProfile.riasec
-      )
-    );
+    router.push("/recommendations");
 
   } catch (error) {
 
-    console.error(error);
+    // The create-interview API responds with this exact message when
+    // there's no logged-in session — surfaced as a specific, actionable
+    // message instead of the generic fallback below.
+    const isNotLoggedIn =
+      error instanceof Error && error.message.includes("not logged in");
 
-    alert(
-      "Error:\n" + String(error)
+    setSubmitError(
+      isNotLoggedIn
+        ? "يجب تسجيل الدخول أولاً لحفظ نتائج المقابلة."
+        : "حدث خطأ أثناء إنهاء المقابلة. الرجاء المحاولة مرة أخرى.",
     );
+    setIsSubmitting(false);
 
   }
 
@@ -147,7 +141,6 @@ async function finishInterview() {
   return (
     <Container className="flex flex-col gap-10 py-10">
       <InterviewHeader
-        studentName={STUDENT_NAME}
         questionNumber={currentQuestionIndex + 1}
         totalQuestions={orderedQuestions.length}
       />
@@ -176,10 +169,10 @@ async function finishInterview() {
             {isFinalQuestion ? (
               <Button
                 onClick={finishInterview}
-                disabled={!selectedOptionId}
+                disabled={!selectedOptionId || isSubmitting}
                 ariaLabel="إنهاء المقابلة"
               >
-                إنهاء المقابلة
+                {isSubmitting ? "جارٍ الحفظ..." : "إنهاء المقابلة"}
               </Button>
             ) : (
               <Button
@@ -192,6 +185,16 @@ async function finishInterview() {
             )}
           </div>
 
+          {submitError && (
+            <div className="flex flex-col items-center gap-3 rounded-2xl border border-error/20 bg-error/5 p-4 text-center sm:flex-row sm:justify-between sm:text-start">
+              <p className="text-sm font-medium text-error">{submitError}</p>
+              {submitError.includes("تسجيل الدخول") && (
+                <Button href="/login" variant="secondary" size="sm">
+                  تسجيل الدخول
+                </Button>
+              )}
+            </div>
+          )}
         </div>
 
         <InterviewTipsCard title="نصائح" tips={INTERVIEW_TIPS} />
