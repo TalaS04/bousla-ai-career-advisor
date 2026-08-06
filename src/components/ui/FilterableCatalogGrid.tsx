@@ -14,6 +14,12 @@ export interface CatalogItem {
   href: string;
   /** Accessible-name override for this item's action button. */
   actionAriaLabel: string;
+  /**
+   * Extra text matched by search but not otherwise shown on the card —
+   * e.g. a university's English name alongside its displayed Arabic name.
+   * Omit when `title`/`description` already cover everything searchable.
+   */
+  searchText?: string;
 }
 
 interface FilterableCatalogGridProps {
@@ -61,9 +67,17 @@ interface FilterableCatalogGridProps {
  *   match against the active chip label is always sufficient — no fuzzy
  *   matching needed.
  *
+ * Why `searchText` is a separate optional field instead of folding it into
+ * `description`:
+ *   `/universities` needs to match a university's English name too, but
+ *   showing that name on the card isn't part of the current design — only
+ *   `title`/`category`/`description` are rendered. An optional field kept
+ *   out of the rendered card lets search reach it without changing what
+ *   `/majors` or `/careers` (which never set it) display or match.
+ *
  * When it is used:
- *   Once each on `/majors` and `/careers`, replacing the previous
- *   `SearchFilterBar` + static grid on those two pages.
+ *   Once each on `/majors`, `/careers`, and `/universities`, replacing the
+ *   previous `SearchFilterBar` + static grid on each of those pages.
  */
 export function FilterableCatalogGrid({
   items,
@@ -86,7 +100,8 @@ export function FilterableCatalogGrid({
       const matchesSearch =
         normalizedSearch.length === 0 ||
         item.title.toLowerCase().includes(normalizedSearch) ||
-        item.description.toLowerCase().includes(normalizedSearch);
+        item.description.toLowerCase().includes(normalizedSearch) ||
+        Boolean(item.searchText?.toLowerCase().includes(normalizedSearch));
 
       return matchesCategory && matchesSearch;
     });
@@ -94,6 +109,11 @@ export function FilterableCatalogGrid({
 
   return (
     <div className="flex flex-col gap-10">
+      {/* TEMPORARY DEBUG COUNTER — remove before committing. */}
+      <p className="text-sm font-semibold text-primary">
+        Showing {filteredItems.length} of {items.length} universities
+      </p>
+
       <div className="flex flex-col gap-4">
         <SearchInput
           value={searchValue}

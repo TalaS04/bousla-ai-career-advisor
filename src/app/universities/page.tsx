@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { SearchFilterBar } from "@/components/ui/SearchFilterBar";
-import { MajorCard } from "@/components/ui/MajorCard";
+import { FilterableCatalogGrid, type CatalogItem } from "@/components/ui/FilterableCatalogGrid";
 import { universities } from "@/utils/data";
 import { getUniversityTypeLabel } from "@/utils/knowledge";
 
@@ -11,14 +10,36 @@ export const metadata: Metadata = { title: "الجامعات" };
 /**
  * Type filter chips shown above the universities grid.
  *
- * What it does: a plain, ordered list of chip labels, "الكل" (All) first.
+ * What it does: "الكل" (All) followed by every distinct type label actually
+ * present among `universities` ("حكومية"/"أهلية", via `getUniversityTypeLabel`),
+ * in first-seen order.
  *
- * Why it exists: passed as data to `SearchFilterBar`, as on the other
- * catalog pages. Visual-only local UI state — doesn't filter the grid.
- *
- * When it is used: passed once to `SearchFilterBar` below.
+ * Why it's derived instead of a hardcoded list:
+ *   Same reasoning as `/majors` and `/careers`: deriving the chip list from
+ *   the same data the cards render guarantees every chip matches at least
+ *   one real university and can never drift from the underlying dataset,
+ *   even though in this case the two possible values happen to be fixed.
  */
-const UNIVERSITY_TYPE_FILTERS: string[] = ["الكل", "حكومية", "أهلية"];
+const UNIVERSITY_TYPE_FILTERS: string[] = [
+  "الكل",
+  ...new Set(universities.map((university) => getUniversityTypeLabel(university.type))),
+];
+
+const UNIVERSITY_CATALOG_ITEMS: CatalogItem[] = universities.map((university) => {
+  const typeLabel = getUniversityTypeLabel(university.type);
+
+  return {
+    id: university.id,
+    title: university.nameAr,
+    category: typeLabel,
+    description: `جامعة ${typeLabel} تقع في مدينة ${university.cityAr}.`,
+    href: `/universities/${university.id}`,
+    actionAriaLabel: `عرض تفاصيل ${university.nameAr}`,
+    // Not shown on the card (see FilterableCatalogGrid's `searchText` doc),
+    // but lets searching by English name find the right university too.
+    searchText: university.nameEn,
+  };
+});
 
 /**
  * `/universities` — the browsable listing of Saudi universities.
@@ -28,14 +49,17 @@ const UNIVERSITY_TYPE_FILTERS: string[] = ["الكل", "حكومية", "أهلي
  *   (`src/data/json/universities.json`, via `utils/data`), each shown
  *   with its type (حكومية/أهلية — translated from the stored
  *   `"government"`/`"private"` value) and city, linking to that
- *   university's detail page.
+ *   university's detail page. Search and category filtering are real:
+ *   `FilterableCatalogGrid` narrows the grid as the student types or picks
+ *   a chip, rather than rendering a purely decorative toolbar — the same
+ *   component `/majors` and `/careers` already use.
  *
  * Why there's no description shown from the data:
  *   `University` has no description field at all — `id`, `nameAr`,
  *   `nameEn`, `cityAr`, `cityEn`, `website`, `type` are everything that
- *   exists. `MajorCard` still needs a description string, so this composes
- *   one short factual sentence purely from those real fields (type + city)
- *   rather than inventing new content.
+ *   exists. The catalog item still needs a description string, so this
+ *   composes one short factual sentence purely from those real fields
+ *   (type + city) rather than inventing new content.
  *
  * How it interacts with the rest of the application:
  *   Reached via the "الجامعات" entry in `NAV_ITEMS`. Each card links to
@@ -50,25 +74,14 @@ export default function UniversitiesPage() {
         description="استكشف الجامعات السعودية التي تقدم مختلف التخصصات."
       />
 
-      <SearchFilterBar searchPlaceholder="ابحث عن جامعة..." filters={UNIVERSITY_TYPE_FILTERS} />
-
-      <section aria-label="نتائج الجامعات" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {universities.map((university) => {
-          const typeLabel = getUniversityTypeLabel(university.type);
-
-          return (
-            <MajorCard
-              key={university.id}
-              title={university.nameAr}
-              category={typeLabel}
-              description={`جامعة ${typeLabel} تقع في مدينة ${university.cityAr}.`}
-              actionLabel="عرض التفاصيل"
-              actionHref={`/universities/${university.id}`}
-              actionAriaLabel={`عرض تفاصيل ${university.nameAr}`}
-            />
-          );
-        })}
-      </section>
+      <FilterableCatalogGrid
+        items={UNIVERSITY_CATALOG_ITEMS}
+        searchPlaceholder="ابحث عن جامعة..."
+        filters={UNIVERSITY_TYPE_FILTERS}
+        actionLabel="عرض التفاصيل"
+        resultsAriaLabel="نتائج الجامعات"
+        emptyMessage="لا توجد جامعات مطابقة لبحثك."
+      />
     </Container>
   );
 }
