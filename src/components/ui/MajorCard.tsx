@@ -51,9 +51,8 @@ interface MajorCardProps {
  *   introduced.
  *
  * When it is used:
- *   Once per entry in `SAMPLE_MAJORS` (`src/app/majors/page.tsx`), once
- *   per entry in `SAMPLE_CAREERS` (`src/app/careers/page.tsx`), and once
- *   per entry in `SAMPLE_UNIVERSITIES` (`src/app/universities/page.tsx`).
+ *   Once per catalog item on `/majors` and `/careers` (via
+ *   `FilterableCatalogGrid`), and once per entry on `/universities`.
  */
 export function MajorCard({
   title,

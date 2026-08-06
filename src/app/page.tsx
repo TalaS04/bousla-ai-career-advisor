@@ -13,7 +13,8 @@ interface FeatureHighlight {
 }
 
 /**
- * The four product pillars shown in the landing page's features section.
+ * The four product pillars shown in the landing page's "مميزات النظام"
+ * section.
  *
  * What it does: a plain data array — no logic — pairing each feature with
  * the icon and copy `FeatureCard` needs to render it.
@@ -57,7 +58,7 @@ interface ProcessStep {
 }
 
 /**
- * The three steps shown in the landing page's "How it Works" section.
+ * The three steps shown in the landing page's "كيف يعمل بوصلة؟" section.
  *
  * What it does: a plain data array describing the interview → analysis →
  * recommendations flow, in order.
@@ -119,28 +120,28 @@ export default function HomePage() {
         }}
       />
 
-      <section aria-labelledby="features-heading" className="flex flex-col gap-10">
-        <SectionTitle
-          headingId="features-heading"
-          title="مميزات المنصة"
-          description="كل ما تحتاجه لاتخاذ قرار واثق حول مستقبلك الأكاديمي والمهني."
-        />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {FEATURES.map((feature) => (
-            <FeatureCard key={feature.title} {...feature} />
-          ))}
-        </div>
-      </section>
-
       <section aria-labelledby="how-it-works-heading" className="flex flex-col gap-10">
         <SectionTitle
           headingId="how-it-works-heading"
-          title="كيف تعمل المنصة؟"
+          title="كيف يعمل بوصلة؟"
           description="ثلاث خطوات بسيطة تفصلك عن اكتشاف مسارك المناسب."
         />
         <div className="grid gap-6 md:grid-cols-3">
           {STEPS.map((step) => (
             <StepCard key={step.title} {...step} />
+          ))}
+        </div>
+      </section>
+
+      <section aria-labelledby="features-heading" className="flex flex-col gap-10">
+        <SectionTitle
+          headingId="features-heading"
+          title="مميزات النظام"
+          description="كل ما تحتاجه لاتخاذ قرار واثق حول مستقبلك الأكاديمي والمهني."
+        />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {FEATURES.map((feature) => (
+            <FeatureCard key={feature.title} {...feature} />
           ))}
         </div>
       </section>

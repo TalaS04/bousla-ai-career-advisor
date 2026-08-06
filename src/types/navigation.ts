@@ -35,7 +35,8 @@ export type IconName =
   | "sun"
   | "moon"
   | "growth"
-  | "search";
+  | "search"
+  | "logout";
 
 /**
  * One entry in the primary navigation.

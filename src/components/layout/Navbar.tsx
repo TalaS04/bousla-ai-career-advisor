@@ -4,16 +4,23 @@ import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { useSidebar } from "@/components/layout/SidebarContext";
+import { UserMenu } from "@/components/layout/UserMenu";
+
+interface NavbarProps {
+  /** The signed-in student, or `null` if no one is logged in. */
+  user: { fullName: string; email: string } | null;
+}
 
 /**
- * The top bar shown on every page: brand mark, mobile menu button, and
- * theme toggle.
+ * The top bar shown on every page: brand mark, mobile menu button, theme
+ * toggle, and (when signed in) the account menu.
  *
  * Purpose & responsibility:
  *   Provide a constant, always-visible header so the user always knows
- *   which app they're in ("بوصلة") and always has access to the two things
- *   that aren't tied to a specific page: opening navigation on mobile, and
- *   switching the color theme. The full list of section links lives in
+ *   which app they're in ("بوصلة") and always has access to the things that
+ *   aren't tied to a specific page: opening navigation on mobile, switching
+ *   the color theme, and — when signed in — reaching their profile,
+ *   settings, or logging out. The full list of section links lives in
  *   `Sidebar`, not here — the Navbar's job is global chrome, not page
  *   navigation itself.
  *
@@ -22,15 +29,16 @@ import { useSidebar } from "@/components/layout/SidebarContext";
  *   React state — state only exists in the browser, so this can't be
  *   server-rendered as a static component. `AppShell`, by contrast, stays
  *   mostly declarative and only needs the client boundary here and in
- *   `Sidebar`.
+ *   `Sidebar`/`UserMenu`.
  *
  * How it interacts with the rest of the application:
- *   Rendered once by `AppShell` above the page content. The hamburger
- *   button it renders is only visible below the `md` breakpoint (Tailwind's
- *   `md:hidden`) because on desktop the `Sidebar` is permanently visible
- *   and there is nothing to toggle.
+ *   Rendered once by `AppShell`, which passes `user` down after reading the
+ *   session cookie server-side. The hamburger button it renders is only
+ *   visible below the `md` breakpoint (Tailwind's `md:hidden`) because on
+ *   desktop the `Sidebar` is permanently visible and there is nothing to
+ *   toggle.
  */
-export function Navbar() {
+export function Navbar({ user }: NavbarProps) {
   const { toggle } = useSidebar();
 
   return (
@@ -54,7 +62,10 @@ export function Navbar() {
           </Link>
         </div>
 
-        <ThemeToggle />
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          {user && <UserMenu fullName={user.fullName} email={user.email} />}
+        </div>
       </div>
     </header>
   );

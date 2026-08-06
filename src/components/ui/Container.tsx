@@ -25,9 +25,8 @@ interface ContainerProps {
  *   Separating the two keeps each component's job single-purpose.
  *
  * How it interacts with the rest of the application:
- *   Wraps the content of every route page (see `PlaceholderPage`, and the
- *   home page's sections) so page widths stay visually consistent across
- *   the whole app.
+ *   Wraps the content of every route page so page widths stay visually
+ *   consistent across the whole app.
  */
 export function Container({ children, className }: ContainerProps) {
   return (

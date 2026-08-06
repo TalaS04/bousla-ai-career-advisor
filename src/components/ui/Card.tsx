@@ -9,10 +9,9 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
  * A padded, bordered surface used to visually group related content.
  *
  * Purpose & responsibility:
- *   Nearly every page in the app (dashboard widgets, placeholder-page
- *   notices, future major/career detail sections) needs a simple "box of
- *   content on a slightly raised surface" — the same idea as a card in most
- *   design systems. Rather than repeating
+ *   Nearly every page in the app (dashboard widgets, detail sections, empty
+ *   states) needs a simple "box of content on a slightly raised surface" —
+ *   the same idea as a card in most design systems. Rather than repeating
  *   `rounded-2xl border border-border bg-card p-6 shadow-sm` on every page,
  *   that styling is defined once here.
  *
@@ -25,9 +24,8 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
  *   that in a type-checked way.
  *
  * How it interacts with the rest of the application:
- *   Used by `PlaceholderPage` to present each placeholder route's
- *   description, and is the expected building block for real content cards
- *   added in later weeks (e.g. a major's summary card).
+ *   The building block for content cards throughout the app (dashboard
+ *   sections, detail-page panels, empty states).
  */
 export function Card({ children, className, ...props }: CardProps) {
   return (

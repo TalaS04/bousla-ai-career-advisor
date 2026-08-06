@@ -1,8 +1,10 @@
 import type { ReactNode } from "react";
+import { cookies } from "next/headers";
 import { Navbar } from "@/components/layout/Navbar";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Footer } from "@/components/layout/Footer";
 import { SidebarProvider } from "@/components/layout/SidebarContext";
+import { getUserById } from "@/services/interview.service";
 
 interface AppShellProps {
   children: ReactNode;
@@ -46,12 +48,23 @@ interface AppShellProps {
  *   active. `SidebarProvider` wraps `Navbar` and `Sidebar` here (rather
  *   than higher up in `layout.tsx`) because the mobile-drawer state it
  *   holds is only ever read by those two components.
+ *
+ * Why the signed-in user is read here instead of inside `Navbar`:
+ *   The session cookie is httpOnly, so only a Server Component can read it.
+ *   `AppShell` already reads it once per request and passes the result down
+ *   as a plain prop, the same pattern `/dashboard` and `/profile` use for
+ *   their own `getUserById` lookups — `Navbar` stays a small Client
+ *   Component that only renders what it's given.
  */
-export function AppShell({ children }: AppShellProps) {
+export async function AppShell({ children }: AppShellProps) {
+  const cookieStore = await cookies();
+  const userId = cookieStore.get("userId")?.value;
+  const user = userId ? await getUserById(userId) : null;
+
   return (
     <SidebarProvider>
       <div className="flex min-h-screen flex-col bg-background text-foreground">
-        <Navbar />
+        <Navbar user={user ? { fullName: user.fullName, email: user.email } : null} />
         <div className="flex flex-1">
           <Sidebar />
           <main className="flex-1">{children}</main>

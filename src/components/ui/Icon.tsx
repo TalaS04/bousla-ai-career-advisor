@@ -93,6 +93,14 @@ const ICON_SHAPES: Record<IconName, ReactNode> = {
       <path d="m20 20-4.35-4.35" />
     </>
   ),
+  // An open door with an outward arrow — used for "تسجيل الخروج" in the
+  // Navbar's user menu.
+  logout: (
+    <>
+      <path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3" />
+      <path d="M13 12h8m0 0-3-3m3 3-3 3" />
+    </>
+  ),
 };
 
 /**

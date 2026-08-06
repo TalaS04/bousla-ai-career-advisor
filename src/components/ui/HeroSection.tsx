@@ -43,13 +43,12 @@ interface HeroSectionProps {
  *   props rather than hardcoded text, it would also work unchanged if a
  *   future page (e.g. a marketing variant) needed its own hero banner.
  *
- * Why the buttons have neither `href` nor `onClick`:
- *   The interview and majors-browsing flows they'll eventually start
- *   aren't implemented yet (Week 4 is UI-only, no routing changes). Using
- *   `Button` in its plain action-button form (see `Button.tsx`) renders a
- *   fully-styled, real `<button>` element rather than a link to nowhere or
- *   a disabled-looking control — clicking it simply does nothing yet,
- *   which is the honest state of the feature.
+ * Why each action is optional-`href`:
+ *   Some callers have a real destination for an action (e.g. the landing
+ *   page's "ابدأ المقابلة" linking to `/login`); others may not. Rather than
+ *   forcing every caller to supply a dummy `href`, an action without one
+ *   renders as a real, fully-styled `<button>` with no handler — an honest
+ *   state rather than a link to nowhere.
  *
  * When it is used:
  *   Once, at the top of the landing page (`src/app/page.tsx`).
@@ -84,54 +83,19 @@ export function HeroSection({
   );
 
   return (
-    <section className="grid items-center gap-10 py-2 lg:grid-cols-2 lg:gap-12">
-      <div className="flex flex-col items-start text-start">
-        {eyebrow ? (
-          <span className="mb-6 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary">
-            {eyebrow}
-          </span>
-        ) : null}
-        <h1 className="max-w-2xl text-4xl font-bold leading-[1.25] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-          {title}
-        </h1>
-        <p className="mt-6 max-w-xl text-base leading-8 text-muted sm:text-lg">{subtitle}</p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          {primaryButton}
-          {secondaryButton}
-        </div>
-        <div className="mt-10 flex items-center gap-5 text-sm text-muted">
-          <div>
-            <p className="text-2xl font-bold text-foreground">+١٢٬٠٠٠</p>
-            <p>طالب استخدم بوصلة</p>
-          </div>
-          <span aria-hidden="true" className="h-10 w-px bg-border" />
-          <div>
-            <p className="text-2xl font-bold text-foreground">٩٦٪</p>
-            <p>رضا الطلاب</p>
-          </div>
-        </div>
-      </div>
-
-      {/* A visual preview only: the real interview remains available at /interview. */}
-      <div className="relative">
-        <div className="absolute -bottom-5 -left-5 h-36 w-36 rounded-full bg-primary/15 blur-3xl" />
-        <div className="absolute -right-4 -top-4 h-28 w-28 rounded-full bg-accent/30 blur-3xl" />
-        <div className="relative rounded-3xl border border-border bg-card p-6 shadow-lg shadow-primary/5 sm:p-7">
-          <div className="mb-5 flex items-center justify-between gap-3">
-            <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">مقابلة نشطة</span>
-            <span className="text-xs text-muted">السؤال ٤ من ١٢</span>
-          </div>
-          <p className="mb-5 text-lg font-bold leading-relaxed text-foreground">أي من الأنشطة التالية تستمتع بها أكثر؟</p>
-          <div className="space-y-2.5 text-sm">
-            <div className="rounded-xl border border-primary bg-primary/10 px-4 py-3 font-medium text-foreground">حل ألغاز رياضية ومنطقية</div>
-            <div className="rounded-xl border border-border px-4 py-3 text-muted">رسم شيء إبداعي</div>
-            <div className="rounded-xl border border-border px-4 py-3 text-muted">مساعدة صديق</div>
-            <div className="rounded-xl border border-border px-4 py-3 text-muted">قيادة فريق</div>
-          </div>
-          <div className="mt-5 h-2 overflow-hidden rounded-full bg-muted/15">
-            <div className="h-full w-1/3 rounded-full bg-primary" />
-          </div>
-        </div>
+    <section className="flex flex-col items-start py-2 text-start">
+      {eyebrow ? (
+        <span className="mb-6 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary">
+          {eyebrow}
+        </span>
+      ) : null}
+      <h1 className="max-w-2xl text-4xl font-bold leading-[1.25] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+        {title}
+      </h1>
+      <p className="mt-6 max-w-xl text-base leading-8 text-muted sm:text-lg">{subtitle}</p>
+      <div className="mt-8 flex flex-wrap gap-3">
+        {primaryButton}
+        {secondaryButton}
       </div>
     </section>
   );
