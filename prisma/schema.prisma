@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlserver"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -27,8 +27,8 @@ model Interview {
   startedAt      DateTime  @default(now())
   completedAt    DateTime?
   status         String    @default("IN_PROGRESS")
-  analysis       String?   @db.NVarChar(Max)
-  studentProfile String?   @db.NVarChar(Max)
+  analysis       String?   @db.Text
+  studentProfile String?   @db.Text
   user           User      @relation(fields: [userId], references: [id])
 }
 
@@ -97,7 +97,7 @@ model Major {
 
   englishName String?
 
-  description String? @db.NVarChar(Max)
+  description String? @db.Text
 
   classificationId String
 
@@ -123,9 +123,9 @@ model Major {
 
   @@index([officialCode])
 
-  includedSpecializations String? @db.NVarChar(Max)
+  includedSpecializations String? @db.Text
 
-  coreSubjects String? @db.NVarChar(Max)
+  coreSubjects String? @db.Text
 
 }
 
@@ -139,7 +139,7 @@ model Career {
 
   englishName String?
 
-  description String? @db.NVarChar(Max)
+  description String? @db.Text
 
   occupationGroup String?
 
@@ -169,7 +169,7 @@ model Skill {
 
   category String?
 
-  description String? @db.NVarChar(Max)
+  description String? @db.Text
 
   dataSourceId String
 
@@ -319,15 +319,15 @@ model MajorRoadmap {
 
   majorId String @id
 
-  overview String? @db.NVarChar(Max)
+  overview String? @db.Text
 
-  learningPath String? @db.NVarChar(Max)
+  learningPath String? @db.Text
 
-  certifications String? @db.NVarChar(Max)
+  certifications String? @db.Text
 
-  activities String? @db.NVarChar(Max)
+  activities String? @db.Text
 
-  tools String? @db.NVarChar(Max)
+  tools String? @db.Text
 
   major Major @relation(fields: [majorId], references: [id])
 

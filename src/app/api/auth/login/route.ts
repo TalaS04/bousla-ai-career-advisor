@@ -23,9 +23,14 @@ export async function POST(request: Request) {
 
     }
 
+    // PostgreSQL string comparison is case-sensitive by default (unlike
+    // SQL Server's default collation), so email matching must be
+    // normalized in application code instead of relying on the database.
+    const normalizedEmail = email.trim().toLowerCase();
+
     const user = await prisma.user.findUnique({
       where: {
-        email
+        email: normalizedEmail
       }
     });
 
